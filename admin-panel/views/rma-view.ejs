@@ -1,0 +1,99 @@
+<%- include header.ejs %>
+<div ng-controller="RMAController">
+	<div class="row">
+		<div class="col-md-6">
+			<h2>View RMA # {{RMAObj.RMANumber}}</h2>
+		</div>
+	</div>
+	<table class="rma-view table table-striped">
+		<thead>
+			<tr>
+				<td style="width:10%">Name</td>
+				<td style="width:90%">Value</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="table-row-section"> <td class="bold text-center " colspan="2"> RMA Info</td> </tr>
+			<tr> <td class="bold"> ID </td> <td>{{RMAObj.id}}</td> </tr>
+			<tr> <td class="bold"> RMANumber </td> <td>{{RMAObj.RMANumber}}</td> </tr>
+			<tr> <td class="bold"> PredefinedProblems </td> <td>{{RMAObj.PredefinedProblems}}</td> </tr>
+			<tr> <td class="bold"> Problem </td> <td>{{RMAObj.Problem}}</td> </tr>
+			<tr> <td class="bold"> ReceivedByName </td> <td>{{RMAObj.ReceivedByName}}</td> </tr>
+			<tr> <td class="bold"> FinishedDayTime </td> <td ng-bind="checkDateTime(RMAObj.FinishedDayTime)"></td> </tr>
+			<tr> <td class="bold"> RMA Issued Date </td> <td ng-bind="checkDateTime(RMAObj.RMAIssuedDate)"></td> </tr>
+			<tr> <td class="bold"> ReceivedDateTime </td> <td  ng-bind="checkDateTime(RMAObj.ReceivedDateTime)"></td> </tr>
+			<tr> <td class="bold"> Taker </td> <td>{{RMAObj.Taker}}</td> </tr>
+			<tr> <td class="bold"> RepairStatus </td> <td>{{RMAObj.RepairStatus}}</td> </tr>
+			<tr> <td class="bold"> RepairerName </td> <td>{{RMAObj.RepairerName}}</td> </tr>
+			<tr> <td class="bold"> TestedName </td> <td>{{RMAObj.TestedName}}</td> </tr>
+			<tr> <td class="bold"> UnitInfo </td> <td class="show-html" ng-bind-html="RMAObj.UnitInfo"></td> </tr>
+			<tr> <td class="bold"> Notes </td> <td class="show-html" ng-bind-html="RMAObj.Notes"></td> </tr>
+
+			<tr class="table-row-section"> <td class="bold text-center" colspan="2"> Device Info</td> </tr>
+			<tr> <td class="bold"> Device </td> <td>{{RMAObj.Device}}</td> </tr>
+			<tr> <td class="bold"> SN </td> <td>{{RMAObj.SN}}</td> </tr>
+			<tr> <td class="bold"> HaveBoot </td> <td ng-bind="yesNo(RMAObj.HaveBoot)"></td> </tr>
+			<tr> <td class="bold"> HaveCables </td> <td ng-bind="yesNo(RMAObj.HaveCables)"></td> </tr>
+			<tr> <td class="bold"> HaveOther </td> <td ng-bind="yesNo(RMAObj.HaveOther)"></td> </tr>
+			<tr ng-if="RMAObj.HaveOther == 1"> <td class="bold"> HaveOtherText </td> <td>{{RMAObj.HaveOtherText}}</td> </tr>
+			<tr> <td class="bold"> HavePO </td> <td ng-bind="yesNo(RMAObj.HavePO)"></td> </tr>
+			<tr> <td class="bold"> HaveSDCard </td> <td ng-bind="yesNo(RMAObj.HaveSDCard)"></td> </tr>
+			<tr ng-if="RMAObj.HaveSDCard == 1"> <td class="bold"> HaveSDcardSize </td> <td>{{RMAObj.HaveSDcardSize}}</td> </tr>
+			<tr> <td class="bold"> HaveSimCard </td> <td ng-bind="yesNo(RMAObj.HaveSimCard)"></td> </tr>
+
+			<tr class="table-row-section"> <td class="bold text-center" colspan="2"> Customer Info</td> </tr>
+			<tr> <td class="bold"> Name </td> <td>{{RMAObj.Name}}</td> </tr>
+			<tr> <td class="bold"> Company </td> <td>{{RMAObj.Company}}</td> </tr>
+			<tr> <td class="bold"> Email </td> <td>{{RMAObj.Email}}</td> </tr>
+			<tr> <td class="bold"> Address </td> <td>{{RMAObj.Address}}</td> </tr>
+			<tr> <td class="bold"> PhoneNumber </td> <td>{{RMAObj.PhoneNumber | tel}}</td> </tr>
+
+			<tr class="table-row-section"> <td class="bold text-center" colspan="2"> Other Info</td> </tr>
+			<tr> <td class="bold"> BugZilla </td> <td>{{RMAObj.BugZilla}}</td> </tr>
+			<tr> <td class="bold"> ReplacedSN </td> <td>{{RMAObj.ReplacedSN}}</td> </tr>
+			<tr> <td class="bold"> ShippingTrackingNumber </td> <td>{{RMAObj.ShippingTrackingNumber}}</td> </tr>
+			<tr> <td class="bold"> Vnet1 </td> <td>{{RMAObj.Vnet1}}</td> </tr>
+			<tr> <td class="bold"> Vnet2 </td> <td>{{RMAObj.Vnet2}}</td> </tr>
+			<tr> <td class="bold"> Vnet3 </td> <td>{{RMAObj.Vnet3}}</td> </tr>
+		</tbody>
+	</table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include footer.ejs %>

@@ -1,0 +1,230 @@
+<%- include header.ejs %>
+<div ng-controller="SearchQuoteController">
+	<div class="row">
+		<div class="col-md-6">
+			<h2>Search Quote </h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12">
+			<div class="row">
+				<div class="col-md-2">
+					<label>
+						Date Filter
+					</label>
+					<br/>
+					<div class="form-group">
+						<select ng-change="getQuotes()" class="custom-input form-control" ng-model="duration">
+							<option value="all">All</option>
+							<option value="custom">Custom</option>
+						</select>
+						<p class="explanation">find qoutes from specific duration.</p>
+					</div>
+				</div>
+				
+				<div ng-if="duration === 'custom'" class="form-group col-lg-2 col-md-2 col-sm-4">
+					<label for="fromSearchDate">from</label>
+					<input ng-model="$parent.fromSearchDate" class="custom-input form-control" id="fromSearchDate"
+						type='date'>
+					<p class="explanation">&nbsp;</p>
+				</div>
+				<div class="col-md-2">
+					<label ng-if="duration === 'custom'" for="searchTo">to</label>
+					<div class="input-group mb-3">
+						<input ng-if="duration === 'custom'" ng-model="$parent.searchTo" class="custom-input form-control"
+						id="searchTo" type='date'>
+						<div class="input-group-append">
+							<button ng-if="duration === 'custom'" title="Remove Quote" ng-click="filterOrders()"
+							class="btn btn-sm btn-primary ng-scope">
+							 GO
+						</button>
+						</div>
+					  </div>
+				</div>
+				<div ng-if="duration === 'custom'" class="col-md-2"></div>
+				<div ng-if="duration === 'all'" class="col-md-4"></div>
+				<!-- <div ng-if="duration === 'custom'" class="form-group col-lg-1 col-md-1 col-sm-3"
+					style="margin-top: 45px">
+					<button title="Remove Quote" ng-click="dataSearchFilter()" class="btn btn-sm btn-primary ng-scope">
+						GO
+					</button>
+					<p class="explanation">&nbsp;</p>
+
+
+				</div> -->
+				<!-- <div class="col-lg-1 col-md-1 col-sm-1">
+
+				</div> -->
+				
+				<!-- <div class="col-lg-2 col-md-2 col-sm-2">
+					<label style="visibility: hidden;">Quote search </label>
+					<input autocomplete="off" id="goToQuotePageByNo" ng-model="quoteByIdSearch"
+						class="custom-input form-control" placeholder="Quote Id" type="text" />
+					<p class="explanation">Open quote by id</p>
+				</div>
+				<div class="col-lg-1 col-md-1 col-sm-1" style="margin-top: 34px;">
+
+					<span><a id="goToQuotePageByNoButton" title="Edit Order" class="btn btn-sm btn-primary"
+							target="_blank" href="/edit?quote={{quoteByIdSearch}}">
+							<i class="fa fa-search"> </i>
+						</a></span>
+
+				</div> -->
+
+				<div class="col-md-2">
+					<div class="input-group mt-4">
+						<input autocomplete="off" id="goToQuotePageByNo" ng-model="quoteByIdSearch"
+						class="custom-input form-control" placeholder="Quote Id" type="text" />
+						<div class="input-group-append">
+							<a id="goToQuotePageByNoButton" title="Edit Order" style="padding-top: 10px;" class="btn btn-sm btn-primary"
+							target="_blank" href="/edit?quote={{quoteByIdSearch}}">
+							<i class="fa fa-search"> </i>
+						    </a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-2 float-right">
+						<button style="height: 46px!important; width:100%" ng-if="loggedInUser.usertype == 'admin'" type="button"
+								class="btn btn-outline-success float-right mt-4" ng-click="updateExportFileName(true)"
+								ng-csv="allquotes" csv-header="selectedOptions" csv-column-order="selectedOptions"
+								filename="Quotes.csv"><i class="fa fa-file"></i> Export {{allquotes.length}} Quotes 
+						</button>
+					</div>
+			</div>
+		</div>
+	</div>
+	<div class="table-responsive table-scroll" id="table-scroll">
+
+		<table st-table="quotes" st-safe-src="allquotes" class="table table-striped table-hover">
+			<thead>
+				<!-- <tr>
+					
+					<button ng-if="loggedInUser.usertype == 'admin'" type="button"
+						class="btn btn-outline-success mb-2 pull-right " ng-click="updateExportFileName(true)"
+						ng-csv="allquotes" csv-header="selectedOptions" csv-column-order="selectedOptions"
+						filename="Quotes.csv"><i class="fa fa-file"></i> Export {{allquotes.length}} Quotes </button>
+				</tr>
+				
+				<tr>
+					<th style="width: 7%" st-sort="QuoteNo">Quote</th>
+					<th style="width: 12%" st-sort="FirstName">Name</th>
+					<th style="width: 13%" st-sort="EmailAddress">Email</th>
+					<th style="width: 15%" st-sort="CompanyName">Company Name</th>
+					<th style="width: 10%" st-sort="City">City</th>
+					<th style="width: 7%" st-sort="total">Total Amt</th>
+					<th style="width: 9%" st-sort="IssueDate">Created On</th>
+					<th style="width: 9%" st-sort="createdByLast">Created By</th>
+					<th style="width: 18%" class="text-center">Action</th>
+
+					<!-- <th st-sort="balance">balance</th> -->
+				</tr>
+
+				<tr>
+					<th colspan="10">
+						<input st-search="" class="custom-input form-control" placeholder="global search ..."
+							type="text" />
+					</th>
+				</tr>
+				<tr>
+					<th colspan="1">
+						<input st-search="QuoteNo" class="custom-input form-control" placeholder="Id search ..."
+							type="text" />
+					</th>
+					<th colspan="1">
+						<input st-search="LastName" class="custom-input form-control" placeholder="LastName search ..."
+							type="text" />
+					</th>
+					<th colspan="1">
+						<input st-search="EmailAddress" class="custom-input form-control" placeholder="Email search ..."
+							type="text" />
+					</th>
+					<th colspan="1">
+						<input st-search="companies" class="custom-input form-control"
+							placeholder="Company Name search ..." type="text" />
+					</th>
+					<th colspan="1">
+						<input st-search="City" class="custom-input form-control" placeholder="City Name search ..."
+							type="text" />
+					</th>
+					<th colspan="1">
+						<input ng-change="customTotalAmountSearch()" ng-model="customTotalAmount"
+							class="custom-input form-control" placeholder="Total search ..." type="text" />
+					</th>
+					<th colspan="1">
+						<input ng-model-options="{debounce: 100}" ng-change="dateFilter()" ng-model="datePicker"
+							class="custom-input form-control" placeholder="Created On search ..." type="date" />
+					</th>
+					<th colspan="1">
+						<input st-search="createdByLast" class="custom-input form-control"
+							placeholder="Last Name search ..." type="text" />
+					</th>
+					<th colspan="1">
+						<input st-search="pdfname" class="custom-input form-control" placeholder="PDF Name search ..."
+							type="text" />
+					</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr ng-repeat="q in quotes">
+					<td style="word-break: break-all;"><a title="Edit Quote" target="_blank"
+							ng-href="/edit?quote={{q.QuoteNo}}">{{q.QuoteNo}}</a></td>
+					<td style="word-break: break-all;">{{q.LastName}}, {{q.FirstName}}</td>
+					<td style="word-break: break-all;">{{q.EmailAddress}}</td>
+					<td ng-if="q.BillingCompany == q.ShippingCompany">{{q.BillingCompany}}</td>
+					<td ng-if="q.BillingCompany !== q.ShippingCompany"><small>Billing Company:
+							{{q.BillingCompany}}</small> <br> <small>Shipping Company:
+							{{q.ShippingCompany ? q.ShippingCompany : 'N/A'}}</small></td>
+					<!-- <td style="word-break: break-all;">{{q.BillingCompany}}</td> -->
+					<td style="word-break: break-all;">{{q.City}}</td>
+					<td style="">${{q.PaymentAmountForSearch}}</td>
+					<td style="word-break: break-all;">{{q.IssueDate }}</td>
+					<td style="word-break: break-all;" ng-show="q.createdByLast">{{q.createdByLast}},
+						{{q.createdByFirst }}</td>
+					<td style="word-break: break-all;" ng-show="!q.createdByLast">N/A</td>
+					<td class="text-center">
+						<a title="View Quote" target="_blank" class="btn btn-sm btn-danger"
+							href="/view-quote/{{q.pdfname}}">
+							<i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"> </i>
+						</a>
+						<a title="Edit Quote" target="_blank" ng-href="/edit?quote={{q.QuoteNo}}"
+							class="btn btn-sm btn-primary">
+							<i class="fa fa-pencil fa-2x">
+							</i>
+						</a>
+						<a title="Clone Quote" ng-click="cloneQuote(q.QuoteNo)" target="_blank"
+							class="btn btn-sm btn-success">
+							<i class="fa fa-copy fa-2x">
+							</i>
+						</a>
+						<a title="{{q.isOrdered == 1? 'Order already Placed':'Place Order'}}"
+							ng-href="/order-new?quote={{q.QuoteNo}}" target="_blank" class="btn btn-sm btn-warning">
+							<i class="fa fa-shopping-cart fa-2x">
+							</i>
+						</a>
+						<button ng-if="loggedInUser.usertype == 'admin'" title="Remove Quote"
+							ng-click="removeQuote($index, q.QuoteNo)" class="btn btn-sm btn-danger">
+							<i class="fa fa-trash fa-2x">
+							</i>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+			<tfoot class="text-center d-flex justify-content-center tfoot-toggle">
+				<tr>
+					<td colspan="8">
+						<div class="paging">
+							<div st-pagination="" st-template="template/st-pagination.html"
+								st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+						</div>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+
+</div>
+</div>
+
+
+<%- include footer.ejs %>

@@ -1,0 +1,198 @@
+<html>
+<head>
+</head>
+<style>
+@font-face {
+    font-family: myFirstFont;
+    src: url(sansation_light.woff);
+}
+
+    *{
+        font-size: 97%;
+        font-famil: 'Times New Roman';
+    }
+
+	.al-right{
+	text-align:right;
+}
+    .mContainer{
+        padding: 28px;
+        width: 100%;
+    }
+
+    .mPullLeft{
+        float: left;
+    }
+
+    .mPullRight{
+        float: right;
+    }
+    .lower_table tr{
+        border-bottom: 1px solid #e5e5e5;
+    }
+h2{
+ font-size:140%;
+}
+
+</style>
+
+    <body>
+        <div class="mContainer">
+                <div class="mPullLeft" style="width:100%;color:#797878;font-weight: 500;line-height: 3px;">
+                    <h2>Intrepid Control Systems</h2>
+                    <p>31601 Research Park Drive</p>
+                    <p>Maddison Heights, Michigan 48071</p>
+                    <p>USA</p>
+                </div>
+
+                <div class="mPullLeft" style='margin-top:50px;line-height: 30px;'>
+                    <h8><strong><%= quote[0].CustomerFName + " " + quote[0].CustomerLName %></strong></h8>
+                    <p style="line-height: 3px;">
+                        <%= quote[0].CustomerCompany %>
+                    </p>
+                    <p style="line-height: 3px;">
+                        <%= quote[0].BillingStreetAddress1 %>
+                    </p>
+                    <p style="line-height: 3px;">
+                        <%= quote[0].BillingStreetAddress2 %>
+                    </p>
+                    <p style="line-height: 3px;">
+                        <%= quote[0].BillingCity1 %>, <%= quote[0].BillingState %> <%= quote[0].BillingPostalCode %>
+                    </p>
+                    <p style="line-height: 3px;">
+                        <%= quote[0].BillingCountry1 %>
+                    </p>
+                </div>
+
+                <div class="mPullRight" style="margin-right:30px; margin-top:68px;line-height: 4px">
+                    <p style='text-align:left'>
+                        <b>Quote No :</b>
+                        <%= quote[0].QuoteNo %>
+                    </p>
+                    <p style='text-align:left'>
+                        <b>Issue Date :</b>
+                        <%= quote[0].IssueDate %>
+                    </p>
+                    <p style='text-align:left'>
+                        <b>Valid Till :</b>
+                        <%= quote[0].ValidTill %>
+                    </p>
+                </div>
+                <div style='width:100%;margin: 20px 0 10px 0px;' class='mPullLeft'>
+                <h8><strong>Quote Notes:</strong></h8>
+                <p style="white-space: pre-wrap;"><%= quote[0].notes %></p>
+                </div>
+                <div class="mPullLeft" style="width:100%;line-height: 10px;">
+                </div>
+                <div style="width:100%" class="mPullLeft">
+                    <table style="width:100%">
+                        <hr/>
+                        <thead>
+                            <tr>
+                                <td style="width:10%;" class="text-center">
+                                    <strong>Item#</strong>
+                                </td>
+                                <td style="width:12%" class="text-center">
+                                    <strong>Item</strong>
+                                </td>
+                                 <td style="width:38%" class="text-center">
+                                     <strong>Description</strong>
+                                </td>
+                                <td style="width:10%" class="text-center">
+                                    <strong>Qty</strong>
+                                </td>
+                                <td style="width:10%" class="text-center">
+                                    <strong>Unit Price</strong>
+                                </td>
+                                <td style="width:10%" class="text-center">
+                                    <strong>Discount (%)</strong>
+                                </td>
+                                <td style="width:10%" class="text-center">
+                                    <strong>Totals</strong>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% var stotal = 0;
+                                for(var i=0; i < quote.length; i++) { %>
+                                <tr>
+                                    <td class="text-center">
+                                        <%= quote[i].ProductCode %>
+                                    </td>
+                                    <td class="text-center">
+                                        <%= quote[i].ProductName %>
+                                    </td>
+                                     <td class="text-center">
+                                         <%= quote[i].description %>
+                                    </td>
+                                    <td class="text-center">
+                                        <%= quote[i].Qty %>
+                                    </td>
+                                    <td class="text-center">
+                                        $<%= quote[i].Price.toFixed(2) %>
+                                    </td>
+                                    <td class="text-center">
+                                        <%= quote[i].Discount.toFixed(2) %>
+                                    </td>
+                                    <td class="text-center">
+                                        $<%= ((quote[i].Qty * quote[i].Price) - ((quote[i].Discount / 100) * (quote[i].Price * quote[i].Qty))).toFixed(2) %>
+                                    </td>
+                                </tr>
+                                <%
+                                 stotal +=  (quote[i].Qty * quote[i].Price) - ((quote[i].Discount / 100) * (quote[i].Price * quote[i].Qty));
+                                } %>
+                        </tbody>
+                    </table>
+                    <hr/>
+                </div>
+                <div>
+                    <div>&nbsp;</div>
+                    <div style="float:right;margin-right:30px">
+
+                        <table style="width:100%;margin-top:50px" class="lower_table">
+                            <tr>
+                                <td>
+                                    <strong>Subtotal:</strong>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td class='al-right'>
+                                    $<%= stotal.toFixed(2) %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Shipping:</strong>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td class='al-right'>
+                                   $<%= quote[0].Freight.toFixed(2) %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Tax:</strong>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td class='al-right'>
+                                    <%= quote[0].TaxShipping.toFixed(2) %>%
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Total:</strong>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td class='al-right'>
+                                    $<%= (stotal +  quote[0].Freight + ((quote[0].TaxShipping /100) * stotal)).toFixed(2) %>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,139 @@
+<%- include header.ejs %>
+<div ng-controller="QueryBuilderController" ng- id="exportthis">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 page-header">
+                <h1>Query Builder </h1>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group" ng-if="ReportId >=0">
+                    <label>Report Name</label>
+                    <input type="text" class="form-control" placeholder="enter value" ng-model="queries.reportName"
+                        value="{{ queries.reportName }}" />
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>Select Table</label>
+                            <select ng-style="{width: '100%' }" ng-change="getTable()" type="search"
+                                ng-model="queries.tableName" aria-placeholder="select table"
+                                class="custom-input form-control">
+                                <option value="">None</option>
+                                <option value="orders">Orders</option>
+                                <option value="quotes">Quotes</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="form-group">
+                            <label>Select Column <span style="color: red;font-size: 20px;"> * </span></label>
+                            <select ng-style="{width: '100%' }" search-contains="true" multiple
+                                ng-model="queries.columns" class="form-control" chosen
+                                ng-options="c.Field as c.Field for c in columns" ng-required="true">
+                                <option value=""></option>
+                            </select>
+                            <p class="explanation mb-2"> selected columns will be only fetch</p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <label>{{heading}}</label>
+                <!-- <table class="table"> -->
+                <div class="row" ng-repeat="where in queries.where">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <select ng-style="{width: '100%' }" ng-options="c.Field as c.Field for c in columns"
+                                type="search" ng-model="where.feild" id="table-where" select2-custom2
+                                aria-placeholder="select table" class="custom-input form-control">
+                                <option value="" selected="selected">None</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <select ng-style="{width: '100%' }" type="search" ng-model="where.condition"
+                                aria-placeholder="select table" select2-custom2 class="custom-input form-control">
+                                <option value="=" selected="selected">equal</option>
+                                <option value="<>" selected="selected">not equal</option>
+                                <option value="<" selected="selected">less than</option>
+                                <option value=">" selected="selected">greater than</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" placeholder="enter value" ng-model="where.value"
+                            value="{{ where.value }}" />
+                    </div>
+                    <div class="text-center col-md-1">
+                        <button ng-if="queries.where.length > 1" ng-click="removeRow($index)" title="Delete Product"
+                            class="btn btn-sm btn-danger">
+                            <i class="fa fa-times">
+                            </i>
+                        </button>
+                    </div>
+                </div>
+                <!-- </table> -->
+                <div ng-if="heading != '' ">
+                    <td class="text-right thick-line" colspan="6">
+                        <button class="btn btn-primary" ng-click="addRow()">
+                            <i class="fa fa-plus"></i> Add Clause</button>
+                    </td>
+                </div>
+            </div>
+            <div class="col-md-12 my-2" ng-if="queries.where.length > 0">
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-dark mr-2" ng-click="postQuery()">Execute <i class="fa fa-play"
+                            aria-hidden="true"></i></button>
+                    <button ng-if="ReportId < 0" class="btn btn-warning" ng-click="saveReportName()">Save & Execute <i
+                            class="fa fa-play" aria-hidden="true"></i></button>
+                    <button ng-if="ReportId > -1" class="btn btn-warning  mr-2" ng-click="saveReportName()">Update &
+                        Execute <i class="fa fa-play" aria-hidden="true"></i></button>
+                    <button ng-if="ReportId > -1" class="btn btn-primary" ng-click="newReportName()">Clone Report &
+                        Execute <i class="fa fa-play" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="col-md-12" ng-if="executedReportColumns">
+                <div class="">
+                    <button type="button" class="btn btn-outline-success mb-2 pull-right ng-binding ng-isolate-scope"
+                        ng-click="updateExportFileName(true)" ng-csv="report" csv-header="executedReportColumns"
+                        csv-column-order="executedReportColumns" filename="{{ queries.reportName }}.csv"><i
+                            class="fa fa-file"></i> Export CSV </button>
+                </div>
+                <div class="table-responsive">
+                    <table st-table="reports" st-safe-src="report" class="table table-striped table-scroll"
+                        id="table-scroll">
+                        <thead>
+                            <tr>
+                                <th ng-repeat="(key, value) in report[0]">{{key}} </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="(key, value) in report">
+                                <td ng-repeat="(key2, value2) in report[key]">
+                                    {{value2}}
+                                </td>
+                            </tr>
+                        </tbody>
+                       
+                        <!-- <tfoot class="text-center d-flex justify-content-center tfoot-toggle">
+                            <tr>
+                                <td colspan="10" class="text-center">
+                                    <div class="paging">
+                                        <div st-pagination="" st-template="template/st-pagination.html"
+                                            st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot> -->
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<%- include footer.ejs %>

@@ -1,0 +1,36 @@
+@import "../../../assets/styles/variables.scss";
+.header-toast {
+    position: absolute;
+    top: 50px;
+    margin-left: 50px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    .toast {
+        z-index: 99;
+        width: 100%;
+        max-width: 450px;
+        font-size: 12px;
+        line-height: 18px;
+        border-radius: 5px;
+        .toast-header {
+            width: 100%;
+          justify-content: space-between;
+          padding:0.45rem 1.25rem;
+          img {
+            width: 35px;
+            display:block;
+            height: 35px;
+            border-radius: 100%;
+        }
+        small {
+            color:$light-green;
+        }
+        button.close {
+            display: none;
+        }
+        }
+      
+    }
+}

@@ -1,0 +1,91 @@
+<%- include header.ejs %>
+<div ng-controller="ExcelViewController">
+	<div class="row">
+		<div style="padding-bottom: 10px;" class="col-md-12">
+			<h3>{{file.FileName}}</h3>
+			<!-- <p class="explanation"> excel files name</p> -->
+		</div>
+	</div>
+	<div class="row">
+		<!-- <ul class="nav nav-tabs"> -->
+		<div class="col-md-12">
+			<scrolling-tabs ng-if="sheets.length" tabs="{{sheets}}" tab-click="handleClickOnTab($event, $index, tab);">
+			</scrolling-tabs>
+		</div>
+	</div>
+	<!-- </ul> -->
+	<div class="row">
+		<div class="tab-content col-md-12">
+			<% for(var i=0; i < sheets.length; i++) { var rows = sheets[i].tabData; %>
+			<!-- <%= sheets[0].title %> -->
+			<div id="<%= sheets[i].paneId %>" class="tab-pane fade in" ng-class="{ 'active': sheets[<%= i %>].active }">
+				<div>
+					<h4><strong><%= sheets[i].title %></strong></h4>
+				</div>
+				<p class="explanation"> inner sheet title</p>
+				<div ng-if="sheet.active" class="row" style="padding-top: 10px;">
+					<div class="wrapper-class wrapper_<%= sheets[i].paneId %>">
+						<div class="div-class div_<%= sheets[i].paneId %>"></div>
+					</div>
+					<div class="wrapper2">
+						<div class="table-responsive <%= sheets[i].paneId %>">
+							<table class="table dynmic-table">
+								<thead>
+								</thead>
+								<tbody>
+									<% for(var j=0; j < rows.length; j++) { var cells = rows[j]; %>
+									<tr>
+										<% for(var l=0; l < cells.length; l++) { 
+											var cell = cells[l]
+											var className = 'text-center '
+											if(cell.s){
+												className = className + 'hidden '
+											}
+											if(cell.bl){
+												className = className + 'borderLeft1px '
+											}
+											if(cell.br){
+												className = className + 'borderRight1px '
+											}
+											if(cell.bb){
+												className = className + 'borderBottom1px '
+											}
+											if(cell.bt){
+												className = className + 'borderTop1px '
+											}
+											if(cell.b){
+												className = className + 'boldCell '
+											}
+
+											%>
+										<td colspan="<%= cells[l].cs %>" rowspan="<%= cells[l].rs %>"
+											class="<%= className %>" style="font-size: <%= cell.fs %>">
+											<%
+											if(!cell.i){
+											
+											%>
+											<%= cells[l].d %>
+											<%
+											}
+											else{
+												%>
+											<img src="/excel/<%= cell.d %>">
+											<% } %>
+										</td>
+										<% } %>
+										<!-- nowrap="nowrap" -->
+									</tr>
+									<% } %>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<% } %>
+		</div>
+	</div>
+</div>
+
+
+<%- include footer.ejs %>

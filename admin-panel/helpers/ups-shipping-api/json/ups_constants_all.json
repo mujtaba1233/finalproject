@@ -1,0 +1,332 @@
+{
+    "hosts": {
+        "sandbox": "wwwcie.ups.com",
+        "live": "onlinetools.ups.com"
+    },
+    "dimensional_weight_values": {
+        "imperial": 139,
+        "metric": 5000
+    },
+    "pickup_codes": {
+        "daily_pickup": "01",
+        "customer_counter": "03",
+        "one_time_pickup": "06",
+        "on_call_air": "07",
+        "suggested_retail_rates": "11",
+        "letter_center": "19",
+        "air_service_center": "20"
+    },
+    "customer_classifications": {
+        "wholesale": "01",
+        "occasional": "03",
+        "retail": "04"
+    },
+    "tax_id_types": {
+        "EIN": "EIN",
+        "DNS": "DNS",
+        "FGN": "FGN"
+    },
+    "default_services": {
+        "11": "UPS Standard",
+        "12": "UPS Three-Day Select",
+        "13": "UPS Next Day Air Saver",
+        "14": "UPS Next Day Air Early A.M.",
+        "54_deleted": "UPS Worldwide Express Plus",
+        "59": "UPS Second Day Air A.M.",
+        "65": "UPS Saver",
+        "82": "UPS Today Standard",
+        "83": "UPS Today Dedicated Courier",
+        "84": "UPS Today Intercity",
+        "85": "UPS Today Express",
+        "86": "UPS Today Express Saver",
+        "92": "UPS SurePost (USPS) < 1lb",
+        "93": "UPS SurePost (USPS) > 1lb",
+        "94": "UPS SurePost (USPS) BPM",
+        "95": "UPS SurePost (USPS) Media",
+        "01": "UPS Next Day Air",
+        "02": "UPS Second Day Air",
+        "03": "UPS Ground",
+        "07": "UPS Worldwide Express",
+        "08": "UPS Worldwide Expedited",
+        "dhl_domestic_express_deleted": "DHL Domestic Express",
+        "dhl_medical_express_deleted": "DHL Medical Express",
+        "dhl_express_worldwide": "DHL Worldwide Express",
+        "ExpressWorldwideNonDoc": "DHL Worldwide Express"
+    },
+    "id_mapping": {
+        "11": "702",
+        "12": "703",
+        "13": "706",
+        "14": "708",
+        "54_deleted": "712",
+        "59": "705",
+        "65": "UPS Saver",
+        "82": "UPS Today Standard",
+        "83": "UPS Today Dedicated Courier",
+        "84": "UPS Today Intercity",
+        "85": "UPS Today Express",
+        "86": "UPS Today Express Saver",
+        "92": "UPS SurePost (USPS) < 1lb",
+        "93": "UPS SurePost (USPS) > 1lb",
+        "94": "UPS SurePost (USPS) BPM",
+        "95": "UPS SurePost (USPS) Media",
+        "01": "707",
+        "02": "704",
+        "03": "701",
+        "07": "711",
+        "08": "709",
+        "dhl_express_worldwide": "401",
+        "ExpressWorldwideNonDoc": "401",
+        "ExpressEasyNonDoc": "404",
+        "dhl_domestic_express_deleted": "402"
+    },
+    "return_services": {
+        "3": "UPS Return Service 1 Attempt",
+        "5": "UPS Return Service 3 Attempt",
+        "8": "UPS Electronic Return Label",
+        "9": "UPS Print Return Label",
+        "10": "UPS Exchange Print Return Label",
+        "11": "UPS Pack  & Collect Service 1-Attempt Box 1",
+        "12": "UPS Pack & Collect Service 1-Attempt Box 2",
+        "13": "UPS Pack & Collect Service 1-Attempt Box 3",
+        "14": "UPS Pack & Collect Service 1-Attempt Box 4",
+        "15": "UPS Pack & Collect Service 1-Attempt Box 5",
+        "16": "UPS Pack & Collect Service 3-Attempt Box 1",
+        "17": "UPS Pack & Collect Service 3-Attempt Box 2",
+        "18": "UPS Pack & Collect Service 3-Attempt Box 3",
+        "19": "UPS Pack & Collect Service 3-Attempt Box 4",
+        "20": "UPS Pack & Collect Service 3-Attempt Box 5"
+    },
+    "pickup_services": {
+        "001": "UPS Next Day Air",
+        "002": "UPS Second Day Air",
+        "003": "UPS Ground",
+        "007": "UPS Worldwide Express",
+        "008": "UPS Worldwide Expedited",
+        "011": "UPS Standard",
+        "012": "UPS Three-Day Select",
+        "013": "UPS Next Day Air Saver",
+        "014": "UPS Next Day Air Early A.M.",
+        "054": "UPS Worldwide Express Plus",
+        "059": "UPS Second Day Air A.M.",
+        "065": "UPS Saver",
+        "082": "UPS Today Standard",
+        "083": "UPS Today Dedicated Courier",
+        "084": "UPS Today Intercity",
+        "085": "UPS Today Express",
+        "086": "UPS Today Express Saver",
+        "092": "UPS SurePost (USPS) < 1lb",
+        "093": "UPS SurePost (USPS) > 1lb",
+        "094": "UPS SurePost (USPS) BPM",
+        "095": "UPS SurePost (USPS) Media"
+    },
+    "pickup_payment_methods": {
+        "00": "No payment needed",
+        "01": "Pay by shipper account",
+        "03": "Pay by charge card",
+        "04": "Pay by tracking number",
+        "05": "Pay by check or money order"
+    },
+    "canada_origin_services": {
+        "11": "UPS Standard",
+        "12": "UPS Three-Day Select",
+        "13": "UPS Saver SM",
+        "14": "UPS Express Early A.M.",
+        "01": "UPS Express",
+        "08": "UPS Expedited",
+        "07": "UPS Exress to USA"
+    },
+    "mexico_origin_services": {
+        "54": "UPS Express Plus",
+        "07": "UPS Express",
+        "08": "UPS Expedited"
+    },
+    "eu_origin_services": {
+        "07": "UPS Express",
+        "08": "UPS Expedited"
+    },
+    "other_non_us_origin_services": {
+        "07": "UPS Express"
+    },
+    "tracking_status_codes": {
+        "I": "In Transit",
+        "D": "Delivered",
+        "X": "Exception",
+        "P": "Pickup",
+        "M": "Manifest Pickup"
+    },
+    "freight_billing_options": {
+        "10": "Prepaid",
+        "30": "Bill to Third Party",
+        "40": "Freight Collect"
+    },
+    "freight_service_classes": {
+        "50": {
+            "min": 50,
+            "max": 10000
+        },
+        "55": {
+            "min": 35,
+            "max": 50
+        },
+        "60": {
+            "min": 30,
+            "max": 35
+        },
+        "65": {
+            "min": 22.5,
+            "max": 30
+        },
+        "70": {
+            "min": 15,
+            "max": 22.5
+        },
+        "85": {
+            "min": 12,
+            "max": 13.5
+        },
+        "100": {
+            "min": 9,
+            "max": 10.5
+        },
+        "110": {
+            "min": 8,
+            "max": 9
+        },
+        "125": {
+            "min": 7,
+            "max": 8
+        },
+        "150": {
+            "min": 6,
+            "max": 7
+        },
+        "175": {
+            "min": 5,
+            "max": 6
+        },
+        "200": {
+            "min": 4,
+            "max": 5
+        },
+        "250": {
+            "min": 3,
+            "max": 4
+        },
+        "300": {
+            "min": 2,
+            "max": 3
+        },
+        "400": {
+            "min": 1,
+            "max": 2
+        },
+        "500": {
+            "min": 0,
+            "max": 1
+        },
+        "77.5": {
+            "min": 13.5,
+            "max": 15
+        },
+        "92.5": {
+            "min": 10.5,
+            "max": 12
+        }
+    },
+    "freight_service_codes": {
+        "308": "UPS Freight LTL",
+        "309": "UPS Freight LTL - Guaranteed",
+        "334": "UPS Freight LTL - Guaranteed AM"
+    },
+    "freight_handling_codes": {
+        "SDK": "SKID",
+        "CBY": "CARBOY",
+        "PLT": "PALLET",
+        "TOT": "TOTES",
+        "LOO": "LOOSE",
+        "OTH": "OTHER"
+    },
+    "freight_package_codes": {
+        "BAG": "Bag",
+        "BAL": "Bale",
+        "BAR": "Barrel",
+        "BDL": "Bundle",
+        "BIN": "Bin",
+        "BOX": "Box",
+        "BSK": "Basket",
+        "BUN": "Bunch",
+        "CAB": "Cabinet",
+        "CAN": "Can",
+        "CAR": "Carrier",
+        "CAS": "Case",
+        "CBY": "Carboy",
+        "CON": "Container",
+        "CRT": "Crate",
+        "CSK": "Cask",
+        "CTN": "Carton",
+        "CYL": "Cylinder",
+        "DRM": "Drum",
+        "LOO": "Loose",
+        "OTH": "Other",
+        "PAL": "Pail",
+        "PCS": "Pieces",
+        "PKG": "Package",
+        "PLN": "Pipe Line",
+        "PLT": "Pallet",
+        "RCK": "Rack",
+        "REL": "Reel",
+        "ROL": "Roll",
+        "SKD": "Skid",
+        "SPL": "Spool",
+        "TBE": "Tube",
+        "TNK": "Tank",
+        "UNT": "Unit",
+        "VPK": "Van Pack",
+        "WRP": "Wrapped"
+    },
+    "pickup_package_types": {
+        "01": "Package",
+        "02": "UPS Letter",
+        "03": "Pallet"
+    },
+    "eu_country_codes": [
+        "GB",
+        "AT",
+        "BE",
+        "BG",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE"
+    ],
+    "us_territories_treated_as_countries": [
+        "AS",
+        "FM",
+        "GU",
+        "MH",
+        "MP",
+        "PW",
+        "PR",
+        "VI"
+    ]
+}

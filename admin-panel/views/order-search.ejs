@@ -1,0 +1,394 @@
+<%- include header.ejs %>
+<div ng-controller="SearchOrderController">
+	<div class="row">
+		<div class="col-md-12">
+			<h2>{{heading}}</h2>
+			<h5 style="padding-top:10px;" ng-if="ProductID" class="slogon"> {{allorders[0].ProductCode}}</h5>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3">
+			<label>Order Status</label>
+			<select class="form-control custom-input" ng-change="filterOrders()" ng-model="OrderStatus">
+				<option value="all">All</option>
+				<option value="allIncludeCanceled">All Include Canceled</option>
+				<option value="open">Open</option>
+				<option value="Shipped">Shipped</option>
+				<option value="Partially Shipped">Partially Shipped</option>
+				<option value="Cancelled">Cancelled</option>
+				<option value="Returned">Returned</option>
+				<option value="New">New</option>
+				<option value="Backordered">Backordered</option>
+				<option value="Pending">Pending</option>
+				<option value="Processing">Processing</option>
+				<option value="Accepted">Accepted</option>
+				<option value="Queue">Queue</option>
+				<option value="Hold">Hold</option>
+				<option value="Ready To Shipped">Ready To Shipped</option>
+				<option value="Partially Returned">Partially Returned</option>
+				<option value="Payment Declined">Payment Declined</option>
+				<option value="New - See Order Notes">New - See Order Notes</option>
+				<option value="Demo Returned">Demo Returned</option>
+				<option value="Demo Pending">Demo Pending</option>
+				<!-- <option ng-if="row.OrderStatus" ng-repeat="row in allorders | unique:'OrderStatus'"
+								value="{{row.OrderStatus}}">{{row.OrderStatus}}</option> -->
+			</select>
+			<p class="explanation">Filter orders by order status</p>
+		</div>
+		<div class="col-md-3">
+			<label>Country Filter</label>
+			<select ng-change="filterOrders()" ng-model="countryFilter"
+				ng-options="c.code as c.code  for c in countries" class="custom-input form-control">
+				<option value="">All</option>
+				<option ng-if="countries" ng-repeat="countries" value="{{countries.code}}">{{countries.code}}</option>
+			</select>
+			<p class="explanation">Filter orders by ship country</p>
+		</div>
+		<div class="col-md-3">
+			<label>Order Type</label>
+			<select ng-change="filterOrders()" class="custom-input form-control" ng-model="type">
+				<option value="all">All</option>
+				<option value="Customer">Customer</option>
+				<option value="Demo">Demo</option>
+				<option value="Loan">Loan</option>
+				<option value="Internal Use">Internal Use</option>
+				<option value="RMA">RMA</option>
+			</select>
+			<p class="explanation">Filter order by type.</p>
+		</div>
+		<div class="col-md-3">
+			<label>Product Search</label>
+			<select ng-style="{width: '100%' }" multiple ng-model="productCodes"
+				class="form-control" chosen ng-change="filterOrders()" ng-options="s.ProductID as s.ProductCode for s in products">
+				<option value=""></option>
+			</select>
+			<hr>
+		</div>
+		<div class="col-md-4 mt-3">
+			<label>Date Filter</label>
+			<select ng-change="filterOrders()" class="custom-input form-control" ng-model="duration">
+				<option value="all">All</option>
+				<option value="custom">Custom</option>
+			</select>
+			<p class="explanation">Filter order by date.</p>
+		</div>
+		<div ng-if="duration === 'custom'" class="col-md-2 mt-3">
+			<label for="searchFrom">from</label>
+			<input ng-model="$parent.searchFrom" class="custom-input form-control"
+				id="searchFrom" type='date'>
+			<p class="explanation">&nbsp;</p>
+		</div>
+		<div ng-if="duration === 'custom'" class="col-md-2 mt-3">
+			<label for="searchTo">to</label>
+			<div class="input-group">
+				<input ng-if="duration === 'custom'" ng-model="$parent.searchTo" class="custom-input form-control"
+				id="searchTo" type='date'>
+				<div class="input-group-append">
+					<button ng-if="duration === 'custom'" title="Remove Quote" ng-click="filterOrders()"
+					class="btn btn-sm btn-primary ng-scope">
+					 GO
+				</button>
+				</div>
+			  </div>
+		</div>
+		<div ng-if="duration !== 'custom'" class="col-md-4 mt-3"></div>
+		<div class="col-md-2 mt-3">
+			<label for="searchFrom">Direct Search</label>
+			<div class="input-group">
+				<input autocomplete="off" id="goToOrderPageByNo" ng-model="orderByIdSearch"
+				class="custom-input form-control" placeholder="OrderID" type="text" />
+				<div class="input-group-append">
+				<a title="Edit Order" id="goToOrderPageByNoButton" class="btn btn-sm btn-primary"
+					style="margin-bottom: 19px;height: 45px;" target="_blank" href="/order-new?update={{orderByIdSearch}}">
+					<i class="fa fa-search"> </i>
+			    </a>
+				</div>
+			  </div>
+		</div>
+		<div class="col-md-2 mt-3 float-right">
+			<label for="searchFrom">&nbsp;</label>
+			<div class="input-group float-right">
+			<button style="height: 46px!important; width:100%" type="button" class="btn btn-outline-success mb-2 float-right " ng-click="updateExportFileName(true)"
+				ng-csv="filteredCollectionData" csv-header="getHeader()" 
+				csv-column-order="selectedOptions" filename="{{fileName}}"><i class="fa fa-file"></i> Export {{filteredCollectionData.length}}
+				orders </button>
+				</div>
+		</div>
+		<!-- <div class="col-md-1 mt-4">
+			<button ng-if="duration === 'custom'" title="Remove Quote" ng-click="filterOrders()"
+				class="btn btn-sm btn-primary ng-scope">
+				GO
+			</button>
+			<p class="explanation">&nbsp;</p>
+		</div> -->
+		
+		<!-- <div class="col-md-9 mt-3">
+			{{allorders.length | number}} orders found.
+		</div> -->
+		<!-- <div class="col-md-3 d-flex justify-content-end">
+			<div class="mr-1">
+				<input autocomplete="off" id="goToOrderPageByNo" ng-model="orderByIdSearch"
+				class="custom-input form-control" placeholder="OrderID" type="text" />
+				<p class="explanation">Open order By Id</p>
+			</div>
+			<div class="mt-1">
+				<a title="Edit Order" id="goToOrderPageByNoButton" class="btn btn-sm btn-primary"
+				style="margin-bottom: 19px;" target="_blank" href="/order-new?update={{orderByIdSearch}}">
+				<i class="fa fa-search"> </i>
+			   </a>
+			</div>
+			
+		</div> -->
+
+		
+		<!-- <div class="col-md-12">
+			<hr>
+		</div> -->
+
+		<!-- <tr id="export" class="collapse">
+					<th colspan="10">
+						<div class="row">
+							<div class="form-group col-lg-12 col-md-12 col-sm-12">
+								<h4>Export Orders</h4>
+							</div>
+							<div class="form-group col-lg-6 col-md-6 col-sm-6">
+								<label>
+									From
+								</label>
+								<input st-strict-search="from" class="form-control" placeholder="order date from"
+									type="date" />
+							</div>
+							<div class="form-group col-lg-6 col-md-6 col-sm-6">
+								<label>
+									To
+								</label>
+								<input st-strict-search="to" class="form-control" placeholder="order date from"
+									type="date" />
+							</div>
+							<div style="margin-top: 10px" class="col-lg-12 col-md-12 col-sm-12">
+								<div class="form-group">
+									<input ng-model="sellectAll" ng-change="handleChangeForSelect()" type="checkbox">
+									Select All
+								</div>
+								<div class="form-group" style="margin-top:8px">
+									<select ng-style="{width: '100%' }" multiple ng-model="selectedOption"
+										class="form-control" chosen ng-options="s as s for s in exportColumns">
+										<option value=""></option>
+									</select>
+								</div>
+								<div style="margin-top:8px">
+									<button type="button" class="btn btn-success pull-right"
+										ng-click="updateExportFileName(true)" ng-csv="filteredCollectionData"
+										csv-header="selectedOption" csv-column-order="selectedOption"
+										filename="{{fileName}}"><i class="fa fa-file"></i> Export CSV </button>
+								</div>
+							</div>
+						</div>
+					</th>
+				</tr> -->
+	</div>
+	<div style="padding-top:20px;" class="table-responsive">
+		<table st-filtered-collection st-table="orders" st-safe-src="allorders"
+			class="table table-striped table-hover table-scroll" id="table-scroll">
+			<thead>
+				<tr>
+					<th style="width:5%" st-sort="OrderID">Order</th>
+					<th style="width:15%" st-sort="FirstName">Name</th>
+					<th style="width: 15%" st-sort="EmailAddress">Email</th>
+					<th style="width: 15%" st-sort="ShipCompanyName">Company Name</th>
+					<th style="width:8%" st-sort="ShipCountry">Country</th>
+					<th style="width:9%" st-sort="PaymentAmount">Total Amt</th>
+					<th style="width:13%" st-sort="">Created By</th>
+					<!-- <th st-sort="City">City</th> -->
+					<th style="width:10%" st-sort="OrderStatus">Order Status</th>
+					<th style="width:9%" st-sort="OrderDate">Order Date</th>
+					<th style="width:9%" st-sort="ShipDate">Ship Date</th>
+					<!-- <th style="width:9%" st-sort="CancelDate">Cancel Date</th>
+					
+					<th style="width:10%" st-sort="PaymentAmount">Total Amt</th> -->
+					<!-- <th st-sort="ValidTill">From Quote</th> -->
+
+					<th style="width:12%" style="width: 12%" class="text-center">Action</th>
+					<!-- <th st-sort="balance">balance</th> -->
+				</tr>
+				<tr>
+					<th colspan="11">
+						<input autocomplete="off" st-search="" class="custom-input form-control"
+							placeholder="global search ..." type="text" />
+					</th>
+				</tr>
+				<tr>
+					<th colspan="1">
+						<input autocomplete="off" st-search="OrderID" class="custom-input form-control"
+							placeholder="Id search ..." type="text" />
+					</th>
+					<th colspan="1">
+						<input autocomplete="off" st-search="LastName" class="custom-input form-control"
+							placeholder="Last Name search ..." type="text" />
+					</th>
+					<th colspan="1">
+						<input autocomplete="off" st-search="EmailAddress" class="custom-input form-control"
+							placeholder="Email Address search ..." type="text" />
+					</th>
+					<th colspan="1">
+						<input autocomplete="off" st-search="companies" class="custom-input form-control"
+							placeholder="Company" type="text" />
+					</th>
+					<th colspan="1">
+						<input autocomplete="off" st-search="ShipCountry" class="custom-input form-control"
+							placeholder="Country" type="text" />
+					</th>
+					<th colspan="1">
+						<input autocomplete="off" ng-change="customTotalAmountSearch()" ng-model="customTotalAmount"
+							class="custom-input form-control" placeholder="Total Amount search ..." type="text" />
+					</th>
+					<th colspan="1">
+						<input autocomplete="off" st-search="CreatedByBlueLastName" class="custom-input form-control"
+							placeholder="Last Name" type="text" />
+					</th>
+					<th colspan="1">
+						<input autocomplete="off" st-search="OrderStatus" class="custom-input form-control"
+							placeholder="Order Status" type="text" />
+					</th>
+					<!-- <th colspan="1">
+						<input st-search="City" class="custom-input form-control" placeholder="City Name search ..."
+							type="text" />
+					</th> -->
+					<th colspan="1">
+						<input ng-model-options="{debounce: 100}" ng-change="dateFilter()" ng-model="datePicker"
+							class="custom-input form-control" placeholder="Order Date search ..." type="date" />
+					</th>
+					<th colspan="3">
+						<input ng-model-options="{debounce: 100}" ng-change="dateFilter()" ng-model="shipdatePicker"
+							st-search="shipdatesearch" class="custom-input form-control"
+							placeholder="Ship Date search ..." type="date" />
+					</th>
+					<!-- <th colspan="1">
+						<input st-search="CancelDate" class="custom-input form-control"
+							placeholder="Company search ..." type="text" />
+					</th>
+					
+					<th colspan="1">
+						<input st-search="PaymentAmount" class="custom-input form-control"
+							placeholder="Total Amount search ..." type="text" />
+					</th> -->
+					<!-- <th colspan="1">
+						<input st-search="QuoteNo" class="custom-input form-control" placeholder="Quote No search ..."
+							type="text" />
+					</th> -->
+
+					<!-- <th colspan="3">
+						<input st-search="CompanyName" class="custom-input form-control" placeholder="Company Name search ..."
+							type="text" />
+					</th> -->
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-if="allorders.length > 0" ng-repeat="q in orders">
+					<td>
+						<a ng-if="q.OldOrder == 0" title="Edit Order" target="_blank"
+							href="/order-new?update={{q.OrderID}}">
+							{{q.OrderID}}
+						</a>
+					</td>
+					<td>{{q.LastName}}, {{q.FirstName}}</td>
+					<td>{{q.EmailAddress}}</td>
+					<td ng-if="q.BillingCompanyName == q.ShipCompanyName">{{q.CompanyName}}</td>
+					<td ng-if="q.BillingCompanyName !== q.ShipCompanyName"><small>Billing Company:
+							{{q.BillingCompanyName}}</small> <br> <small>Shipping Company:
+							{{q.ShipCompanyName ? q.ShipCompanyName : 'N/A'}}</small></td>
+					<td>{{q.ShipCountry}}</td>
+					<td>${{q.PaymentAmountForSearch.trim()}}</td>
+					<td style="width: 100px; text-transform: capitalize"
+						ng-if="q.Order_Entry_System !== 'ONLINE' && (q.CreatedByBlueFirstName || q.CreatedByVoluFirstName)"
+						style="word-break: break-all;">{{q.CreatedByBlueFirstName? q.CreatedByBlueLastName+', '+q.CreatedByBlueFirstName: q.CreatedByVoluLastName+', '+q.CreatedByVoluFirstName
+							}}
+					</td>
+
+
+					<td style="width: 100px; text-transform: capitalize" ng-if="q.Order_Entry_System === 'ONLINE'"
+						style="word-break: break-all;">
+						{{q.LastName}}, {{q.FirstName}}
+					</td>
+					<td
+						ng-if="q.Order_Entry_System !== 'ONLINE' && !q.CreatedByBlueFirstName && !q.CreatedByVoluFirstName">
+						N/A</td>
+					<td>{{q.OrderStatus}}</td>
+					<!-- <td>{{q.City}}</td> -->
+					<td>{{q.OrderDate | date:'MM/dd/yyyy'}}</td>
+
+
+					<td>{{q.ShipDate| date:'MM/dd/yyyy'}}</td>
+					<!-- <td>{{q.QuoteNo
+							<=0 ? 'N/A' : ''}}<a target="_blank" ng-if="q.QuoteNo > 0" href="/view-quote/{{q.quoteLink}}">{{q.QuoteNo}}</a>
+					</td> -->
+
+					<td class="text-center orderSearchAction">
+						<a title="Print Invoice PDF" target="_blank" class="btn btn-sm btn-danger"
+							href="/view-order/{{q.pdfname}}">
+							<!-- <i class="fa fa-eye"> </i> -->
+							<i class="fa fa-file-pdf-o fa-2x" aria-hidden="true" style="padding: 3%;"></i>
+						</a>
+						&nbsp;
+						<a ng-if="q.OldOrder == 0" title="Edit Order" target="_blank" class="btn btn-sm btn-primary"
+							href="/order-new?update={{q.OrderID}}">
+							<!-- <i class="fa fa-pencil"> </i> -->
+							<i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"
+								style="padding: 4% !important;"></i>
+						</a>
+						&nbsp;
+						<a title="Print Packing Slip" target="_blank" class="btn btn-sm btn-warning"
+							href="/genrate-packing-slip/{{q.pdfname}}">
+							<!-- <i class="fa fa-newspaper-o"> </i> -->
+							<img src="https://img.icons8.com/cotton/64/000000/open-box--v2.png"
+								style="height:25px; padding: 3%;" />
+						</a>
+						&nbsp;
+						<a title="View PI/CI" target="_blank" class="btn btn-sm btn-secondary"
+							href="/view-order-docs/{{q.wordname}}">
+							<!-- <i class="fa fa-file"></i> -->
+							<img src="https://img.icons8.com/metro/26/ffffff/passport.png"
+								style="height:25px;padding: 3%;" />
+							<!-- <i class="far fa-file-search"></i> -->
+						</a>
+						&nbsp;
+						<a ng-if="q.OldOrder == 0" title="Clone Order" target="_blank" class="btn btn-sm btn-success"
+							href="/order-new?clone={{q.OrderID}}">
+							<i class="fa fa-copy fa-2x" style="padding: 3%;"> </i>
+						</a>
+
+					</td>
+				</tr>
+				<tr class="selected-row">
+					<td colspan="7" class="text-left"><b>Total:</b></td>
+					<td colspan="8" class="text-left">
+						<b>${{totalAmountOfOrders(orders) | number:2}}</b>
+					</td>
+				</tr>
+				<tr class="selected-row">
+					<td colspan="7" class="text-left"><b>Count:</b></td>
+					<td colspan="8" class="text-left">
+						<b>{{totalCountOfOrders(orders)}} Orders</b>
+					</td>
+				</tr>
+				<tr ng-if="allorders.length == 0">
+					<td colspan="10"> No results found.</td>
+				</tr>
+			</tbody>
+			<tfoot class="text-center d-flex justify-content-center tfoot-toggle">
+				<tr>
+					<td colspan="10" class="text-center">
+						<div class="paging">
+							<div st-pagination="" st-template="template/st-pagination.html"
+								st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+						</div>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+
+</div>
+
+
+<%- include footer.ejs %>

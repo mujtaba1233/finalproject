@@ -1,0 +1,66 @@
+
+
+@keyframes animate-fade {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes gradient-animation {
+    0% {
+      background-position: 15% 0%;
+    }
+    50% {
+      background-position: 85% 100%;
+    }
+    100% {
+      background-position: 15% 0%;
+    }
+  }
+
+  .animated-logo {
+    position: relative;
+    padding: 0.3rem;
+    width: 72px;
+    height: 72px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: animate-fade 5s infinite;
+  }
+  /* The animation starts here */
+.animated-logo {
+    position: relative;
+  }
+  .animated-logo:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 4px;
+    // background: linear-gradient(120deg, #896EF4, #66D7F0, #BEADFF);
+    background-size: 300% 300%;
+    clip-path: polygon(
+      0% 100%,
+      3px 100%,
+      3px 3px,
+      calc(100% - 3px) 3px,
+      calc(100% - 3px) calc(100% - 3px),
+      3px calc(100% - 3px),
+      3px 100%,
+      100% 100%,
+      100% 0%,
+      0% 0%
+    );
+  }
+  .animated-logo.in:after {
+    animation: gradient-animation 4s ease-in-out infinite;
+  }

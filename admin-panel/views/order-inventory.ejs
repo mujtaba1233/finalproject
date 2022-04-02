@@ -1,0 +1,105 @@
+<div class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="panel panel-default">
+				<div class="modal-header panel-heading d-flex justify-content-between">
+					<h5>Select serial no for {{inventory.ProductCode}}</h5>
+					<button type="button" class="close" ng-click="close(undefined)">&times;</button>
+					</h4>
+				</div>
+			</div>
+			<div class="modal-body" style="height: auto; overflow-y: auto; overflow-x: hidden;">
+				<form id="serialForm">
+					<div class="row">
+						<!-- <div class="col-md-6 form-group" >
+							<input ng-required="!inventory.stockType" id="ship" type="radio" value="shipping" ng-model="inventory.stockType" class="form-group">
+							<label class="form-group" for="ship"> Shipping Stock</label>
+						</div>
+						<div class="col-md-6 form-group" >
+							<input ng-required="!inventory.stockType" id="prod" type="radio" value="production" ng-model="inventory.stockType" class="form-group">
+							<label class="form-group" for="prod"> Pre-Production Stock</label>
+						</div> -->
+						<div class="col-md-6 form-group">
+							<label class="form-group"> Product Code</label>
+							<input ng-disabled="true" type="text" ng-model="inventory.ProductCode" class="form-control">
+						</div>
+						<div class="col-md-12 form-group">
+							<label>Product categories</label>
+							<select ng-style="{width: '100%' }" multiple ng-model="inventory.SerialNO"
+								class="custom-input form-control"  ng-disabled="disableSelect" ng-change="barCodeScan()" ng-model-options="{debounce: 100}" chosen
+								ng-options="s.SerialNO as s.SerialNO for s in allSerials">
+								<option value=""></option>
+							</select>
+							<p class="explanation"> chose all the categories product lies in</p>
+						</div>
+						<div class="col-md-12 form-group row d-flex justify-content-end">
+
+							<input type="button" style="margin-right: 5px;" value="Remove Last" name="Remove Last"
+								title="Remove Last" ng-click="lastBarcodeValueRemove()" class="btn btn-warning">
+							<input type="button" style="margin-right: 5px;" value="Clear All" name="Remove Last"
+								title="Remove Last" ng-click="removeBarCodeAll()" class="btn btn-danger ">
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<p ng-if="results.length == 0">No Record Found</p>
+							<table ng-if="results.length > 0" st-table="displayedCollection" st-safe-src="results"
+								class="table table-striped">
+								<thead>
+									<tr>
+										<th st-sort="stockCount" class="text-center capitalize"> Serial Numbers</th>
+										<th class="text-center capitalize">Status</th>
+										<th class="text-center capitalize"> Action</th>
+									</tr>
+									<tr>
+										<th class="freezed-search-bar" colspan="3">
+											<input st-search="ProductCode" placeholder="search with product code"
+												class="input-sm form-control" type="search" />
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="row in displayedCollection" class="table-striped table"
+										title="{{row.ProductName}}">
+										<td class="text-center"> {{row.SerialNO}} </td>
+										<td class="text-center" ng-if="row.status == 'allocated'" style="color:green">{{row.status}}</td>
+										<td class="text-center" ng-if="row.status == 'shipped'" style="color:firebrick">{{row.status}}</td>
+										<td class="text-center" ng-if="row.status == 'allocated'">
+											<button title="Delete Record"
+												ng-click="remove(row.ProductSerialID,$index)" type="button"
+												class="btn btn-sm btn-danger"> <i class="fa fa-times"></i></button>
+										</td>
+										<td class="text-center" ng-if="row.status == 'shipped'">
+											no action
+										</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td colspan="3" class="text-center">
+											<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7">
+											</div>
+										</td>
+									</tr>
+								</tfoot>
+							</table>
+
+						</div>
+
+					</div>
+					<div class="modal-footer">
+						<div class="row">
+							<div class="col-md-12 form-group justify-content-end">
+								<input type="submit" title="Update Serials" ng-click="addInventory()" value="Save"
+									class="btn btn-success">
+								<!-- <button style="margin-right: 5px;" title="Cancel" ng-click="close(undefined)" class="btn btn-primary pull-right"> Close</button> -->
+							</div>
+						</div>
+					</div>
+					<!-- Modal -->
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,153 @@
+<%- include header.ejs %>
+<div ng-controller="OptionsController">
+	<div class="row">
+		<div class="col-md-6">
+			<h2>Option Management</h2>
+		</div>
+	</div>
+	<form id="optionform" ng-submit="save()">
+		<div class="row">
+			<!-- <div class="col-md-3 form-group">
+				<label>Price Difference</label>
+				<input
+					type="number"
+					ng-model="option.priceDiff"
+					class="custom-input form-control"
+				/>
+			</div>
+			<div class="col-md-3 form-group">
+				<label>Product Weight </label>
+				<input
+					type="number"
+					ng-model="option.productWeight"
+					class="custom-input form-control"
+				/>
+			</div> -->
+
+			<!-- <div class="col-md-3 form-group">
+				<label>Recurring Price Difference</label>
+				<input
+					type="number"
+					ng-model="option.recurringPriceDiff"
+					class="custom-input form-control"
+				/>
+			</div>
+			<div class="col-md-3 form-group">
+				<label>Arrange Options By</label>
+				<input
+					type="number"
+					ng-model="option.arrangeOptionsBy"
+					class="custom-input form-control"
+				/>
+			</div> -->
+			<div  class="col-md-12 form-group">
+				<label>Option Description</label>
+				<input
+					type="textarea"
+					ng-model="option.optionsDesc"
+					class="custom-input form-control"
+				/>
+			</div>
+			<!-- <div class="col-md-4 form-group">
+				<input
+					type="checkbox"
+					ng-model="option.defaultSelected"
+				/>
+				Default Selected
+			</div> -->
+		</div>
+		<div class="row">
+			<div class="col-md-12 form-group">
+				<button
+					type="submit"
+					title="{{ isUpdate ? 'Update' : 'Update' }}"
+					class="btn {{ isUpdate ? 'btn-primary' : 'btn-success' }} pull-right"
+					>{{ isUpdate ? "Update" : "Update" }}</button
+				>
+				<button
+					style="margin-right: 5px"
+					ng-if="isUpdate"
+					title="Cancel"
+					ng-click="cancel()"
+					class="btn btn-warning pull-right"
+					>Cancel</button
+				>
+			</div>
+		</div>
+	</form>
+	<table
+		st-table="records"
+		st-safe-src="options"
+		class="table table-striped table-hover"
+	>
+		<thead>
+			<tr>
+				<!-- <th st-sort="id">id</th> -->
+				<th class="text-center"  st-sort="displayOrder"
+					>Option Description</th
+				>
+				<!-- <th class="text-center"  st-sort="isActive"
+					>Price Difference</th
+				>
+				<th class="text-center" >Product Weight</th>
+				<th class="text-center" >Recurring Price Difference</th>
+				<th class="text-center" >Arrange Options By</th>
+				<th class="text-center" >Default Selected</th> -->
+				<th class="text-center" >Last Modified</th>
+				<th class="text-center" >Last Mod By</th>
+				<th class="text-center" >Action</th>
+			</tr>
+			<tr>
+				<th colspan="10">
+					<input
+						st-search=""
+						class="custom-input form-control"
+						placeholder="global search ..."
+						type="text"
+					/>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="option in records">
+				<!-- <td class="text-center">{{ option.id }}</td> -->
+				<td class="text-center">{{ option.optionsDesc }}</td>
+				<!-- <td class="text-center">{{ option.priceDiff }}</td>
+				<td class="text-center">{{ option.productWeight }}</td>
+				<td class="text-center">{{ option.recurringPriceDiff }}</td>
+				<td class="text-center">{{ option.arrangeOptionsBy }}</td>
+				<td class="text-center">{{ option.defaultSelected?'True':'False' }}</td> -->
+				<td class="text-center">{{ option.lastModified | date:'MM/dd/yyyy'}}</td>
+				<td class="text-center">{{ option.lastModBy }}</td>
+				<td class="text-center">
+					<!-- <button
+						title="Edit option"
+						href="javascript:void(0)"
+						ng-click="update(option)"
+						class="btn btn-sm btn-primary"
+					>
+						<i class="fa fa-pencil fa-2x"> </i>
+					</button> -->
+					<button title="Delete Category" href="javascript:void(0)" ng-click="delete(option)" class="btn btn-sm btn-danger">
+                            <i class="fa fa-times fa-2x">
+                            </i>
+                        </button>
+				</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="4" class="text-center">
+					<div
+						st-pagination=""
+						st-items-by-page="itemsByPage"
+						st-displayed-pages="7"
+					></div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+	<!-- Modal -->
+</div>
+
+<%- include footer.ejs %>

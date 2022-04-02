@@ -1,0 +1,42 @@
+<%- include header.ejs %>
+<div ng-controller="ProfileController">
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Change Password</h2>
+		</div>
+	</div>
+	<br>
+	<div class="col-md-12">
+
+		<form ng-submit="updateProfile()" class="w-100">
+			<div class="row">
+				<div class="col-md-4 form-group">
+					<label>Current Password</label>
+					<input required type="password" ng-model="user.oldPassword" class="custom-input form-control" autocomplete="off">
+					<p class="explanation">Enter old password</p>
+				</div>
+				<div class="col-md-4 form-group">
+					<label>New Password</label>
+					<input required type="password" ng-model="user.newPassword" class="custom-input form-control" autocomplete="off">
+					<p class="explanation">Chose new password</p>
+				</div>
+				<div class="col-md-4 form-group">
+					<label>Confirm Password</label>
+					<input required type="password" ng-model="user.confirmPassword" class="custom-input form-control" autocomplete="off">
+					<p ng-show="user.newPassword != '' && user.newPassword != user.confirmPassword"
+						style="color: #7c0a02" class="explanation">Password missmatch!</p>
+				</div>
+			</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 form-group">
+			<button ng-disabled="user.newPassword != '' && user.newPassword != user.confirmPassword" type="submit"
+				title="Change Password" class="btn btn-primary float-right"> Change Password</button>
+		</div>
+	</div>
+</div>
+</form>
+
+
+
+<%- include footer.ejs %>

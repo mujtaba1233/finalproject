@@ -1,0 +1,73 @@
+<%- include header.ejs %>
+<div ng-controller="ProductFeatruedController">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12" style="text-align:center;padding-bottom: 10px;">
+			<h1><strong> Featured Products</strong></h1>
+			<h4 class="slogon"> Featured products for home of online store</h4>
+			<p style="margin-top: 10px" class="explanation"> only 6 products can be marked as featured</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-6 col-md-6">
+			<div class="table-responsive">
+				<table st-table="rows" st-safe-src="products" class="table table-striped table-scroll" id="table-scroll">
+					<thead>
+						<tr>
+							<th style="width:10%" class="text-center"> Action</th>
+							<th class="text-center"> Product Code</th>
+						</tr>
+						<tr>
+							<th class="pr-0 pl-0" colspan="2">
+								<input st-search="name" placeholder="search with product code"
+									class="input-sm custom-input form-control" type="search" />
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="row in rows" ng-if="!row.featured && row.hide !=='Y'" class="table-striped table"
+							title="{{row.ProductName}}">
+							<td class="text-rigt"> <input type="checkbox" ng-model="row.featured"
+									ng-change="markFeatured(row,$index)"></td>
+							<td class="text-left"> {{row.name}}</td>
+						</tr>
+					</tbody>
+					<tfoot class="tfoot-toggle">
+						<tr>
+							<td colspan="12">
+								<div class="paging">
+									<div st-pagination=""  st-template="template/st-pagination.html" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+								</div>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+		<div class="col-lg-6 col-md-6">
+			<div class="table-responsive">
+				<table st-table="rows1" st-safe-src="featured" class="table table-striped">
+					<thead>
+						<tr>
+							<th style="width:10%" class="text-center"> Action</th>
+							<th class="text-center"> Product Code</th>
+						</tr>
+						<tr>
+							<th colspan="28">
+								<input st-search="name" placeholder="search with product code"
+									class="input-sm custom-input form-control" type="search" />
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="row in rows1" ng-if="row.featured" class="table-striped table"
+							title="{{row.ProductName}}">
+							<td class="text-rigt"> <input type="checkbox" ng-model="row.featured"
+									ng-change="markUnFeatured(row,$index)"></td>
+							<td class="text-left"> {{row.name}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<%- include footer.ejs %>

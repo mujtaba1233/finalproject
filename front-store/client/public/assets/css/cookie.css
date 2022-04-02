@@ -1,0 +1,94 @@
+.cookie-consent-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2147483645;
+  box-sizing: border-box;
+  width: 100%;
+
+  background-color: #0E0E0E;
+}
+
+.cross_button {
+
+  background-color: #0E0E0E;
+  color: white;
+  border: 0px;
+  font-size: 24px;
+}
+
+.cookie-consent-banner__inner {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 32px 0;
+}
+
+.cookie-consent-banner__copy {
+  margin-bottom: 16px;
+}
+
+.cookie-consent-banner__actions {
+  text-align: center;
+}
+
+.cookie-consent-banner__header {
+  margin-bottom: 8px;
+
+  font-family: "CeraPRO-Bold", sans-serif, arial;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.cookie-consent-banner__description {
+  font-family: "CeraPRO-Regular", sans-serif, arial;
+  font-weight: normal;
+  color: #E1E0E1;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.cookie-consent-banner__cta {
+  box-sizing: border-box;
+  display: inline-block;
+  min-width: 164px;
+  padding: 11px 13px;
+
+  border-radius: 5px;
+
+  background-color: #52C29F;
+
+  color: #E1E0E1;
+  text-decoration: none;
+  text-align: center;
+  font-family: "CeraPRO-Regular", sans-serif, arial;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.cookie-consent-banner__cta--secondary {
+  padding: 9px 13px;
+  border-radius: 5px;
+  border: 2px solid #52C29F;
+
+  background-color: #52C29F;
+
+  color: #E1E0E1;
+}
+
+.cookie-consent-banner__cta:hover {
+  background-color: #52C29F;
+}
+
+.cookie-consent-banner__cta--secondary:hover {
+  border-color: #52C29F;
+
+  background-color: transparent;
+
+  color: #E1E0E1;
+}
+
+.cookie-consent-banner__cta:last-child {
+  margin-left: 16px;
+}

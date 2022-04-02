@@ -1,0 +1,104 @@
+<%- include header.ejs %>
+<div ng-controller="ReportController">
+	<div class="row">
+		<div class="col-md-6">
+			<h2>Reports </h2>
+		</div>
+		<div class="col-md-12">
+			<div id="container"> Chart </div> 
+			
+		</div>
+	</div>
+	<div class="row">
+		
+		<div class="col-md-6">
+			<button ng-if="monthReport || dayReport || dateReport" ng-click="getYearlyReport()" class="btn btn-primary">All Years</button>
+			<button ng-if="dayReport || dateReport" ng-click="getMonthlyReport(selectedYear)" class="btn btn-primary">{{selectedYear}} Monthly</button>
+			<button ng-if="dateReport" ng-click="getDailyReport(selectedYear,selectedMonth)" class="btn btn-primary">{{monthName[selectedMonth]+'-'+selectedYear}}</button>	
+		</div>
+		<div class="col-md-4">
+
+		</div>
+		<div class="col-md-2 mb-3">
+			<label for="users"> Select User</label>
+			<select ng-model="selected_user" id="users" ng-change="userReport()" class="custom-input form-control">
+				<option value="all">All</option>
+				<option ng-if="users"
+					ng-repeat="user in users"
+					value="{{user.id}}">{{user.firstname + ',' + user.lastname}}</option>
+			</select>
+		</div>
+		<div class="col-md-2 mb-3">
+			
+		</div>
+		<div class="col-md-12">
+			<div class="table-responsive">
+				<table st-table="allReports" st-safe-src="safeRepotrs" class="reports table table-striped table-hover">
+					<thead>
+						<tr>
+							<th ng-if="yearReport"> Year</th>
+							<th ng-if="monthReport"> Month</th>
+							<th ng-if="dayReport"> Date</th>
+							<th ng-if="dateReport"> Order No</th>
+							<th ng-if="!dateReport"> Orders</th>
+							<th>Converted Orders<p class="explanation">(From quotes)</p></th>
+							<th> Order Amount<p class="explanation">(Total + Shipping + Tax)</p></th>
+							<th ng-if="yearReport"> % Change<p class="explanation">(Year to Date)</p></th>
+							<th ng-if="monthReport"> % Change<p class="explanation">(Compared to last year)</p></th>
+							<th ng-if="monthReport">Running Total<p class="explanation">(Prev Month and this month Total)</p></th>
+						</tr>
+						<tr>
+							<!-- <th colspan="6">
+							<input st-search="" class="form-control" placeholder="global search ..." type="text"/>
+							</th> -->
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-if="report.orderYear" ng-repeat="report in allReports">
+							<td ng-if="yearReport"><a ng-click="getMonthlyReport(report.orderYear)" class="report-custom-a"href="javascript:void(0)">{{report.orderYear}}</a></td>
+							<td ng-if="monthReport"><a ng-click="getDailyReport(report.orderYear,report.orderMonth)"  class="report-custom-a" href="javascript:void(0)">{{monthName[report.orderMonth]+'-'+report.orderYear}}</a></td>
+							<td ng-if="dayReport"><a ng-click="getDateReport(report.orderYear,report.orderMonth,report.orderDate)" class="report-custom-a"href="javascript:void(0)">{{monthName[report.orderMonth]+'-'+report.orderDate}}</a></td>
+							<td ng-if="dateReport"><a class="report-custom-a" target="_blank" href="/view-order/{{report.pdfName}}">{{report.orders}}</a></td>
+							<td ng-if="!dateReport">{{report.quantity?report.quantity:'N/A'}}</td>
+							<td ng-if="!dateReport">{{report.conertedOrdersFromQuote?report.conertedOrdersFromQuote:'N/A'}}</td>
+							<td ng-if="dateReport" ><a ng-if="report.conertedOrdersFromQuote" class="report-custom-a" target="_blank" href="/edit?quote={{report.conertedOrdersFromQuote}}">{{report.conertedOrdersFromQuote?report.conertedOrdersFromQuote:'N/A'}}</a><span ng-if="!report.conertedOrdersFromQuote">N/A</span></span></td>
+							<td>${{report.paymentAmount | number:2}}</td>
+							<td ng-if="(yearReport || monthReport) && report.progress >= 0" class="text-success">{{report.progress | number:2}} %</td>
+							<td ng-if="(yearReport || monthReport) && report.progress < 0" class="text-warning" style="color:#ff0000;">{{report.progress | number:2}} %</td>
+							<td ng-if="(yearReport || monthReport) && report.progress == 'N/A'" class="text-warning">N/A</td>
+							<td ng-if="monthReport" >${{report.runningAmount | number:2}} </td>
+
+
+						</tr>
+						<tr>
+							<td ng-if="yearReport">Totals</td>
+							<td ng-if="monthReport">Year to Date</td>
+							<td ng-if="dayReport">Month to Date</td>
+							<td ng-if="dateReport">{{monthName[selectedMonth]+'-'+selectedDate}} Total</td>
+							<td ng-if="!dateReport">{{getTotal(allReports,'quantity')}}</td>
+							<td ng-if="dateReport"></td>
+							<td ng-if="!dateReport" >{{getTotal(allReports,'conertedOrdersFromQuote')}}</td>
+							<td>${{getTotal(allReports,'paymentAmount') | number:2 }}</td>
+							<td ng-if="yearReport">N/A</td>
+							<td ng-if="monthReport && yearToDateProgress >= 0" class="text-success">{{yearToDateProgress | number:2}} %</td>
+							<td ng-if="monthReport && yearToDateProgress < 0" class="text-warning" style="color:#ff0000;">{{yearToDateProgress | number:2}} %</td>
+							<td ng-if="monthReport"></td>
+
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="4" class="text-center">
+								<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+
+<%- include footer.ejs %>

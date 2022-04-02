@@ -1,0 +1,210 @@
+<%- include header.ejs %>
+<style>
+	.select2-selection--single{
+		display: block !important;
+    width: 275.5px;
+    height: 45px  !important;
+    padding: 0.375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fafafa  !important;
+    background-clip: padding-box;
+    border: 1px solid #ced4da  !important;
+    border-radius: .25rem  !important;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+	}
+	.select2-selection__arrow{
+		height: 38px !important;
+	}
+</style>
+<div ng-controller="ProductSalesReportController">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pull-right" style="text-align:center;padding-bottom: 10px;">
+			<h1><strong> Product Sales Report </strong></h1>
+			<p class="slogon"> {{year}} product sales based on order intake</p>
+		</div>
+		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+			<label>Country Search</label>
+			<select ng-style="{width: '100%' }" multiple ng-model="country"
+				class="form-control" chosen ng-change="getResults('country',country)" ng-options="c.code as c.name  for c in countries">
+				<option value=""></option>
+			</select>
+		</div>
+		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" >
+			<label>Company Search</label>
+			<select ng-style="{width: '100%' }" multiple ng-model="companyNames"
+				class="form-control" chosen ng-change="getResults('companies',companyName)" ng-options="s.BillingCompanyName as s.BillingCompanyName for s in companies">
+				<option value=""></option>
+			</select>
+			<!-- <input  class="custom-input form-control"  ng-model="Company"  ng-change="getResults('company',Company)" placeholder="Company"
+			type="text" /> -->
+		</div>
+		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" >
+			<label>Year Search</label>
+			<select ng-change="getResults('year',year)" class="custom-input form-control"
+				ng-options="y as y for y in years track by y" ng-model="year"></select>
+		</div>
+		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" >
+			<button title="Reset" style="" href="javascript:void(0)" ng-click="reset()"
+				class="btn btn-primary mt-4">
+				Reset
+            </button>
+		</div>
+		<div class="d-flex justify-content-end col-xs-4 col-sm-4 col-md-4 col-lg-4">
+			<button type="button" class="btn btn-outline-success mb-2 pull-right"
+			ng-click="updateExportFileName(true)" ng-csv="searchResult"
+			csv-header="selectedOptions" csv-column-order="selectedOptions"
+			filename="Product.csv"><i class="fa fa-file"></i> Export {{searchResult.length}} Product Sales Reports </button>
+		</div>
+	</div>
+	<div class="row">
+
+	</div>
+	<div class="row" style="padding-top: 10px;">
+		<div class="wrapper1">
+			<div class="div1"></div>
+		</div>
+		<div class="wrapper2">
+			<div class="table-responsive">
+				<table  st-table="displayedCollection" st-safe-src="searchResult" class="table table-striped table-scroll" id="table-scroll">
+					<thead>
+						<tr>
+							<th class="text-center freezed-col" style="text-align: center;"> Part #</th>
+							<td class="empty-col">&nbsp;</td>
+							<th class="text-center" colspan="2"> Year to Date</th>
+							<th class="text-center" colspan="2"> January</th>
+							<th class="text-center" colspan="2"> February</th>
+							<th class="text-center" colspan="2"> March</th>
+							<th class="text-center" colspan="2"> April</th>
+							<th class="text-center" colspan="2"> May</th>
+							<th class="text-center" colspan="2"> June</th>
+							<th class="text-center" colspan="2"> July</th>
+							<th class="text-center" colspan="2"> August</th>
+							<th class="text-center" colspan="2"> September</th>
+							<th class="text-center" colspan="2"> October</th>
+							<th class="text-center" colspan="2"> November</th>
+							<th class="text-center" colspan="2"> December</th>
+						</tr>
+						<tr>
+							<th class="freezed-col" style="width:20%">&nbsp;</th>
+							<td class="empty-col">&nbsp;</td>
+							<th st-sort="totalQty"> Qty</th>
+							<th st-sort="totalAmount"> Amount</th>
+							<th st-sort="jan"> Qty</th>
+							<th st-sort="janAmount"> Amount</th>
+							<th st-sort="feb"> Qty</th>
+							<th st-sort="febAmount"> Amount</th>
+							<th st-sort="mar"> Qty</th>
+							<th st-sort="marAmount"> Amount</th>
+							<th st-sort="apr"> Qty</th>
+							<th st-sort="aprAmount"> Amount</th>
+							<th st-sort="may"> Qty</th>
+							<th st-sort="mayAmount"> Amount</th>
+							<th st-sort="jun"> Qty</th>
+							<th st-sort="junAmount"> Amount</th>
+							<th st-sort="jul"> Qty</th>
+							<th st-sort="julAmount"> Amount</th>
+							<th st-sort="aug"> Qty</th>
+							<th st-sort="augAmount"> Amount</th>
+							<th st-sort="sep"> Qty</th>
+							<th st-sort="sepAmount"> Amount</th>
+							<th st-sort="oct"> Qty</th>
+							<th st-sort="octAmount"> Amount</th>
+							<th st-sort="nov"> Qty</th>
+							<th st-sort="novAmount"> Amount</th>
+							<th st-sort="des"> Qty</th>
+							<th st-sort="desAmount"> Amount</th>
+							<th st-sort="AvgPerUnit">Average Price Per Unit</th>
+						</tr>
+						<tr>
+							<th class="freezed-search-bar" colspan="28">
+								<input st-search="ProductCode" placeholder="search with product code"
+									class="input-sm custom-input form-control" type="search" />
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr style="">
+							<td class="freezed-col">&nbsp;<strong>Total</strong> </td>
+							<td class="empty-col">&nbsp;</td>
+							<td class="text-right">{{getTotal(searchResult,'totalQty') | number}}</td>
+							<td class="text-right">${{getTotal(searchResult,'totalAmount') | number:0}}</td>
+							<td class="text-right">{{getTotal(searchResult,'jan') | number}}</td>
+							<td class="text-right">${{getTotal(searchResult,'janAmount') | number:0}}</td>
+							<td class="text-right">{{getTotal(searchResult,'feb') | number}}</td>
+							<td class="text-right">${{getTotal(searchResult,'febAmount') | number:0}}</td>
+							<td class="text-right">{{getTotal(searchResult,'mar') | number}}</td>
+							<td class="text-right">${{getTotal(searchResult,'marAmount') | number:0}}</td>
+							<td class="text-right">{{getTotal(searchResult,'apr') | number}}</td>
+							<td class="text-right">${{getTotal(searchResult,'aprAmount') | number:0}}</td>
+							<td class="text-right">{{getTotal(searchResult,'may') | number}}</td>
+							<td class="text-right">${{getTotal(searchResult,'mayAmount') | number:0}}</td>
+							<td class="text-right">{{getTotal(searchResult,'jun') | number}}</td>
+							<td class="text-right">${{getTotal(searchResult,'junAmount') | number:0}}</td>
+							<td class="text-right">{{getTotal(searchResult,'jul') | number}}</td>
+							<td class="text-right">${{getTotal(searchResult,'julAmount') | number:0}}</td>
+							<td class="text-right">{{getTotal(searchResult,'aug') | number}}</td>
+							<td class="text-right">${{getTotal(searchResult,'augAmount') | number:0}}</td>
+							<td class="text-right">{{getTotal(searchResult,'sep') | number}}</td>
+							<td class="text-right">${{getTotal(searchResult,'sepAmount') | number:0}}</td>
+							<td class="text-right">{{getTotal(searchResult,'oct') | number}}</td>
+							<td class="text-right">${{getTotal(searchResult,'octAmount') | number:0}}</td>
+							<td class="text-right">{{getTotal(searchResult,'nov') | number}}</td>
+							<td class="text-right">${{getTotal(searchResult,'novAmount') | number:0}}</td>
+							<td class="text-right">{{getTotal(searchResult,'des') | number}}</td>
+							<td class="text-right">${{getTotal(searchResult,'desAmount') | number:0}}</td>
+							<td class="text-right"  ng-if="searchResult.AvgPerUnit >=0 && searchResult.AvgPerUnit !=='NA' && searchResult.AvgPerUnit !=='' && searchResult.AvgPerUnit">${{searchResult.AvgPerUnit| number:0}}</td>
+							<td class="text-right"  ng-if="(0 > searchResult.AvgPerUnit) || searchResult.AvgPerUnit ==='NA' || searchResult.AvgPerUnit ==='' || (!searchResult.AvgPerUnit && searchResult.AvgPerUnit !=0)">N/A</td>
+						</tr>
+						<!-- style="white-space: nowrap" -->
+						<tr ng-repeat="row in displayedCollection" class="table-striped table"
+							title="{{row.ProductName}}">
+							<td class="freezed-col"> &nbsp;<strong style="word-break: break-all;">
+									{{row.ProductCode}}</strong></td>
+							<td class="empty-col">&nbsp;</td>
+							<td class="text-right"> {{row.totalQty | number}}</td>
+							<td class="text-right"> ${{row.totalAmount | number:0}}</td>
+							<td class="text-right"> {{row.jan | number}}</td>
+							<td class="text-right"> ${{row.janAmount | number:0}}</td>
+							<td class="text-right"> {{row.feb | number}}</td>
+							<td class="text-right"> ${{row.febAmount | number:0}}</td>
+							<td class="text-right"> {{row.mar | number}}</td>
+							<td class="text-right"> ${{row.marAmount | number:0}}</td>
+							<td class="text-right"> {{row.apr | number}}</td>
+							<td class="text-right"> ${{row.aprAmount | number:0}}</td>
+							<td class="text-right"> {{row.may | number}}</td>
+							<td class="text-right"> ${{row.mayAmount | number:0}}</td>
+							<td class="text-right"> {{row.jun | number}}</td>
+							<td class="text-right"> ${{row.junAmount | number:0}}</td>
+							<td class="text-right"> {{row.jul | number}}</td>
+							<td class="text-right"> ${{row.julAmount | number:0}}</td>
+							<td class="text-right"> {{row.aug | number}}</td>
+							<td class="text-right"> ${{row.augAmount | number:0}}</td>
+							<td class="text-right"> {{row.sep | number}}</td>
+							<td class="text-right"> ${{row.sepAmount | number:0}}</td>
+							<td class="text-right"> {{row.oct | number}}</td>
+							<td class="text-right"> ${{row.octAmount | number:0}}</td>
+							<td class="text-right"> {{row.nov | number}}</td>
+							<td class="text-right"> ${{row.novAmount | number:0}}</td>
+							<td class="text-right"> {{row.des | number}}</td>
+							<td class="text-right"> ${{row.desAmount | number:0}}</td>
+							<td class="text-right" ng-if="row.AvgPerUnit >=0 && row.AvgPerUnit !=='NA' && row.AvgPerUnit !==''"> ${{row.AvgPerUnit| number:0}}</td>
+							<td class="text-right" ng-if="isNumber(row.AvgPerUnit)">{{row.AvgPerUnit}}</td>
+						</tr>
+					</tbody>
+					<tfoot class="text-center d-flex justify-content-center tfoot-toggle">
+						<tr>
+							<td colspan="24" >
+								<div class="paging">
+									<div st-pagination=""  st-template="template/st-pagination.html" st-items-by-page="itemsByPage" st-displayed-pages="50"></div>
+								</div>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+	<%- include footer.ejs %>

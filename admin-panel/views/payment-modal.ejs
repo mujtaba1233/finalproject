@@ -1,0 +1,71 @@
+<div class="modal fade" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="panel panel-default">
+                <div class="modal-header panel-heading">
+                    <button type="button" class="close" ng-click="close(undefined)">&times;</button>
+                    <h4 class="modal-title">Make Payment
+                    </h4>
+                </div>
+            </div>
+            <div class="modal-body" style="height: auto; overflow-y: auto; overflow-x: hidden;">
+                <div class="row">
+                    <form name="paymentForm" ng-submit="chargeCC()">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                            <i title="Visa" ng-class="card.cardType === 'visa'?'visa':''"
+                                class="fa cc-basic fa-cc-visa fa-3x"></i>
+                            <i title="Master Card" ng-class="card.cardType === 'mastercard'?'master':''"
+                                class="fa cc-basic fa-cc-mastercard fa-3x"></i>
+                            <i title="American Express" ng-class="card.cardType === 'amex'?'amex':''"
+                                class="fa cc-basic fa-cc-amex fa-3x"></i>
+                            <i title="Diners Club" ng-class="card.cardType === 'dinersclub'?'dinners':''"
+                                class="fa cc-basic fa-cc-diners-club fa-3x"></i>
+                            <i title="Discover" ng-class="card.cardType === 'discover'?'master':''"
+                                class="fa cc-basic fa-cc-discover fa-3x"></i>
+                            <i title="JCB" ng-class="card.cardType === 'jcb'?'jcb':''"
+                                class="fa cc-basic fa-cc-jcb fa-3x"></i>
+                            <i title="Other" ng-class="card.cardType === 'other'?'other-cc':''"
+                                class="fa cc-basic fa-credit-card fa-3x"></i>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                            <label>Card No</label>
+                            <input type="text" ng-model="card.number" ng-change="ccNumberChange()" class="form-control"
+                                mask="{{ccMask}}" ng-required="true" placeholder="XXXX XXXX XXXX XXXX" />
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 form-group">
+                            <label>Expiry</label>
+                            <input ng-model="card.expiry" mask="99/99" class="form-control" ng-required="true"
+                                placeholder="MM/YY" />
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 form-group">
+                            <label>Card CVC</label>
+                            <input type="text" maxlength="4" ng-model="card.cvc" class="form-control" ng-required="true"
+                                placeholder="CVC" />
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                            <div ng-hide="ccValid" class="alert alert-danger" role="alert">
+                                Credit card number not valid.
+                            </div>
+                            <div ng-hide="expValid" class="alert alert-danger" role="alert">
+                                Card expiry not valid.
+                            </div>
+                            <div ng-hide="cvcValid" class="alert alert-danger" role="alert">
+                                CVC number not valid.
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                            <button type="submit" title="Charge" class="btn btn-success pull-right">
+                                Charge</button>
+                            <button style="margin-right: 5px;" title="Cancel" ng-click="close(undefined)"
+                                class="btn btn-danger pull-right"> Cancel</button>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                            <div class="text-danger">
+                                -Payment will be charge after placing or update order.
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

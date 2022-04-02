@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .boldColor {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <td>
+        <img src="data:image/png;base64,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"
+            alt="ICS" width="10px" />
+    </td> -->
+    <% if(quote[0].OrderNotFound){ %>
+    <% if (quote[0].orderId) { %>
+    <h2> Invalid Request: <span style="color:#C0392B">Order does not exist.<span></h2>
+    <% }else{ %>
+    <h2> Invalid Request: <span style="color:#C0392B">Quote does not exist.<span></h2>
+    <% } %>
+    <% }else{ %>
+    <div>
+        <h2>Intrepid Control Systems</h2>
+        <p class="boldColor"> Research Drive</p>
+        <p> Troy, MI 48083</p>
+        <p> (PH) 586.731.7950</p>
+        <p>(FAX) 586.731.2274</p>
+        <% }%>
+    </div>
+
+    <% if(quote[0].OrderNotFound){ %>
+    <% if (quote[0].orderId) { %>
+    <h2> Invalid Request: <span style="color:#C0392B">Order does not exist.<span></h2>
+    <% }else{ %>
+    <h2> Invalid Request: <span style="color:#C0392B">Quote does not exist.<span></h2>
+    <% } %>
+    <% }else{ %>
+
+
+    <table>
+        <tr>
+            <th>
+                Commercial Invoice
+            </th>
+            <th>
+                Shipper Info
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <p> Date : <%= quote[0].OrderDatePDF %> </p>
+                <p> Estimated Ship Date: </p>
+                <p> Order Number: <%= quote[0].OrderID  %></p>
+                <p> Purchase Order No.:<%=  quote[0].OrderID  %></p>
+                <p> Terms of Sale: </p>
+                <p> Reason for Export: </p>
+                <p> Freight: <%= currency %><%= quote[0].Freight.toFixed(2) %></p>
+
+            </td>
+            <td>
+                <p>Intrepid Control Systems, Inc.</p>
+                <p> 1850 Research Drive</p>
+                <p> Troy, MI 48083</p>
+                <p> Phone 586-731-7950 </p>
+                <p> TAX ID: 38-3315407</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Ship To</th>
+            <th>Bill To</th>
+        </tr>
+        <tr>
+            <td>
+                <p>
+                    <%= quote[0].CustomerFName + " " + quote[0].CustomerLName %>
+                </p>
+                <p> <%= quote[0].CustomerCompany %></p>
+                <p><%= quote[0].BillingStreetAddress1 %></p>
+                <p><%= quote[0].BillingStreetAddress2 %></p>
+                <p><%= quote[0].BillingCity1 %>, <%= quote[0].BillingState %> <%= quote[0].BillingPostalCode %></p>
+                <p><%= quote[0].BillingCountry1 %></p>
+            </td>
+            <td>
+                <p><%= quote[0].ShipFirstName + " " + quote[0].ShipLastName %></p>
+                <p><%= quote[0].ShipCompanyName %></p>
+                <p><%= quote[0].ShipAddress1 %></p>
+                <p><%= quote[0].ShipAddress2 %></p>
+                <p><%= quote[0].ShipCity %>, <%= quote[0].ShipState %>
+                    <%= quote[0].ShipPostalCode %></p>
+                <p> <%= quote[0].ShipCountry %></p>
+            </td>
+        </tr>
+    </table>
+    
+    
+   
+    
+        <table cellspacing="0" cellpadding="0">
+            <thead>
+                <% var childProductChk = false; for(var i=0; i < quote.length; i++) { if (quote[i].Discount >= 1){ var discountExists = true } } %>
+                <tr>
+                    <td style="width:20%;" class="text-left">
+                        <strong>Part#</strong>
+                    </td>
+                    <% if (discountExists) { %>
+                    <td style="width:48%" class="text-left">
+                        <% } else { %>
+                    <td style="width:56%" class="text-left">
+                        <% } %>
+                        <strong> Description</strong>
+                    </td>
+                    <td style="width:4%" class="text-center">
+                        <strong> Qty</strong>
+                    </td>
+                    <td style="width:8%" class="text-center">
+                        <strong> Price</strong>
+                    </td>
+                    <% if (discountExists) { %>
+                    <td style="width:8%" class="text-center">
+                        <strong>Discount</strong>
+                    </td>
+                    <% }  %>
+                    <td style="width:12%" class="al-right">
+                        <strong>Totals</strong>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <% var stotal = 0;
+                  if (quote[0].ProductCode){ %>
+                <% var stotal = 0;
+                  for(var i=0; i < quote.length; i++) {
+					  if(quote[i].Qty > 0)
+					  if (quote[i].isChild == 0){ %>
+                <tr>
+                    <td colspan="5"> &nbsp;</td>
+                </tr>
+                <tr class="border_top">
+                    <td valign="top" class="text-left item-font">
+                        <strong> <%= quote[i].ProductCode %></strong>
+                    </td>
+                    <td valign="top" class="">
+                        <div valign="top" class="text-left item-font"> <%= quote[i].ProductName %>: </div>
+                        <div class="small-font-desc"> <span><%- quote[i].description %> </span></div>
+                    </td>
+                    <td valign="top" class="text-center item-font">
+                        <%= quote[i].Qty %>
+                    </td>
+                    <% if( quote[i].Price != null){ %>
+                    <td valign="top" class="text-center item-font">
+                        <%= currency %><%= quote[i].Price.toFixed(2) %>
+                    </td>
+                    <% } else{ %>
+                    <td valign="top" class="text-center item-font">
+                        <%= currency %>0
+                    </td>
+                    <% } %>
+                    <% if (quote[i].Discount > 1 || discountExists) { %>
+                    <td valign="top" class="text-center item-font">
+                        <%= quote[i].Discount.toFixed(2) %>%
+                    </td>
+                    <% } %>
+                    <td valign="top" class="al-right item-font ">
+                        <%= currency %><%= (quote[i].Qty * (quote[i].Price - ((quote[i].Discount / 100) * quote[i].Price)).toFixed(2)).toFixed(2) %>
+                    </td>
+                </tr>
+                <% } else {  childProductChk = true; %>
+                <tr>
+                    <td valign="top" style="padding-left: 10px;" class="text-left item-font">
+                        <div class="small-font-desc"> &#x2022; <%= quote[i].ProductCode %> </div>
+                    </td>
+                    <td valign="top" class="">
+                        <div class="small-font-desc"> <%= quote[i].ProductName %>: </div>
+                        <div class="small-font-desc"> <span> <%- quote[i].description %> </span></div>
+                    </td>
+                    <td valign="top" class="text-center item-font">
+                        <%= quote[i].Qty %>
+                    </td>
+                    <td valign="top" class="text-center item-font">
+
+                    </td>
+                    <% if (quote[i].Discount > 1 || discountExists) { %>
+                    <td valign="top" class="text-center item-font">
+                        <%= quote[i].Discount.toFixed(2) %>%
+                    </td>
+                    <% } %>
+                    <td valign="top" class="al-right item-font">
+
+                    </td>
+                </tr>
+                <%    }%>
+                <%
+                      stotal +=  (quote[i].Qty * (quote[i].Price - ((quote[i].Discount / 100) * quote[i].Price)).toFixed(2));
+                      taxTotal = (stotal - (stotal / 100) * quote[0].CurrentCustomerDiscount);
+                  }
+
+              } else{ %>
+                <tr>
+                    <td class="text-center" colspan="7">No Product Found in this Order</td>
+                </tr>
+                <%    }%>
+            </tbody>
+        </table>    
+    <div>
+        <div>&nbsp;</div>
+        <div style="float:right;">
+            <table style="width:100%;margin-top:50px" class="lower_table">
+                <!-- <tr>
+                        <td style="width:40%"></td>
+                        <td style="width:35%"></td>
+                        <td style="width:15%">
+                            <strong>CUST Disc:</strong>
+                        </td>
+                        <td class='al-right'  style="width:10%">
+                            <%= currency %><%= ((quote[0].CurrentCustomerDiscount / 100) * stotal).toFixed(2) %>
+                        </td>
+                    </tr> -->
+                <tr>
+                    <td style="width:40%"></td>
+                    <td style="width:35%"></td>
+                    <td style="width:15%">
+                        <strong>Subtotal:</strong>
+                    </td>
+                    <td class='al-right' style="width:10%">
+                        <%= currency %><%= (stotal).toFixed(2) %>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <strong>Shipping:</strong>
+                    </td>
+                    <td class='al-right'>
+                        <%= currency %><%= quote[0].Freight.toFixed(2) %>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <strong>Tax:</strong>
+                    </td>
+                    <td class='al-right'>
+                        <%= quote[0].TaxShipping.toFixed(4) %>%
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <strong>Tax:</strong>
+                    </td>
+                    <td class='al-right'>
+                        <%= currency %><%= (quote[0].SalesTax1 || 0) + (quote[0].SalesTax2 || 0) + (quote[0].SalesTax3 || 0) %>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <strong>Total:</strong>
+                    </td>
+                    <td class='al-right'>
+                        <%= currency %><%= quote[0].PaymentAmount %>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+    <% } %>
+</body>
+
+</html>

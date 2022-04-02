@@ -1,0 +1,4 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+# Paths (no clean URLs)
+Disallow: /external-quotes

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .boldColor {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <table >
+        <tr >
+            <td>
+                <img src="data:image/png;base64,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"
+                    alt="ICS" width="20%" />
+            </td>
+            
+            <td style=' width:50% ;margin-top:5px;line-height: 16px;'>
+                <h2>Intrepid Control Systems</h2>
+            </td>
+            <td ><pre> Research Drive
+                Troy, MI 48083
+                 (PH)    586.731.7950
+                (FAX)   586.731.2274</pre></td>
+            
+        </tr>
+    </table>
+
+    
+    <div style="width:100%">
+        <div class="mPullLeft" style="width:100%; margin-top:20px;line-height: 4px">
+            <table>
+                
+            </table>
+        </div>
+        
+        <h1 style="font-size: 15px; font-style: bolder;">Order Comments: </h1>
+        <hr class="new5">
+        <p style="white-space: pre-wrap;"><p>missisipiiiiii</p></p>
+        
+        
+        <div class="mPullLeft billing-address" style=' width:50% ;margin-top:5px;line-height: 16px;'>
+            <h2>Bill To: <span>(Customer ID # 1)</span></h2>
+            <hr class="new5">
+            
+            <h8 class="bill-info"><strong>John Doe</strong></h8>
+            
+            <div class="bill-info">
+                Ford
+            </div>
+            <div class="bill-info">
+                388 SW. Bedford Ave
+            </div>
+            <div class="bill-info">
+                
+            </div>
+            <div class="bill-info">
+                South Windsor, CT 06074
+            </div>
+            <div class="bill-info">
+                728191928
+            </div>
+            <div class="bill-info">
+                US
+            </div>
+        </div>
+        <div class="mPullRight billing-address " style='width:50% ;margin-top:5px;line-height: 16px'>
+            <div class="" style="text-align: left;">
+                <h2>Ship To:</h2>
+                <hr class="new5">
+
+                
+                <h8 class="bill-info"><strong>John Doe</strong></h8>
+                
+                <div class="bill-info">
+                    Ford
+                </div>
+                <div class="bill-info">
+                    388 SW. Bedford Ave
+                </div>
+                <div class="bill-info">
+                    
+                </div>
+                <div class="bill-info">
+                    South Windsor, CA
+                    06074
+                </div>
+                <div class="bill-info">
+                    Phone: 728191928
+                </div>
+                <div class="bill-info">
+                    US
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+    <div class="mPullLeft billing-address" style=' width:50% ;margin-top:5px;line-height: 16px;'>
+        <div style="text-align: left;">
+            
+        </div>
+    </div>
+
+    <div class="mPullRight billing-address ship-bold" style='width:50% ;margin-top:5px;line-height: 16px'>
+        <div class="" style="text-align: left;">
+            <h2>Shipping Method:</h2>
+            <hr class="new5">
+            <h2>UPS Ground</h2>
+        </div>
+    </div>
+    <div class="mPullLeft" style="width:100%;line-height: 10px;">
+    </div>
+    <div class="mPullLeft" style="width:100%;">
+        <hr />
+        <table cellspacing="0" cellpadding="0">
+            <thead>
+                
+                <tr>
+                    <td style="width:20%;" class="text-left">
+                        <strong>Part#</strong>
+                    </td>
+                    
+                    <td style="width:56%" class="text-left">
+                        
+                        <strong> Description</strong>
+                    </td>
+                    <td style="width:4%" class="text-center">
+                        <strong> Qty</strong>
+                    </td>
+                    <td style="width:8%" class="text-center">
+                        <strong> Price</strong>
+                    </td>
+                    
+                    <td style="width:12%" class="al-right">
+                        <strong>Totals</strong>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                
+                
+                <tr>
+                    <td colspan="5"> &nbsp;</td>
+                </tr>
+                <tr class="border_top">
+                    <td valign="top" class="text-left item-font">
+                        <strong> RAD-MOON</strong>
+                    </td>
+                    <td valign="top" class="">
+                        <div valign="top" class="text-left item-font"> RAD-Moon: </div>
+                        <div class="small-font-desc"> <span>The RAD-Moon is a media converter for connecting one port of Broadcom\\\\\\\\\\\\\\\\\\\\\\\\\\\\\'s BroadR-ReachÂ® physical layer to one port of a 4-wire 10/100 Ethernet (100BaseTX). The RAD-Moon provides a small but rugged enclosure perfect for carrying in your laptop bag. </span></div>
+                    </td>
+                    <td valign="top" class="text-center item-font">
+                        1
+                    </td>
+                    
+                    <td valign="top" class="text-center item-font">
+                        $360.00
+                    </td>
+                    
+                    
+                    <td valign="top" class="al-right item-font ">
+                        $360.00
+                    </td>
+                </tr>
+                
+                
+                <tr>
+                    <td valign="top" style="padding-left: 10px;" class="text-left item-font">
+                        <div class="small-font-desc"> &#x2022; BR-CABLE-1-MINI50 </div>
+                    </td>
+                    <td valign="top" class="">
+                        <div class="small-font-desc"> Automotive Ethernet BroadR-Reach (100BASE-T1) Cable (Dual Molex Mini50) - 3\&#39; (1 m): </div>
+                        <div class="small-font-desc"> <span> BroadR-Reach (100BASE-T1) unshielded twisted pair cable designed for use with Intrepid\\\\\\\\\\\\\\\\\\\\\\\\\\\\\'s Automotive Ethernet products, terminated with Molex Mini50 connectors. </span></div>
+                    </td>
+                    <td valign="top" class="text-center item-font">
+                        1
+                    </td>
+                    <td valign="top" class="text-center item-font">
+
+                    </td>
+                    
+                    <td valign="top" class="al-right item-font">
+
+                    </td>
+                </tr>
+                
+                
+                <tr>
+                    <td valign="top" style="padding-left: 10px;" class="text-left item-font">
+                        <div class="small-font-desc"> &#x2022; CAT5E-1 </div>
+                    </td>
+                    <td valign="top" class="">
+                        <div class="small-font-desc"> Category 5e (Cat5e) Standard/Gigabit Ethernet Cable (Dual RJ45) - 3\&#39; (1 m): </div>
+                        <div class="small-font-desc"> <span> Category 5e (Cat 5e) 4-pair Ethernet cable with RJ45 connectors, suitable for all 10/100/1000 Mb/s conventional Ethernet applications. </span></div>
+                    </td>
+                    <td valign="top" class="text-center item-font">
+                        1
+                    </td>
+                    <td valign="top" class="text-center item-font">
+
+                    </td>
+                    
+                    <td valign="top" class="al-right item-font">
+
+                    </td>
+                </tr>
+                
+                
+                <tr>
+                    <td valign="top" style="padding-left: 10px;" class="text-left item-font">
+                        <div class="small-font-desc"> &#x2022; MINIUSB-USB-CABLE </div>
+                    </td>
+                    <td valign="top" class="">
+                        <div class="small-font-desc"> USB 2.0 to Mini USB Cable - 2m (6\&#39;): </div>
+                        <div class="small-font-desc"> <span> USB 2.0 Cable </span></div>
+                    </td>
+                    <td valign="top" class="text-center item-font">
+                        1
+                    </td>
+                    <td valign="top" class="text-center item-font">
+
+                    </td>
+                    
+                    <td valign="top" class="al-right item-font">
+
+                    </td>
+                </tr>
+                
+                
+                <tr>
+                    <td colspan="5"> &nbsp;</td>
+                </tr>
+                <tr class="border_top">
+                    <td valign="top" class="text-left item-font">
+                        <strong> VSPY-3-ENT-COPY</strong>
+                    </td>
+                    <td valign="top" class="">
+                        <div valign="top" class="text-left item-font"> Vehicle Spy 3 Enterprise (Full Version): </div>
+                        <div class="small-font-desc"> <span>Vehicle Spy Enterprise is a single tool for diagnostics, node/ECU simulation, data acquisition, automated testing, and in-vehicle communication networks bus monitoring. Vehicle Spy was designed with a focus on ease-of-use and user productivity. </span></div>
+                    </td>
+                    <td valign="top" class="text-center item-font">
+                        1
+                    </td>
+                    
+                    <td valign="top" class="text-center item-font">
+                        $4995.00
+                    </td>
+                    
+                    
+                    <td valign="top" class="al-right item-font ">
+                        $4995.00
+                    </td>
+                </tr>
+                
+                
+            </tbody>
+        </table>
+        <hr />
+    </div>
+    <div>
+        <div>&nbsp;</div>
+        <div style="float:right;">
+            <table style="width:100%;margin-top:50px" class="lower_table">
+                <!-- <tr>
+                        <td style="width:40%"></td>
+                        <td style="width:35%"></td>
+                        <td style="width:15%">
+                            <strong>CUST Disc:</strong>
+                        </td>
+                        <td class='al-right'  style="width:10%">
+                            $0.00
+                        </td>
+                    </tr> -->
+                <tr>
+                    <td style="width:40%"></td>
+                    <td style="width:35%"></td>
+                    <td style="width:15%">
+                        <strong>Subtotal:</strong>
+                    </td>
+                    <td class='al-right' style="width:10%">
+                        $5355.00
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <strong>Shipping:</strong>
+                    </td>
+                    <td class='al-right'>
+                        $20.00
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <strong>Tax:</strong>
+                    </td>
+                    <td class='al-right'>
+                        7.9750%
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <strong>Tax:</strong>
+                    </td>
+                    <td class='al-right'>
+                        $398.35
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <strong>Total:</strong>
+                    </td>
+                    <td class='al-right'>
+                        $5773.35
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+    
+</body>
+
+</html>

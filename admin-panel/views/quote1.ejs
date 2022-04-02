@@ -1,0 +1,263 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta content="text/html; charset=utf-8" http-equiv="Content-Type"> -->
+    <title>
+        document.pdf
+    </title>
+<style>
+@font-face {
+    font-family: myFirstFont;
+    src: url(sansation_light.woff);
+}
+
+*{
+    font-size: 97%;
+    font-family: 'Calibri';
+}
+
+.small-font-desc{
+    font-size: 9 !important;
+}
+.small-font-name{
+    font-size: 10 !important;
+}
+.item-font{
+    font-size: 70% !important;
+}
+
+.al-right{
+    text-align:right;
+}
+.text-center{
+    text-align:center;
+}
+.mContainer{
+    padding: 28px;
+    width: 100%;
+}
+
+.mPullLeft{
+    float: left;
+}
+
+.mPullRight{
+    float: right;
+}
+.lower_table tr{
+    border-bottom: 1px solid #e5e5e5;
+}
+h2{
+    font-size:140%;
+}
+.notes p{
+    line-height: 3px;
+}
+
+</style>
+</head>
+
+<body>
+    <div class="mContainer">
+        <div class="mPullLeft" style="width:100%;color:#797878;font-weight: 500;line-height: 3px;">
+            <h2>Intrepid Control Systems</h2>
+            <p>31601 Research Park Drive</p>
+            <p>Maddison Heights, Michigan 48071</p>
+            <p>USA</p>
+        </div>
+
+        <div class="mPullLeft" style='margin-top:50px;line-height: 30px;'>
+            <% if (quote[0].IsCustomerNameShow) { %>
+            <h8><strong><%= quote[0].CustomerFName + " " + quote[0].CustomerLName %></strong></h8>
+            <% } %>
+            <p style="line-height: 3px;">
+                <%= quote[0].CustomerCompany %>
+            </p>
+            <p style="line-height: 3px;">
+                <%= quote[0].BillingStreetAddress1 %>
+            </p>
+            <p style="line-height: 3px;">
+                <%= quote[0].BillingStreetAddress2 %>
+            </p>
+            <p style="line-height: 3px;">
+                <%= quote[0].BillingCity1 %>, <%= quote[0].BillingState %> <%= quote[0].BillingPostalCode %>
+            </p>
+            <p style="line-height: 3px;">
+                <%= quote[0].BillingCountry1 %>
+            </p>
+        </div>
+
+        <div class="mPullRight" style="margin-right:30px; margin-top:68px;line-height: 4px">
+            <p style='text-align:left'>
+                <% if (quote[0].QuoteNo) { %>
+                <b>Quote No :</b>
+                <%= quote[0].QuoteNo %>
+                <% } %>
+
+                <% if (quote[0].OrderID) { %>
+                <b>Order No :</b>
+                <%= quote[0].OrderID %>
+                <% } %>
+            </p>
+            <p style='text-align:left'>
+                <% if (quote[0].QuoteNo) { %>
+                    <b>Issue Date :</b>
+                    <%= quote[0].IssueDate %>
+                <% } %>
+                <% if (quote[0].OrderID) { %>
+                    <b>Order Date :</b>
+                    <%= quote[0].OrderDate %>
+                <% } %>
+            </p>
+            <p style='text-align:left'>
+                <% if (quote[0].QuoteNo) { %>
+                    <b>Valid Till :</b>
+                    <%= quote[0].ValidTill %>
+                <% } %>
+            </p>
+        </div>
+        <div style='width:100%;margin: 20px 0 10px 0px;' class='mPullLeft notes'>
+            <% if (quote[0].QuoteNo) { %>
+                <h8 ><strong>Quote Notes:</strong></h8>
+            <% } %>
+            <% if (quote[0].OrderID) { %>
+                <h8 ><strong>Order Notes:</strong></h8>
+            <% } %>
+
+            <br>
+            <%- quote[0].notes %>
+        </div>
+        <div class="mPullLeft" style="width:100%;line-height: 10px;">
+        </div>
+        <div style="width:100%"  class="mPullLeft">
+            <table style="width:100%">
+                <hr/>
+                <thead>
+                    <tr>
+                        <td style="width:17%;" class="text-center">
+                            <strong>Part#</strong>
+                        </td>
+                         <td style="width:53%" class="text-center">
+                             <strong>Description</strong>
+                        </td>
+                        <td style="width:5%" class="text-center">
+                            <strong>Qty</strong>
+                        </td>
+                        <td style="width:8%" class="text-center">
+                            <strong>Unit Price</strong>
+                        </td>
+                        <td style="width:5%" class="text-center">
+                            <strong>Disc</strong>
+                        </td>
+                        <td style="width:12%" class="text-center">
+                            <strong>Totals</strong>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% var stotal = 0;
+                    for(var i=0; i < quote.length; i++) { %>
+                        <tr>
+                            <td valign="top" class="text-center item-font">
+                                <%= quote[i].ProductCode %>
+                            </td>
+                            <td valign="top" class="">
+                                <div class="small-font-name"> <%= quote[i].ProductName %> </div>
+                                <div class="small-font-desc"> <%= quote[i].description %> </div>
+
+                            </td>
+                            <td valign="top" class="text-center item-font">
+                                <%= quote[i].Qty %>
+                            </td>
+                            <td valign="top" class="text-center item-font">
+                                $<%= quote[i].Price.toFixed(2) %>
+                            </td>
+                            <td valign="top" class="text-center item-font">
+                                <%= quote[i].Discount.toFixed(2) %>%
+                            </td>
+                            <td valign="top" class="text-center item-font">
+                                $<%= ((quote[i].Qty * quote[i].Price) - ((quote[i].Discount / 100) * (quote[i].Price * quote[i].Qty))).toFixed(2) %>
+                            </td>
+                        </tr>
+                        <%
+                        stotal +=  (quote[i].Qty * quote[i].Price) - ((quote[i].Discount / 100) * (quote[i].Price * quote[i].Qty));
+                    } %>
+                </tbody>
+            </table>
+            <hr/>
+        </div>
+        <div>
+            <div>&nbsp;</div>
+            <div style="float:right;margin-right:30px">
+
+                <table style="width:100%;margin-top:50px" class="lower_table">
+                    <tr>
+                        <td style="width:40%"></td>
+                        <td style="width:40%"></td>
+                        <td style="width:10%">
+                            <strong>Subtotal:</strong>
+                        </td>
+                        <td class='al-right'  style="width:10%">
+                            $<%= stotal.toFixed(2) %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <strong>Shipping:</strong>
+                        </td>
+                        <td class='al-right'>
+                            $<%= quote[0].Freight.toFixed(2) %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <strong>Tax:</strong>
+                        </td>
+                        <td class='al-right'>
+                            <%= quote[0].TaxShipping.toFixed(2) %>%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <strong>Total:</strong>
+                        </td>
+                        <td class='al-right'>
+                            $<%= (stotal +  quote[0].Freight + ((quote[0].TaxShipping /100) * stotal)).toFixed(2) %>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div style='page-break-before: always;'></div>
+
+    <p>
+        Bank Info:
+    </p>
+    <p>JP Morgan Chase Bank<br>
+        13999 Lakeside Circle, Sterling Heights, MI 48313<br>
+        Ph. (586)247-4900<br>
+        Account #: 175002047140<br>
+        SWIFT: CHASUS33<br>
+        Routing #: 072000326</p>
+
+        <p>Payment Terms: Standard Net 30 terms or VISA, AmEx or MasterCard. Terms negotiable upon customer request. All first-time customers are subject to credit approval before a line of credit will be considered. <br/>
+            To ensure payment is correctly processed, please refer to invoice # and PO # when remitting payment. Purchases for $50,000 USD or greater must be remitted by check or wire transfer.</p>
+
+            <p>Delivery Terms:<br/> FOB Madison Hts., MI with buyer`s UPS, DHL, or FedEx shipping account or CIF buyer`s port chargeback. FedEx is acceptable for domestic shipments only. Buyer is responsible for all VAT, duties and taxes incurred.</p>
+            <p>Attention all United States, non-Michigan customers: Please be advised that as our company does not have a physical presence in your state, and due to the nature of this interstate commerce transaction, consult your tax advisor as to any taxability of this purchase and the potential need to remit use tax.</p>
+
+            <p>This offer is based upon the project specific information available to Intrepid and our current interpretation and understanding of that information. If additional requirements are added, existing requirements modified or if program deliverable dates shift, Intrepid reserves the right to modify any and/or all parts of this offer.
+            </p>
+
+
+
+        </body>
+        </html>

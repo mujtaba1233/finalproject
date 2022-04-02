@@ -1,0 +1,92 @@
+<%- include header.ejs %>
+<div ng-controller="RMAController">
+	<div class="row">
+		<div class="col-md-6">
+			<h2>Search RMA</h2>
+		</div>
+	</div>
+	<div class="table-responsive">
+		<table st-table="list" st-safe-src="RMAList" class="table table-striped table-hover table-scroll" id="table-scroll">
+			<thead>
+				<tr>
+					<!-- <th style="width:5%" st-sort="id">ID</th> -->
+					<th style="width:8%" st-sort="SN">SN</th>
+					<th style="width:12%" st-sort="Device">Device</th>
+					<th style="width:14%" st-sort="RMANumber">RMA Number</th>
+					<th style="width:8%" st-sort="RMAIssuedDate">Issued Date</th>
+					<th style="width:8%" st-sort="ReceivedDateTime">Received DateTime</th>
+					<th style="width:5%" st-sort="HavePO">PO</th>
+					<th style="width:10%" st-sort="ReceivedByName" class="text-center">Received By</th>
+					<th style="width:10%" class="text-center">Extra Info</th>
+					<th style="width:10%" st-sort="isReady" class="text-center">Ready</th>
+					<th style="width:10%" st-sort="HoldingTime" class="text-center">Holding-Time</th>
+					<th style="width:5%" class="text-center">Action</th>
+				</tr>
+				<tr>
+					<th colspan="12">
+						<input st-search="" class="custom-input form-control" placeholder="global search ..."
+							type="text" />
+					</th>
+				</tr>
+				<tr>
+					<th colspan="1">
+						<input st-search="SN" class="custom-input form-control" placeholder="SN search ..."
+							type="text" />
+					</th>
+					<th colspan="1">
+						<input st-search="Device" class="custom-input form-control" placeholder="Device Name search ..."
+							type="text" />
+					</th>
+					<th colspan="4">
+						<input st-search="RMANumber" class="custom-input form-control"
+							placeholder="RMA Number search ..." type="text" />
+					</th>
+					<th colspan="5">
+						<input st-search="ReceivedByName" class="custom-input form-control"
+							placeholder="Received by search ..." type="text" />
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="row in list">
+					<!-- <td style="word-break: break-all;">{{row.id}}</td> -->
+					<td title="{{row.SN}}" style="word-break: break-all;">{{row.SN}}</td>
+					<td title="{{row.Device}}" style="word-break: break-all;">{{row.Device  | limitChar:15}}</td>
+					<td title="{{row.RMANumber}}" style="word-break: break-all;">{{row.RMANumber  | limitChar:16}}</td>
+					<td title="{{row.RMAIssuedDate}}" style="text-align: center; word-break: break-all;">
+						{{row.RMAIssuedDate | date:'MM-dd-yyyy'}}</td>
+					<td title="{{row.ReceivedDateTime}}" style="text-align: center; word-break: break-all;">
+						{{row.ReceivedDateTime | date:'MM-dd-yyyy h:mma'}}</td>
+					<td title="{{row.HavePO}}" style="text-align: center; word-break: break-all;"
+						ng-bind="yesNo(row.HavePO)"></td>
+					<td title="{{row.ReceivedByName}}" style="text-align: center; word-break: break-all;">
+						{{row.ReceivedByName  | limitChar:13}}</td>
+					<td title="{{row.info}}" style="text-align: center; word-break: break-all;">
+						{{row.info | limitChar:15}}</td>
+					<td title="{{row.isReady}}" style="text-align: center; word-break: break-all;">{{row.isReady}}</td>
+					<td title="{{row.HoldingTime}}" style="text-align: center; word-break: break-all;">
+						{{row.HoldingTime}}</td>
+					<td title="" class="text-center">
+						<a href="/rma-view?id={{row.id}}" title="View RMA" target="_blank"
+							class="btn btn-sm btn-secondary">
+							<i class="fa fa-eye"> </i>
+						</a>
+					</td>
+				</tr>
+			</tbody>
+			<tfoot  class="text-center d-flex justify-content-center tfoot-toggle">
+				<tr>
+					<td colspan="12">
+						<div class="paging">
+							<div st-pagination=""  st-template="template/st-pagination.html" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+						</div>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+
+</div>
+
+
+<%- include footer.ejs %>

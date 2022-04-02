@@ -1,0 +1,25 @@
+<div class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="panel panel-default">
+				<div class="modal-header panel-heading d-flex justify-content-between">
+					<h3>Tax Amount Change Confirmation</h3>
+					<button type="button" class="close" ng-click="close(undefined)">&times;</button>
+					</h4>
+				</div>
+			</div>
+			<div class="modal-body" style="height: auto; overflow-y: auto; overflow-x: hidden;">
+
+				<p class="text-center">Tax is changed from <b>{{oldTax}}%</b> to <b>{{newTax}}%.</b> Do you want to continue with the change?</p>
+
+				<button ng-click="doWeContinue(true)" class="btn btn-success float-right">
+					Yes = {{newTax}}%
+				</button>
+				<button ng-click="doWeContinue(false)" class="btn btn-warning float-right mr-2">
+					No = {{oldTax}}%
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

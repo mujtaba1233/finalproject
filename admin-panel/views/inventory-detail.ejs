@@ -1,0 +1,54 @@
+<div class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header d-flex justify-content-between">
+				<h3>{{product.ProductCode}}: {{type}}</h3>
+				<button type="button" class="close" ng-click="close(undefined)" >&times;</button>
+			</div>
+			<div class="modal-body">
+				<p ng-if="results.length == 0">No Record Found</p>
+				<table ng-if="results.length > 0" st-table="displayedCollection" st-safe-src="results" class="table table-striped">
+					<thead>
+						<tr>
+							<th st-sort="stockCount" class="text-center capitalize"> Serial Numbers</th>
+							<th class="text-center capitalize"  ng-if="results[0].OrderID">Order No's</th>
+							<th class="text-center capitalize"  ng-if="!results[0].OrderID"> Action</th>
+						</tr>
+						<tr>
+							<th class="freezed-search-bar" colspan="2">
+								<input autocomplete="off" st-search="" placeholder="Search..." class="input-sm form-control" type="search"/>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="row in displayedCollection" class="table-striped table" title="{{row.ProductName}}">
+							<td class="text-center"> {{row.SerialNO}} </td>
+							<td class="text-center" ng-if="!row.OrderID"><button ng-disabled="!isAdmin" title="Delete Record" ng-click="remove(row.ProductSerialID,$index)" type="button" class="btn btn-sm btn-danger"> <i class="fa fa-times"></i></button></td>
+
+								<td class="text-center"><a title="Edit Order" target="_blank"
+									href="/order-new?update={{row.OrderID}}">
+									{{row.OrderID}}
+								</a>
+							</td>
+							<!-- <td class="text-center">
+								<button ng-disabled="!isAdmin" title="Delete Record" ng-click="remove(row.ProductSerialID,$index)" type="button" class="btn btn-sm btn-danger"> <i class="fa fa-times"></i></button>
+							</td> -->
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="3" class="text-center">
+								<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button style="margin-right: 5px;" title="Close" ng-click="close(undefined)" class="btn btn-primary pull-right"> Close</button>
+			</div>
+		</div>
+	</div>
+</div>

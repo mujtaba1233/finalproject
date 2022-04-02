@@ -1,0 +1,138 @@
+product,code,uom,desc,coo
+AE6900R-105,8544429090,Each,AE6900R-105 - Automotive Gigabit Ethernet (1000BASE-T1) cable. UTP (unshielded twisted pair) with protective non-conductive plastic covering,US
+AE6900R-108,8544429090,Each,AE6900R-108 - BroadR-Reach cable with Mini50 connectors. 1 meter length UTP (unshielded twisted pair) with protective non-conductive wire loom covering,US
+AIN-VNET,9031808070,Each,AIN-VNET - Analog Input and PWM I/O VNET Module for neoVI PLASMA/ION,US
+AIN-VNET-BOB,9007100000,Each,AIN-VNET-BOB - Breakout Box for AIN-VNET,US
+AP0200-34500,9031808070,Each,AP0200-34500 - ValueCAN with 2 channel CAN / CAN FD with USB-A cable,US
+AP0200A-DB9,8544110030,Each,AP0200A-DB9 - Heavy duty 9-pin Deutsch connector for VCAN to CAN/J1939 network,CN
+AP0200A-OBD,8544110030,Each,AP0200A-OBD - OBD2 to MS-HSCAN cable,CN
+AP0400A-D26,9031808070,Each,AP0400A-D26 - ValueCAN 4-4 (4x CAN FD) with DB26HD and USB-A Interfaces,US
+AP0400A-DB9,9031808070,Each,AP0400A-DB9 - ValueCAN 4-4 (4x CAN FD) with 4 x DB9 and USB-A Interfaces,US
+AP0400A-OBD,9031808070,Each,AP0400A-OBD - ValueCAN 4-4 (4x CAN FD) with OBD II and USB-A Interfaces,US
+AP04E0A-D26,9031808070,Each,AP04E0A-D26 - ValueCAN 4-2EL (2x CAN FD 1x Eth 1x LIN) with DB26HD and USB-A Interfaces,US
+AP04E0A-DB9,9031808070,Each,AP04E0A-DB9 - ValueCAN 4-2EL (2x CAN FD 1x Eth 1x LIN) with OBDII DB9 DB25 and USB-A Interfaces,US
+AP04E0A-OBD,9031808070,Each,AP04E0A-OBD - ValueCAN 4-2EL (2x CAN FD 1x Eth 1x LIN) with OBD II and USB-A Interfaces,US
+AP1200-34500,9031808070,Each,AP1200-34500 - Vehicle interface tool - 8x CAN FD 4x LIN Ethernet:DoIP/XCP Cybersecurity,US
+AP1200A-DB9,8544110030,Each,AP1200A-DB9 - DB-26HD Female to 12x DB-9M + 1x RJ-45 + 2x Banana Plugs,US
+AP1200A-DIP,8544110030,Each,AP1200A-DIP - neoVI FIRE 2 OBD Cable with Diagnostics over IP (DoIP) Support (HD-26F to DB-25M + DB-9M + OBD-II),CN
+AP1200A-GMB,8544110030,Each,AP1200A-GMB - Global B OBD Cable (DB-26HD to OBD X 2),CN
+AP1200A-J45,8544110030,Each,AP1200A-J45 - FIRE2 HD-26F to DB-25M DB-9 and RJ-45,US
+AP1200A-MUL,8544110030,Each,AP1200A-MUL - DSUB-25 pin to OBD II Connector,CN
+APM0100-34500,9031808070,Each,APM0100-34500 - Media converter for connecting one port of Broadcom‚Äôs BroadR-Reach¬Æ physical layer to one port of a 4-wire 10/100 Ethernet (100BaseTX),US
+APM1000E-34500,9031808070,Each,APM1000E-34500 - 100/1000BASE-T1 Media Converter and Active Tap,US
+AXIS-P1214-E,9007100000,Each,AXIS-P1214-E - HDTV 720P Network Camera,MX
+BR-CABLE-1-MINI50,8544429090,Each,BR-CABLE-1-MINI50 - BroadR-Reach cable with Mini50 connectors. 1 meter length UTP (unshielded twisted pair) with protective non-conductive wire loom covering,US
+CAT5E-1,8544421000,Each,CAT5E-1 - Category 5 Enhanced Ethernet cable with RJ45 connectors. 1 meter length UTP 24AWG,CN
+CGI-TX-FIRE,8523492020,Each,CGI-TX-FIRE - Upgrade for neoVI FIRE - allows you to monitor and transmit on the CGI bus.,US
+FIRE2-DB25-DB9-RJ45-CABLE,8544110030,Each,FIRE2-DB25-DB9-RJ45-CABLE - FIRE2 HD-26F to DB-25M DB-9 and RJ-45,CN
+FIRE2-OBD-DOIP,8544110030,Each,FIRE2-OBD-DOIP - neoVI FIRE 2 OBD Cable with Diagnostics over IP (DoIP) Support (HD-26F to DB-25M + DB-9M + OBD-II),CN
+FIRE2-UDB9-DB9-CABLE,8544110030,Each,FIRE2-UDB9-DB9-CABLE - FIRE2 uDB9 to DB9 Cable Adapter,CN
+FIRE2-VNET,9031808070,Each,FIRE2-VNET - VNET Module with functionality of a neoVI FIRE 2 network adaptor for neoVI PLASMA/ION,US
+FIRE2-VNET-BREAKOUT,8544110030,Each,FIRE2-VNET-BREAKOUT - DB-26HD Female to 12x DB-9M + 1x RJ-45 + 2x Banana Plugs,CN
+FLEXRAY-VNET,9031808070,Each,FLEXRAY-VNET - FlexRay VNET Module is specially designed to add FlexRay network adapter functionality,US
+GA-CGM3,8544110030,Each,GA-CGM3 - Global A OBD/CGM Cable for neoVI Fire/Fire 2,CN
+GALAXY-BR-DB9-CABLE,8544429090,Each,GALAXY-BR-DB9-CABLE - Converts the NanoMQS Connector on the RAD-Galaxy to three Male DB9s. One pair of cables.,US
+GM-FIRE2-CABLE,8544110030,Each,GM-FIRE2-CABLE - Global B OBD Cable (DB-26HD to OBD X 2),CN
+IVNT-03,9031808070,Each,IVNT-03 - Tester box used to connect and test low-level physical layer capabilities of onboard controllers connecting to Controller Area Network (CAN) with software license,US
+J1939-CABLE,8544110030,Each,J1939-CABLE - Heavy duty 9-pin Deutsch connector for VCAN to CAN/J1939 network,CN
+J1939-FIRE-CABLE,8544110030,Each,J1939-FIRE-CABLE - neoVI Deutsch 9-Pin (J1939-RP1210) Cable (DB-25F to Deutsch 9-Pin),CN
+LINESPY-1,9031808070,Each,LINESPY-1 - OBDII (DLC) Connector Break Out Box,US
+MATENET-CABLE-1,8544429090,Each,MATENET-CABLE-1 - Automotive Gigabit Ethernet (1000BASE-T1) cable. UTP (unshielded twisted pair) with protective non-conductive plastic covering,US
+MICROUSB-USB-CABLE,8544110030,Each,MICROUSB-USB-CABLE - 3ft USB 2.0 A Male to Micro 5pin Male Cable - 1m (3\'),CN
+MINIUSB-USB-CABLE,8544110030,Each,MINIUSB-USB-CABLE - USB 2.0 to Mini USB Cable - 2m (6\'),CN
+MINIUSB-USB-PWR-CABLE,8544110030,Each,MINIUSB-USB-PWR-CABLE - Dual USB 2.0 to Mini USB Cable (Power and Data) - 1m (3\'),CN
+NEO-128GB-MICR,8542320023,Each,NEO-128GB-MICR - Pre-formatted 128GB microSD Card,CN
+NEO-16GB-MICR,8542320023,Each,NEO-16GB-MICR - Pre-formatted 16GB microSD Card,CN
+NEO-1TB-MICR,8542320023,Each,NEO-1TB-MICR - Pre-formatted 1TB microSD Card,CN
+NEO-32GB-MICR,8542320023,Each,NEO-32GB-MICR - Pre-formatted 32GB microSD Card,CN
+NEO-512GB-MICR,8542320023,Each,NEO-512GB-MICR - Pre-formatted 512GB microSD Card,CN
+NEO-64GB-MICR,8542320023,Each,NEO-64GB-MICR - Pre-formatted 64GB microSD Card,CN
+neoECU-10-HHL,9031808070,Each,NEOECU-10-HHL - 2 CAN channels LIN analog input and PWM I/O embedded ECU,US
+neoECU-10-HLSL,9031808070,Each,NEOECU-10-HLSL - 1 CAN channel LIN analog input and PWM I/O embedded ECU,US
+neoECU-12,9031808070,Each,NEOECU-12 - 2 CAN / CAN FD channels LIN analog In PWM outputs and digital I/O embedded ECU,US
+neoECU-20,9031808070,Each,NEOECU-20 - A rapid prototyping tool for CAN and LIN ECUs,US
+neoRADIO,9031808070,Each,neoRADI/O - Simple Low Cost CAN I/O device,AU
+NEOVI-FIRE,9031808070,Each,NEOVI-FIRE2 - Vehicle interface tool - 8x CAN FD 4x LIN Ethernet:DoIP/XCP Cybersecurity,US
+NEOVI-FIRE2,9031808070,Each,NEOVI-FIRE2 - Vehicle interface tool - 8x CAN FD 4x LIN Ethernet:DoIP/XCP Cybersecurity,US
+NEOVI-ION,9031808070,Each,NEOVI-ION - A multi-functional vehicle data logger included is a FIRE2-VNET,US
+NEOVI-MIC2,9031808070,Each,NEOVI-MIC-2 - USB Trigger and Microphone Pendant for neoVI-Plasma/ION. Internal microphone for audio uploads when driver presses button trigger 2 LEDs and buzzer,US
+neoVI-MOTE,9031808070,Each,NEOVI-MOTE - a scriptable CAN node with 4 buttons and audible feedback,US
+NEOVI-OBD-1,8544110030,Each,NEOVI-OBD-1 - DSUB-25 pin to OBD II Connector,CN
+NEOVI-OBD-CAN-1,8544110030,Each,NEOVI-OBD-CAN-1 - OBD Connector to CAN cable (DB-25F to OBD-II + DB-9F),CN
+NEOVI-OBD-MULTI,8544110030,Each,NEOVI-OBD-MULTI - DSUB-25 pin to OBD II Connector,CN
+NEOVI-OBD-MULTI-RIGHT,8544110030,Each,NEOVI-OBD-MULTI-RIGHT - DSUB-25 pin to OBD II Connector,CN
+NEOVI-PLASMA,9031808070,Each,NEOVI-PLASMA - A multi-functional vehicle data logger included is a FIRE2-VNET,US
+neoVI-PS,9031808070,Each,neoVI-PS - 12V Power Pack,CN
+NEOVI-RED,9031808070,Each,"NEOVI-RED - 2x CAN, 2x LIN - multi-protocol vehicle interface tool",US
+NEOVI-UPG-FIRE-FIRE2,9031808070,Each,NEOVI-UPG-FIRE-FIRE2 - Hardware upgrade: Vehicle interface tool - 8x CAN FD 4x LIN Ethernet:DoIP/XCP Cybersecurity,US
+NEOVI-UPG-RED-FIRE,9031808070,Each,NEOVI-UPG-RED-FIRE - Hardware upgrade: Trade in your neoVI Red for the new neoVI FIRE,US
+NEOVI-UPG-RED-FIRE2,9031808070,Each,NEOVI-UPG-RED-FIRE2 - Hardware upgrade: Vehicle interface tool - 8x CAN FD 4x LIN Ethernet:DoIP/XCP Cybersecurity,US
+OBD2-Y-SPLIT,8544110030,Each,OBD2-Y-SPLIT - Y splitter for a J1962 OBD vehicle adaptor,CN
+RAD-GALAXY-HW,9031808070,Set,RAD-GALAXY-HW - Multi-purpose Ethernet active tap and media converter for Automotive Ethernet,US
+RAD-GIGALOG,9031808070,Each,RAD-GIGALOG - Autonomy Data Logger with no memory cards,US
+RAD-GIGALOG-2TB,9031808070,Each,RAD-GIGALOG-2TB - Autonomy Data Logger with 2 TB storage,US
+RAD-GIGALOG-3TB,9031808070,Each,RAD-GIGALOG-3TB - Autonomy Data Logger with 3 TB storage,US
+RAD-GIGALOG-6TB,9031808070,Each,RAD-GIGALOG-6TB - Autonomy Data Logger with 6 TB storage,US
+RAD-IO2-AIN,9031808070,Each,RAD-IO2-AIN - RAD-IO2 Isolated Analog Input Module,US
+RAD-IO2-AOUT,9031808070,Each,RAD-IO2-AOUT - RAD-IO2 Isolated Analog Output Module,US
+RAD-IO2-CANFD-HUB,9031808070,Each,RAD-IO2-CANFD-HUB - CAN FD interface for the RAD-IO2 Series of Open I/O,US
+RAD-IO2-DIO,9031808070,Each,RAD-IO2-DIO - RAD-IO2 Isolated Digital I/O Module,US
+RAD-IO2-PWRRLY,9031808070,Each,RAD-IO2-PWRRLY - RAD-IO2 Isolated Power Relay Module,US
+RAD-IO2-TC,9031808070,Each,RAD-IO2-TC - RAD-IO2 Isolated Thermocouple Module,US
+RAD-JUPITER,9031808070,Each,RAD-JUPITER - Switch with 5x 100BASE-T1 ports 1x 1000BASE-T or 1000BASE-T1 port 1x 1000BASE-T or USB/GigE bridge 2x CAN FD and 1x LIN,US
+RAD-MOON,9031808070,Each,RAD-MOON - Media converter for connecting one port of Broadcom‚Äôs BroadR-Reach¬Æ physical layer to one port of a 4-wire 10/100 Ethernet (100BaseTX),US
+RAD-STAR2,9031808070,Each,RAD-STAR2 - Multi-purpose Ethernet gateway for Automotive Ethernet applications,US
+RG-DB26-DB9-BREAKOUT,8544110030,Each,RG-DB26-DB9-BREAKOUT - RAD-Galaxy DB-26HD Female Breakout Cable (DB-26HD Female to 14x DB-9M + 2x Banana Plugs),CN
+RG-VSPY-ENT,9031808070,Set,RG-VSPY-ENT - Multi-purpose Ethernet active tap and media converter for Automotive Ethernet with VSPY-3-ENT software license,US
+RM-BR-DB9M-CABLE,8544429090,Each,RM-BR-DB9M-CABLE - Converts the Molex Mini50 connector on the RAD-Moon to 1 x DB-9M,US
+RS2-BR-DB9M-CABLE,8544429090,Each,RS2-BR-DB9M-CABLE - Converts the NanoMQS connector on the RAD-Star 2 to 1 x DB-9M,US
+RS2-BR-MINI50-CABLE,8544429090,Each,RS2-BR-MINI50-CABLE - This cable adapts the NanoMQS connector of the RAD-Star 2 to 2 x MINI50 male connectors,US
+RS2-VSPY-ENT,9031808070,Set,RS2-VSPY-ENT - Multi-purpose Ethernet gateway for Automotive Ethernet applications with VSPY-3-ENT software license,US
+RSM-1,9031808070,Each,RSM-1 - 100/1000BASE-T1 Media Converter and Active Tap,US
+RSTAR-FP-CABLE,8544110030,Each,RSTAR-FP-CABLE - Converts the DB-25M connector on Intrepid hardware devices to OBD-II and DB-9 connectors,CN
+USB-CABLE,8544110030,Each,USB-CABLE - USB 2.0 cable,CN
+USB3-USBC-CABLE,8544110030,Each,USB3-USBC-CABLE - USB 3.0 Type A to USB-C Cable - 1 meter (3\'),CN
+VCAN3-OBD,8544110030,Each,VCAN3-OBD - OBD2 to MS-HSCAN cable,CN
+VCAN3-Y-DB9,8536700000,Each,VCAN3-Y-DB9 - Y-Splitter to split the two CAN channels of a ValueCAN3 to match the DB-9 pinout of a ValueCAN2,CN
+VCAN4-1A,9031808070,Each,VCAN4-1A - ValueCAN with 1 channel CAN with USB-A cable,US
+VCAN4-1C,9031808070,Each,VCAN4-1C - ValueCAN with 1 channel CAN with USB-C cable,US
+VCAN4-2A,9031808070,Each,VCAN4-2A - ValueCAN with 2 channel CAN / CAN FD with USB-A cable,US
+VCAN4-2A-J1939-KIT,9031808070,Each,VCAN4-2A-J1939-KIT - ValueCAN with 2 channel CAN / CAN FD with USB-A cable and J1939-Cable,US
+VCAN4-2A-J2534-KIT,9031808070,Each,VCAN4-2A-J2534-KIT - ValueCAN with 2 channel CAN / CAN FD with USB-A cable and OBDII-Cable,US
+VCAN4-2A-VSPY-BASIC,9031808070,Set,VCAN4-2A-VSPY-BASIC - ValueCAN with 2 channel CAN / CAN FD with USB cable (USB-A) and Vehicle Spy 3 Basic software,US
+VCAN4-2C,9031808070,Each,VCAN4-2C - ValueCAN with 2 channel CAN / CAN FD with USB-C cable,US
+VCAN4-2C-J1939-KIT,9031808070,Each,VCAN4-2C-J1939-KIT - ValueCAN with 2 channel CAN / CAN FD with USB-C cable and J1939-Cable,US
+VCAN4-2C-J2534-KIT,9031808070,Each,VCAN4-2C-J2534-KIT - ValueCAN with 2 channel CAN / CAN FD with USB-C cable and OBDII-Cable,US
+VCAN4-2C-VSPY-BASIC,9031808070,Set,VCAN4-2C-VSPY-BASIC - ValueCAN with 2 channel CAN / CAN FD with USB cable (USB-C) and Vehicle Spy 3 Basic software,US
+VCAN4-2ELA-DB26,9031808070,Each,VCAN4-2ELA-DB26 - ValueCAN 4-2EL (2x CAN FD 1x Eth 1x LIN) with DB26HD and USB-A Interfaces,US
+VCAN4-2ELA-MULTI,9031808070,Each,VCAN4-2ELA-MULTI - ValueCAN 4-2EL (2x CAN FD 1x Eth 1x LIN) with OBDII DB9 DB25 and USB-A Interfaces,US
+VCAN4-2ELA-OBD,9031808070,Each,VCAN4-2ELA-OBD - ValueCAN 4-2EL (2x CAN FD 1x Eth 1x LIN) with OBD II and USB-A Interfaces,US
+VCAN4-2ELC-DB26,9031808070,Each,VCAN4-2ELC-DB26 - ValueCAN 4-2EL (2x CAN FD 1x Eth 1x LIN) with DB26HD and USB-C Interfaces,US
+VCAN4-2ELC-MULTI,9031808070,Each,VCAN4-2ELC-MULTI - ValueCAN 4-2EL (2x CAN FD 1x Eth 1x LIN) with OBDII DB9 DB25 and USB-C Interfaces,US
+VCAN4-2ELC-OBD,9031808070,Each,VCAN4-2ELC-OBD - ValueCAN 4-2EL (2x CAN FD 1x Eth 1x LIN) with OBD II and USB-C Interfaces,US
+VCAN4-4A-4XDB9,9031808070,Each,VCAN4-4A-4XDB9 - ValueCAN 4-4 (4x CAN FD) with 4 x DB9 and USB-A Interfaces,US
+VCAN4-4A-DB26,9031808070,Each,VCAN4-4A-DB26 - ValueCAN 4-4 (4x CAN FD) with DB26HD and USB-A Interfaces,US
+VCAN4-4A-OBD,9031808070,Each,VCAN4-4A-OBD - ValueCAN 4-4 (4x CAN FD) with OBD II and USB-A Interfaces,US
+VCAN4-4C-4XDB9,9031808070,Each,ValueCAN 4-4 (4x CAN FD) with 4 x DB9 and USB-C Interfaces,US
+VCAN4-4C-DB26,9031808070,Each,VCAN4-4C-DB26 - ValueCAN 4-4 (4x CAN FD) with DB26HD and USB-C Interfaces,US
+VCAN4-4C-OBD,9031808070,Each,VCAN4-4C-OBD - ValueCAN 4-4 (4x CAN FD) with OBD II and USB-C Interfaces,US
+VIVID-CAN,9031808070,Each,VIVID-CAN - Display with Programmable Touchscreen,US
+VIVID-CAN-MOUNT,7616995160,Each,VIVID-CAN MOUNT - Attachment accessory for VIVID-CAN,CN
+VNET-DB25-DB9-CABLE,8544110030,Each,VNET-DB25-DB9-CABLE - HD-26F connector to DB-25M and DB-9M connectors for attachment to vehicle networks,CN
+VNET-LINK,8544110030,Each,VNET-LINK - Accessory cable for the MOST25-VNET,CN
+VNET-UPG-FIRE-FIRE2,9031808070,Each,VNET-UPG-FIRE-FIRE2 - Hardware upgrade: VNET Module with functionality of a neoVI FIRE 2 network adaptor for neoVI PLASMA/ION,US
+VS3-EXE,8523492020,Each,VS3-EXE - Software license,US
+VS3-EXE-UP,8523492020,Each,VS3-EXE-UP - Software license extension,US
+VSPY-3-BASIC,8523492020,Each,VSPY-3-BASIC - Software license,US
+VSPY-3-ENT,8523492020,Each,VSPY-3-ENT - Software license,US
+VSPY-3-PRO,8523492020,Each,VSPY-3-PRO - Software license,US
+VSPY-BASIC-ENT-UPGRADE,8523492020,Each,VSPY-BASIC-ENT-UPGRADE - Vehicle Spy Basic to Vehicle Spy 3 Enterprise software upgrade,US
+VSPY-BASIC-PRO-UPGRADE,8523492020,Each,VSPY-BASIC-PRO-UPGRADE - Vehicle Spy Basic to Vehicle Spy 3 Professional software upgrade,US
+VSPY-BASIC-UP,8523492020,Each,VSPY-BASIC-UP - Software license extension,US
+VSPY-ENT-UP,8523492020,Each,VSPY-ENT-UP - Software license extension,US
+VSPY-PRO-ENT-UPGRADE,8523492020,Each,VSPY-PRO-ENT-UPGRADE - Vehicle Spy Pro to Vehicle Spy 3 Enterprise software upgrade,US
+VSPY-PRO-UP,8523492020,Each,VSPY-PRO-UP - Software license extension,US
+WAVEBPS-BASE,9031808070,Set,"WAVEBPS-BASE - Picoscope and WaveBPS software: Tool for capturing and analyzing serial data analog waveforms like FlexRay, CAN Bus, UART (J1708, K-Line, SCI, GM CGI), J1850, SPI, I2C or LIN Bus",US
+WAVEBPS-PRO,9031808070,Set,"WAVEBPS-PRO - neoVI FIRE2, VSPY-3-ENT, Picoscope and WaveBPS software: Tool for capturing and analyzing serial data analog waveforms like FlexRay, CAN Bus, UART (J1708, K-Line, SCI, GM CGI), J1850, SPI, I2C or LIN Bus",US
+WAVEBPS-SFT,8523492020,Each,WAVEBPS-SFT - Software license,US
+WIRELESS-NEOVI,8523492020,Each,WIRELESS-NEOVI - Software license,US

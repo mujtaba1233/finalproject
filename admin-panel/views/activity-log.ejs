@@ -1,0 +1,177 @@
+<%- include header.ejs %>
+<div ng-controller="ActivityLogController">
+	<div class="row">
+		<div class="col-md-6">
+			<h2>Activity Log</h2>
+		</div>
+	</div>
+	<div class="table-responsive">
+		<table st-filtered-collection st-set-filter="customActivityLogFilter" st-table="record" st-safe-src="records" class="table table-striped table-hover table-scroll" id="table-scroll">
+			<thead>
+				<tr id="advanceSearch">
+					<th colspan="11">
+						<div class="row">
+							<div class="col-lg-6 col-md-3 col-sm-12 col-from">
+								<!-- <label>
+									From
+                                </label>
+								<input class="custom-input form-control col-md-8" type='date' ng-model='from'> -->
+								<!-- <label style="visibility: hidden;">Record Count</label> -->
+
+									<p>{{records.length | number}} record(s) found from {{from | date:"MM/dd/yyyy"}} to {{to | date:"MM/dd/yyyy"}}<span ng-if="customer"> of {{customer.firstname}}</span></p>
+		
+								<!-- <div class="form-group" style="margin-top:8px">
+									<select ng-change="getActivityLogDataByDates()" class="custom-input form-control"
+                                        ng-model="date">
+                                        <option value="1">Last 1 Month</option>
+										<option value="2">Last 2 Months</option>
+										<option value="3">Last 3 Months</option>
+									</select>
+									<p class="explanation">find records from specific duration.</p>
+								</div> -->
+							</div>
+							<!-- <div class="col-lg-3 col-md-3 col-sm-12">
+							<label>
+								To
+							</label>
+							<input class="custom-input form-control col-md-8" type='date' ng-model='to'>
+							
+							</div>
+							<div class="col-lg-3 col-md-3 col-sm-12 col-users">
+								<label>Select User</label>
+								<select
+                                        ng-if="allUsers"
+                                        data-placeholder="Select all Users Option"
+                                        ng-change="userListner(selectedUser)" ng-style="{ width: '100%' }"
+                                        ng-model="selectedUser" class="form-control custom-input" chosen
+                                        ng-options="s as s.firstname+' '+s.lastname for s in allUsers">
+                                        <option value="">All Users</option>
+                                    </select>
+							</div> -->
+							<div class="col-lg-6 col-md-3 col-sm-12 col-button">
+								<button style="cursor: pointer;" data-toggle="collapse" class="btn btn-primary pull-right"
+								data-target="#export"> Export</button>
+							</div>
+
+							<!-- <div class="col-lg-3 col-md-3 col-sm-12"> -->
+                            <!-- </div> -->
+                           
+						</div>
+					</th>
+				</tr>
+				<tr id="export" class="collapse">
+					<th colspan="10">
+						<div class="row">
+							<div class="form-group col-lg-12 col-md-12 col-sm-12">
+								<h4>Export Records</h4>
+							</div>
+							<div class="form-group col-lg-3 col-md-3 col-sm-3">
+								<label>
+									From
+								</label>
+								<input st-strict-search="from" strict-key="createdOn" min="{{maxDate}}" max="{{minDate}}" ng-model="formatedDateFrom" class="form-control" placeholder="order date from"
+									type="date" />
+							</div>
+							<div class="form-group col-lg-3 col-md-3 col-sm-3">
+								<label>
+									To
+								</label>
+								<input st-strict-search="to" max="{{minDate}}" min="{{maxDate}}" ng-model="formatedDateTo" class="form-control" placeholder="order date from"
+									type="date" />
+							</div>
+						</div>
+							<div class="row">
+
+							<div style="margin-top: 10px" class="col-lg-3 col-md-3 col-sm-3">
+								<label>Select Type {{selectedType}}</label>
+								<select
+                                        data-placeholder="Select all Users Type"
+                                        class="form-control custom-input" ng-value="all" chosen st-strict-search="type" ng-model="selectedType" ng-change="getValue(selectedType)"
+										>
+										<option value=""></option>
+										<option value="all">All Types</option>
+										<option value="BlueSky">BlueSky</option>
+										<option value="Store">Store</option>
+                                    </select>
+							</div>
+							<div ng-show="selectedType == 'BlueSky'" style="margin-top: 10px" class="col-lg-3 col-md-3 col-sm-3">
+								<label>Select User </label>
+								<select
+                                        
+                                        data-placeholder="Select all Users Option"
+										ng-change="userListner(selectedUser)" 
+										ng-style="{ width: '100%' }"
+                                        ng-model="selectedUser" class="form-control custom-input" chosen
+                                        ng-options="s as s.firstname+' '+s.lastname for s in allUsers">
+                                        <option value="">All Users</option>
+                                    </select>
+							</div>
+							<div ng-show="selectedType === 'Store'" style="margin-top: 10px" class="col-lg-3 col-md-3 col-sm-3">
+								<label>Select Customer</label>
+								<select
+                                        
+                                        data-placeholder="Select all Customers Option"
+										ng-style="{ width: '100%' }" ng-model="selectedUser" 
+										ng-change="customerSelect(selectedUser)" 
+                                        class="form-control custom-input" chosen
+                                        ng-options="s as s.FirstName+' '+s.LastName for s in customers">
+                                        <option value="">All Customers</option>
+                                </select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-12">
+								<button type="button" class="btn btn-success pull-right export-button"
+									ng-click="updateExportFileName(true)" ng-csv="filteredCollectionData"
+									csv-header="selectedOption" csv-column-order="selectedOption"
+									filename="{{fileName}}"><i class="fa fa-file"></i> Export CSV {{filteredCollectionData.length}} </button>
+							</div>
+						</div>
+					</th>
+				</tr>
+				<tr>
+					<th style="width: 7%" st-sort="userID">User ID</th>
+					<th style="width: 12%" st-sort="EmailAddress">Email</th>
+					<th style="width: 13%" st-sort="FirstName">FirstName</th>
+					<th style="width: 15%" st-sort="LastName">LastName</th>
+					<th style="width: 10%" st-sort="URL">URL</th>
+					<th style="width: 7%" st-sort="lastModifyOn">Created On</th>
+					<th style="width: 9%" st-sort="ipAddress">IP Address</th>
+					<th style="width: 9%" st-sort="ipAddress">Type</th>
+				</tr>
+				<tr>
+					<th colspan="10">
+						<input st-search="" class="custom-input form-control" placeholder="global search ..."
+							type="text" />
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="rec in record">
+					<td style="word-break: break-all;">{{rec.userId}}</td>
+					<td style="word-break: break-all;">{{rec.email}}</td>
+					<td style="word-break: break-all;">{{rec.firstname}}</td>
+					<td style="word-break: break-all;">{{rec.lastname}}</td>
+                    <td style="word-break: break-all;">{{rec.url}}</td>
+                    <td style="word-break: break-all;">{{rec.lastModifyOn | date:'MM-dd-yyyy'}} {{rec.lastModifyOnTime }}</td>
+					<td style="word-break: break-all;">{{rec.ipAddress}}</td>
+					<td style="word-break: break-all;">{{rec.type}}</td>
+				</tr>
+			</tbody>
+			<tfoot class="text-center d-flex justify-content-center tfoot-toggle">
+				<tr>
+					<td colspan="8" >
+						<div class="paging">
+							<div st-pagination="" st-template="template/st-pagination.html" st-items-by-page="itemsByPage" st-displayed-pages="7" style="
+							display: inline-table;">
+							</div>
+						</div>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+</div>
+
+
+<%- include footer.ejs %>

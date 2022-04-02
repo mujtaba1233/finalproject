@@ -1,0 +1,168 @@
+<%- include header.ejs %>
+<div ng-controller="OptionCategoryController">
+	<div class="row">
+		<div class="col-md-6">
+			<h2>Category Management</h2>
+		</div>
+	</div>
+	<form id="optionform" ng-submit="save()">
+		<div class="row">
+			<div class="col-md-3 form-group">
+				<label>About Options</label>
+				<input
+					type="text"
+					ng-model="optionCategory.aboutOptionCategories"
+					class="custom-input form-control"
+				/>
+			</div>
+			<!-- <div class="col-md-3 form-group">
+				<label>Arrange Option </label>
+				<input
+					type="number"
+					ng-model="optionCategory.arrangeOptionCategoriesBy"
+					class="custom-input form-control"
+				/>
+			</div> -->
+
+			<div class="col-md-3 form-group">
+				<label>Type</label>
+				<select class="form-control custom-input" ng-model="optionCategory.displayType">
+					<option value="TEXTBOX">TEXTBOX</option>
+					<option value="DROPDOWN">DROPDOWN</option>
+					<option value="RADIO">RADIO</option>
+				</select>
+			</div>
+			<div class="col-md-3 form-group">
+				<label>Heading Group</label>
+				<input
+					type="text"
+					ng-model="optionCategory.headingGroup"
+					class="custom-input form-control"
+				/>
+			</div>
+			<div  class="col-md-12 form-group">
+				<label>Description</label>
+				<input
+					type="textarea"
+					ng-model="optionCategory.optionCategoriesDesc"
+					class="custom-input form-control"
+				/>
+			</div>
+			<!-- <div class="col-md-2 form-group">
+				<input
+					type="checkbox"
+					ng-model="optionCategory.hideOptionCategoriesDesc"
+				/>
+				Hide Description
+			</div>
+			<div class="col-md-2 form-group">
+				<input type="checkbox" checked ng-model="optionCategory.isRequired" />
+				Required
+			</div> -->
+		</div>
+		<div class="row">
+			<div class="col-md-12 form-group">
+				<button
+					type="submit"
+					title="{{ isUpdate ? 'Update' : 'Save' }}"
+					class="btn {{ isUpdate ? 'btn-primary' : 'btn-success' }} pull-right"
+					>{{ isUpdate ? "Update" : "Save" }}</button
+				>
+				<button
+					style="margin-right: 5px"
+					ng-if="isUpdate"
+					title="Cancel"
+					ng-click="cancel()"
+					class="btn btn-warning pull-right"
+					>Cancel</button
+				>
+			</div>
+		</div>
+	</form>
+	<table
+		st-table="records"
+		st-safe-src="optionCategories"
+		class="table table-striped table-hover"
+	>
+		<thead>
+			<tr>
+				<th st-sort="id">Id</th>
+				<th class="text-center" style="width: 15%" st-sort="displayOrder"
+					>About Options</th
+				>
+				<th class="text-center" style="width: 15%" st-sort="isActive"
+					>Description</th
+				>
+				<th class="text-center" style="width: 15%">Type</th>
+				<th class="text-center" style="width: 15%">Heading Group</th>
+				<!-- <th class="text-center" style="width: 15%">Hide Description</th>
+				<th class="text-center" style="width: 15%">Required</th> -->
+				<th class="text-center" style="width: 15%">Last Modified By</th>
+				<th class="text-center" style="width: 15%">Last Modified</th>
+				<th class="text-center">Action</th>
+			</tr>
+			<tr>
+				<th colspan="10">
+					<input
+						st-search=""
+						class="custom-input form-control"
+						placeholder="global search ..."
+						type="text"
+					/>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="optionCategory in records">
+				<td class="text-capitalize">
+					<a title="Edit Order" target="_blank"
+							href="/options?update={{optionCategory.id}}">
+							{{ optionCategory.id }}
+					</a>
+				</td>
+				<td class="text-center">{{ optionCategory.aboutOptionCategories }}</td>
+				<td class="text-center">{{
+					optionCategory.optionCategoriesDesc
+				}}</td>
+				<td class="text-center">{{ optionCategory.displayType }}</td>
+				<td class="text-center">{{ optionCategory.headingGroup }}</td>
+				<!-- <td class="text-center">{{
+					optionCategory.hideOptionCategoriesDesc ? "True" : "False"
+				}}</td>
+				<td class="text-center">{{
+					optionCategory.isRequired ? "True" : "False"
+				}}</td> -->
+				<td class="text-center">{{ optionCategory.lastModBy }}</td>
+				<td class="text-center">{{ optionCategory.lastModified | date:'MM/dd/yyyy'}}</td>
+				<td class="text-center">
+					<button
+						title="Edit"
+						href="javascript:void(0)"
+						ng-click="update(optionCategory)"
+						class="btn btn-sm btn-primary"
+					>
+						<i class="fa fa-pencil fa-2x"> </i>
+					</button>
+					<button title="Delete Category" href="javascript:void(0)" ng-click="delete(optionCategory)" class="btn btn-sm btn-danger">
+                            <i class="fa fa-times fa-2x">
+                            </i>
+                        </button>
+				</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="4" class="text-center">
+					<div
+						st-pagination=""
+						st-items-by-page="itemsByPage"
+						st-displayed-pages="7"
+					></div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+	<!-- Modal -->
+</div>
+
+<%- include footer.ejs %>

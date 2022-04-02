@@ -1,0 +1,92 @@
+<%- include header.ejs %>
+<div ng-controller="ProductInventoryController">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-10 col-lg-12" style="text-align:center;padding-bottom: 10px;">
+			<h1><strong> Product Inventory</strong></h1>
+			<!-- <h4 class="slogon"> {{year}} product sales based on order intake</h4> -->
+		</div>
+	</div>
+	<div class="row" style="padding-top: 10px;">
+		<!-- <div class="wrapper1">
+		<div class="div1"></div>
+	</div> -->
+		<!-- <div class="wrapper2"> -->
+			<table st-table="displayedCollection" st-safe-src="inventories" class="table table-striped">
+				<thead>
+					<tr>
+						<th style="width:20%" st-sort="ProductCode" class="text-center capitalize"
+							style="text-align: center;"> Part #</th>
+						<!-- <th class="text-center freezed-col capitalize" style="text-align: center;"> Part #</th> -->
+						<!-- <th class="empty-col">&nbsp;</th> -->
+						<th st-sort="unAllocated" class="text-center capitalize">Un-Allocated</th>
+						<th st-sort="allocated" class="text-center capitalize">Allocated</th>
+						<th st-sort="shipped" class="text-center capitalize">Shipped</th>
+						<th class="text-center capitalize"> Open Orders</th>
+
+						<!-- <th class="text-center capitalize"> Open orders</th> -->
+						<!-- <th style="width:10%" st-sort="NextStockDate" class="text-center capitalize"> Next Stock Date
+						</th>
+						<th st-sort="StockLocation" class="text-center capitalize"> Location</th>
+						<th st-sort="Notes" class="text-center capitalize"> Notes</th> -->
+						<th class="text-center capitalize"> Action</th> 
+					</tr>
+					<tr>
+						<th class="freezed-search-bar" colspan="9">
+							<input st-search="ProductCode" placeholder="search with product code"
+								class="custom-input input-sm form-control" type="search" />
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="row in displayedCollection" class="table-striped table" title="{{row.ProductName}}">
+						<td class="text-right"><strong> {{row.ProductCode}}</strong></td>
+						<!-- <td class="freezed-col" > &nbsp;<strong style="word-break: break-all;"> {{row.ProductCode}}</strong></td> -->
+						<!-- <td class="empty-col">&nbsp;</td> -->
+						<td ng-click="viewUnAllocatedSerials(row,'false')" title="View In-Stock Products" class="text-center"
+							style="cursor:pointer"><a id="stocktd" href="javascript:void(0)"> {{row.unAllocated}}</a>
+						</td>
+						<td ng-click="viewAllocatedSerials(row,'true')" title="View In-Production Products"
+							class="text-center" style="cursor:pointer"><a id="prodtd" href="javascript:void(0)">
+								{{row.allocated}}</a></td>
+						<td ng-click="viewShippedSerials(row)" title="View In-Production Products"
+							class="text-center" style="cursor:pointer"><a id="prodtd" href="javascript:void(0)">
+								{{row.shipped}}</a></td>
+						<td class="text-center">
+							<a target="_blank" title="View Open Orders"
+								href="/order-search?productId={{row.ProductID}}"> View</a>
+						</td>
+						<!-- <td>
+							<input ng-if="isAdmin" ng-change="updateInventory(row,$index)" ng-model="row.NextStockDate"
+								type="date" class="custom-input form-control">
+							<span ng-if="!isAdmin"> {{row.NextStockDate |  date:'MM-dd-yyyy'}}</span>
+						</td>
+						<td>
+							<select ng-if="isAdmin" title="{{row.StockLocation}}"
+								ng-change="updateInventory(row,$index)" class="custom-input form-control"
+								ng-options="l.LocationName as l.LocationName for l in locations"
+								ng-model="row.StockLocation"></select>
+							<span ng-if="!isAdmin"> {{row.StockLocation}}</span>
+						</td>
+						<td>
+							<textarea ng-if="isAdmin" ng-change="updateInventory(row,$index)"
+								style="font-size: smaller; white-space: pre;" rows="2" cols="30"
+								ng-model="row.Notes"></textarea>
+							<span ng-if="!isAdmin"> {{row.Notes}}</span>
+						</td> -->
+						<td class="text-center">
+							<button title="Add Serial Number" ng-click="newInventory(row,$index)" type="button"
+								class="btn btn-sm btn-primary"> <i class="fa fa-plus fa-2x"></i></button>
+						</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="9" class="text-center">
+							<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		<!-- </div> -->
+	</div>
+	<%- include footer.ejs %>

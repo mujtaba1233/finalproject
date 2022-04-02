@@ -1,0 +1,132 @@
+{
+    "billing_options": {
+        "10": "Prepaid",
+        "30": "Bill to Third Party",
+        "40": "Freight Collect"
+    },
+    "service_classes": {
+        "50": {
+            "min": 50,
+            "max": 10000
+        },
+        "55": {
+            "min": 35,
+            "max": 50
+        },
+        "60": {
+            "min": 30,
+            "max": 35
+        },
+        "65": {
+            "min": 22.5,
+            "max": 30
+        },
+        "70": {
+            "min": 15,
+            "max": 22.5
+        },
+        "85": {
+            "min": 12,
+            "max": 13.5
+        },
+        "100": {
+            "min": 9,
+            "max": 10.5
+        },
+        "110": {
+            "min": 8,
+            "max": 9
+        },
+        "125": {
+            "min": 7,
+            "max": 8
+        },
+        "150": {
+            "min": 6,
+            "max": 7
+        },
+        "175": {
+            "min": 5,
+            "max": 6
+        },
+        "200": {
+            "min": 4,
+            "max": 5
+        },
+        "250": {
+            "min": 3,
+            "max": 4
+        },
+        "300": {
+            "min": 2,
+            "max": 3
+        },
+        "400": {
+            "min": 1,
+            "max": 2
+        },
+        "500": {
+            "min": 0,
+            "max": 1
+        },
+        "77.5": {
+            "min": 13.5,
+            "max": 15
+        },
+        "92.5": {
+            "min": 10.5,
+            "max": 12
+        }
+    },
+    "service_codes": {
+        "308": "UPS Freight LTL",
+        "309": "UPS Freight LTL - Guaranteed",
+        "334": "UPS Freight LTL - Guaranteed AM"
+    },
+    "handling_codes": {
+        "SDK": "SKID",
+        "CBY": "CARBOY",
+        "PLT": "PALLET",
+        "TOT": "TOTES",
+        "LOO": "LOOSE",
+        "OTH": "OTHER"
+    },
+    "package_codes": {
+        "BAG": "Bag",
+        "BAL": "Bale",
+        "BAR": "Barrel",
+        "BDL": "Bundle",
+        "BIN": "Bin",
+        "BOX": "Box",
+        "BSK": "Basket",
+        "BUN": "Bunch",
+        "CAB": "Cabinet",
+        "CAN": "Can",
+        "CAR": "Carrier",
+        "CAS": "Case",
+        "CBY": "Carboy",
+        "CON": "Container",
+        "CRT": "Crate",
+        "CSK": "Cask",
+        "CTN": "Carton",
+        "CYL": "Cylinder",
+        "DRM": "Drum",
+        "LOO": "Loose",
+        "OTH": "Other",
+        "PAL": "Pail",
+        "PCS": "Pieces",
+        "PKG": "Package",
+        "PLN": "Pipe Line",
+        "PLT": "Pallet",
+        "RCK": "Rack",
+        "REL": "Reel",
+        "ROL": "Roll",
+        "SKD": "Skid",
+        "SPL": "Spool",
+        "TBE": "Tube",
+        "TNK": "Tank",
+        "UNT": "Unit",
+        "VPK": "Van Pack",
+        "WRP": "Wrapped"
+    }
+}

@@ -1,0 +1,340 @@
+<%- include header.ejs %>
+    <!-- Modal content-->
+<div ng-controller="EditQuoteController" ng- id="exportthis">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Update Quote</h2>
+        </div>
+        <div class="col-md-6">
+            <!-- <button class="btn btn-primary" ng-click="sync()" style="float:right">Sync customers with volusion</button> -->
+            <a ng-disabled="quotes.isOrdered == 1" target="_blank" class="btn {{quotes.isOrdered == 1? 'btn-success':'btn-warning'}}" href='/order-new?quote={{quotes.QuoteNo}}' style="float:right; margin-right: 5px;">{{quotes.isOrdered == 1? 'Order already placed':'Order On Bluesky'}}</a>&nbsp;&nbsp;
+            <button class="btn btn-danger" ng-click="placeOrderOnVolusion()" style="float:right; margin-right: 5px;">Order On Volusion</button>&nbsp;&nbsp;
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table" style="margin-bottom: 4px;">
+                <tr>
+                    <td style="border-top: 0px solid #ddd;">
+                        <strong>Customer Name:</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <ui-select ng-model="selected.item" theme="select2" on-select="customerListner($item)"
+                                   ng-disabled="ctrl.disabled" style="width: 300px;" title="Choose a customer">
+                            <ui-select-match placeholder="Select or search a customer in the list...">
+                                {{$select.selected.FirstName + " " + $select.selected.LastName}}
+                            </ui-select-match>
+                            <ui-select-choices repeat="customer in customers | filter: $select.search | limitTo: 100">
+                                <span ng-bind-html="customer.FirstName | highlight: $select.search"></span>
+                                <span ng-bind-html="customer.LastName | highlight: $select.search"></span>
+                                <hr/>
+                                <small>
+                                    email: <span
+                                            ng-bind-html="''+customer.EmailAddress | highlight: $select.search"></span>
+                                </small>
+                                <small>
+                                    Company: <span
+                                            ng-bind-html="''+customer.CompanyName | highlight: $select.search"></span>
+                                </small>
+                                <small>
+                                    Customer ID: <span
+                                            ng-bind-html="''+customer.CustomerID | highlight: $select.search"></span>
+                                </small>
+                            </ui-select-choices>
+                        </ui-select>
+                        <button ng-disabled="addCustomerBtn" ng-click="addCustomer()" title="Add Customer" class="btn btn-sm btn-primary">
+                            <i class="fa fa-plus">
+                            </i>
+                        </button>
+                    </br>
+                    <div style="margin-top: 14px;">
+                        <input ng-model="showCustomerName" type="checkbox"> <b>Show Customer Name on PDF</b>
+                    </div>
+                    </br>
+                    <div>
+                        <!-- <input ng-model="showCustomerEmail" type="checkbox"> <b>Show Customer Email on PDF</b> -->
+                    </div>
+                    </td>
+                </tr>
+            </table>
+            <table class="table">
+                <tr>
+                    <td><b>Billing Address:</b></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" ng-model="sameAsShipping" ng-change="toggleSameAsShipping()"> Same as
+                        Shipping
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control" placeholder="Billing address 1"
+                               ng-model="customerData.billingAddress.address1"
+                               value="{{ customerData.billingAddress.address1 }}" ng-disabled="sameAsShipping"/></td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control" placeholder="Billing address 2"
+                               ng-model="customerData.billingAddress.address2"
+                               value="{{ customerData.billingAddress.address2 }}" ng-disabled="sameAsShipping"/></td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control" placeholder="State/Province"
+                               ng-model="customerData.billingAddress.state"
+                               value="{{ customerData.billingAddress.state }}" ng-disabled="sameAsShipping"/></td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control" placeholder="Postal Code"
+                               ng-model="customerData.billingAddress.postalCode"
+                               value="{{ customerData.billingAddress.postalCode }}" ng-disabled="sameAsShipping"/></td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control" placeholder="City"
+                               ng-model="customerData.billingAddress.city"
+                               value="{{ customerData.billingAddress.city }}" ng-disabled="sameAsShipping"/></td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control" placeholder="Country"
+                               ng-model="customerData.billingAddress.country"
+                               value="{{ customerData.billingAddress.country }}" ng-disabled="sameAsShipping"/></td>
+                </tr>
+            </table>
+
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr></tr>
+                <tr>
+                    <td style="border-top: 0px solid #ddd;">Quote No:</td>
+                    <td style="border-top: 0px solid #ddd;">TBD</td>
+                </tr>
+                <tr>
+                    <td>Issue Date:</td>
+                    <td><input type='date' ng-model='issueDate'></td>
+                </tr>
+                <tr>
+                    <td>Valid Till:</td>
+                    <td><input type='date' ng-model='validTill'></td>
+                </tr>
+            </table>
+            <table class="table">
+
+                <tr>
+                    <td><b>Shipping Address:</b></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" ng-model="sameAsBilling" ng-change="toggleSameAsBilling()"> Same as
+                        Billing
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control" placeholder="ShippingAddress1"
+                               value="{customerData.shippingAddress.address1}"
+                               ng-model="customerData.shippingAddress.address1" ng-disabled="sameAsBilling"/></td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control" placeholder="ShippingAddress2"
+                               ng-model="customerData.shippingAddress.address2" ng-disabled="sameAsBilling"/></td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control" placeholder="State/Province"
+                               ng-model="customerData.shippingAddress.state" ng-disabled="sameAsBilling"/></td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control" placeholder="Postal Code"
+                               ng-model="customerData.shippingAddress.postalCode" ng-disabled="sameAsBilling"/></td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control" placeholder="City"
+                               ng-model="customerData.shippingAddress.city" ng-disabled="sameAsBilling"/></td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control" placeholder="Country"
+                               ng-model="customerData.shippingAddress.country" ng-disabled="sameAsBilling"/></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="col-md-12">
+                <h8>Quote Notes:</h8>
+                <p class="explanation">Included on the customer PDF.</p>
+                <br/>
+            </div>
+            <div class="col-md-12">
+                <textarea ui-tinymce ng-model="notes"></textarea>
+                <!-- <div ckeditor="options" ng-model="notes" ready="onReady()"></div> -->
+                <!-- <textarea ng-model='notes' rows='4' style="width:100%"></textarea> -->
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="col-md-12">
+                <h8>Private Notes:</h8>
+                <p class="explanation">Not included on the customer PDF.</p>
+                <br/>
+            </div>
+            <div class="col-md-12">
+                <textarea ui-tinymce ng-model="OrderNotes"></textarea>
+                <!-- <div ckeditor="options" ng-model="notes" ready="onReady()"></div> -->
+                <!-- <textarea ng-model='notes' rows='4' style="width:100%"></textarea> -->
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-xs-6">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div>
+            <div>
+                <div>
+                    <div class="table-responsive">
+                        <table class="table table-condensed">
+                            <thead>
+                            <tr>
+                                <td style="width:15%"><strong>Part Number</strong></td>
+                                <td style="width:50%" class="text-center"><strong>Description</strong></td>
+                                <td style="width:10%" class="text-center"><strong>Qty</strong></td>
+                                <td style="width:8%" class="text-center"><strong>Unit Price ($)</strong></td>
+                                <td style="width:8%" class="text-center"><strong>Discount (%)</strong></td>
+                                <td style="width:6%" class="text-center"><strong>Totals</strong></td>
+                                <td style="width:3%" class="text-center"><strong></strong></td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="invoiceRow in invoiceRows">
+                                <td class="text-center">
+                                    <ui-select ng-model="invoiceRow.selectedProduct" theme="select2"
+                                               on-select="invoiceRow.productListner($item)" ng-disabled="ctrl.disabled"
+                                               style="width: 175px;" title="{{$select.selected.ProductName}}">
+                                        <ui-select-match placeholder="Select or search a product in the list...">
+                                            {{$select.selected.ProductCode}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="product in products | filter: {ProductCode: $select.search}">
+                                            <span ng-bind-html="product.ProductCode | highlight: $select.search"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td>
+                                    <textarea style="font-size: smaller;" rows="2" cols="75" ng-model="invoiceRow.description"></textarea>
+                                </td>
+                                <td class="text-center">
+                                    <input style="width:60px;" type="number" ng-change="invoiceRow.updateLineTotal()"
+                                            ng-model="invoiceRow.qty" name="qty"></td>
+                                <td>
+                                    <input style="width:70px;" type="text"
+                                            ng-init="invoiceRow.updateLineTotal()"
+                                            ng-change="invoiceRow.updateLineTotal()"
+                                            ng-model="invoiceRow.product.ProductPrice" name="price"></td>
+                                <td class="text-center">
+                                    <input style="width:70px;" type="number" step="0.01" min="0"
+                                           ng-change="invoiceRow.updateLineTotal()"
+                                           ng-model="invoiceRow.discount"/></td>
+                                <td class="text-center" ng-model="invoiceRow.total"
+                                    ng-model-options="{ getterSetter: true }">{{invoiceRow.total | number:2 }}
+                                </td>
+                                <td class="text-center">
+                                    <button ng-if="invoiceRows.length > 1" ng-click="removeRow($index)" title="Delete Product" class="btn btn-sm btn-danger">
+                                        <i class="fa fa-times">
+                                        </i>
+                                    </button>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="thick-line"></td>
+                                <td class="thick-line"></td>
+                                <td class="thick-line"></td>
+                                <td class="thick-line"></td>
+                                <td class="thick-line"></td>
+                                <td class="text-right">
+                                    <button class="btn btn-primary" ng-click="addRow(null,'',1,0,0,'','')">+ Add Item</button>
+                                </td>
+                                <td class="thick-line"></td>
+                            </tr>
+                            <tr>
+                                <td class="thick-line"></td>
+                                <td class="thick-line"></td>
+                                <td class="thick-line"></td>
+                                <td class="thick-line"></td>
+                                <td class="thick-line text-right"><strong>Subtotal</strong></td>
+                                <td class="thick-line text-right" ng-model="total">${{ total | number:2 }}</td>
+                                <td class="thick-line"></td>
+                            </tr>
+                            <tr>
+                                <td class="thick-line"></td>
+                                <td class="thick-line"></td>
+                                <td class="thick-line"></td>
+                                <td class="thick-line"></td>
+                                <td class="thick-line text-right">Shipping</td>
+                                <td class="thick-line text-right"><input style="width:100px;" type="number" step="0.01" min="0"
+                                                                         ng-model="freight"></td>
+                                                                         <td class="thick-line"></td>
+                            </tr>
+                            <tr>
+                                <td class="thick-line"></td>
+                                <td class="thick-line"></td>
+                                <td class="thick-line"></td>
+                                <td class="thick-line"></td>
+                                <td class="thick-line text-right">Tax Rate</td>
+                                <td class="thick-line text-right"><input style="width:100px;" type="number" step="0.0001" min="0"
+                                                                         ng-model="taxShipping"></td>
+                                                                         <td class="thick-line"></td>
+                            </tr>
+                            <tr>
+                                <td class="thick-line"></td>
+                                <td class="thick-line"></td>
+                                <td class="thick-line"></td>
+                                <td class="thick-line"></td>
+                                <td class="thick-line text-right">Tax</td>
+                                <td class="thick-line text-right" ng-model="total">${{ ((taxShipping / 100) * total) | number:2 }}
+                                </td>
+                                <td class="thick-line"></td>
+                            </tr>
+                            <tr>
+                                <td class="thick-line"></td>
+                                <td class="thick-line"></td>
+                                <td class="thick-line"></td>
+                                <td class="thick-line"></td>
+                                <td class="thick-line text-center"><strong>Total</strong></td>
+                                <td class="thick-line text-right" ng-model="total">${{ (total + freight) + ((taxShipping
+                                    / 100) * total) | number:2 }}
+                                </td>
+                                <td class="thick-line"></td>
+                            </tr>
+                            <tr>
+                                <td class="thick-line"></td>
+                                <td class="thick-line"></td>
+                                <td class="thick-line"></td>
+                                <td class="thick-line"></td>
+                                <td class="thick-line"></td>
+                                <td>
+                                    <button class="btn btn-danger" ng-click="updateQuote()"></ng-click>Update & View PDF
+                                    </button>
+                                </td>
+                                <td class="thick-line"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<%- include footer.ejs %>

@@ -1,0 +1,40 @@
+<div class="modal fade" role="dialog">
+	<div class="modal-dialog modal-md">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="panel panel-default">
+				<div class="modal-header panel-heading">
+					<h4 class="modal-title">Sync Product Accessories
+					</h4>
+					<button type="button" class="btn" ng-click="close(undefined)">&times;</button>
+
+				</div>
+			</div>
+			<div class="modal-body" style="height: auto; overflow-y: auto; overflow-x: hidden;">
+				<form enctype="multipart/form-data">
+					<div class="row">
+						<div class="col-md-4 form-group">
+							<label>Select File</label>
+							<input ngf-select="onFileSelect($files)" type="file" accept="text/xml" class="">
+						</div>
+						<div class="col-md-12">
+							<p class="explanation">upload XML exported file from volusion.</p>
+						</div>
+					</div>
+					<br>
+					<h5 ng-show="uploadProgress" class="text-warning">uploading {{uploadProgress}}%</h5>
+					<h5 class="text-success">{{uploadComplete}}</h5>
+					<div class="row">
+						<div class="col-md-12 form-group">
+							<button ng-disabled="valid" ng-click="importProducts()" title="Import Products"
+								class="btn btn-success pull-right"> Import</button>
+							<button style="margin-right: 5px;" title="Cancel" ng-click="close(undefined)"
+								class="btn btn-danger pull-right"> Cancel</button>
+						</div>
+					</div>
+				</form>
+				<!-- Modal -->
+			</div>
+		</div>
+	</div>
+</div>

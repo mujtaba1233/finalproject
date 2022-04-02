@@ -1,0 +1,35 @@
+<%- include header.ejs %>
+<div ng-controller="DashboardController">
+	<div class="row">
+		<div class="col-md-12" style="text-align:center">
+			<h1>BLUE SKY</h1>
+		</div>
+	</div>
+	<div class="row search-box twitter-typeahead">
+		<input  ng-change="getResults(query)" class='typeahead form-control col-lg-12' type="text"  ng-model="query">
+			<div class="tt-menu" style="top: 100%; left: 0px; z-index: 100;">
+				<div class="tt-dataset tt-dataset-2">
+					<table class="tt-suggestion tt-selectable">
+						<thead>
+							<tr>
+								<th nowrap="" style="width:200px;border-left:1px solid #ccc;padding:0px 3px;min-width:250px;">Type</th>
+								<th nowrap="" style="width:600px;border-left:1px solid #ccc;padding:0px 3px;min-width:250px;">Result</th>
+								<th nowrap="" style="width:200px;border-left:1px solid #ccc;padding:0px 3px;min-width:250px;">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="result in results">
+								<td nowrap="" style="width:200px;word-break: break-all;border-left:1px solid #ccc;padding:0px 3px;min-width:250px;">{{result.type}}</td>
+								<td nowrap="" style="width:600px;word-break: break-all;border-left:1px solid #ccc;padding:0px 3px;min-width:250px;">
+									<span class="explanation">{{result.columnName}}:</span>
+									<p><strong class="tt-highlight"><pre>{{result.result}}</pre></strong></p>
+								</td>
+								<td nowrap="" style="width:200px;word-break: break-all;border-left:1px solid #ccc;padding:0px 3px;min-width:250px;">{{result.OrderID}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+	</div>
+</div>
+<%- include footer.ejs %>

@@ -1,0 +1,30 @@
+<div class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="panel panel-default">
+				<div class="modal-header panel-heading  d-flex justify-content-between">
+					<h3>Save Report</h3>
+					<button type="button" class="close" ng-click="close(undefined)">&times;</button>
+					</h4>
+				</div>
+			</div>
+			<div class="modal-body" style="height: auto; overflow-y: auto; overflow-x: hidden;">
+					<div class="row">
+						<div class="col-md-12 form-group" >
+							<label class="form-group">Report Name</label>
+							<input  type="text" ng-model="reportName" class="form-control">
+						</div>
+						
+					</div>
+			</div>
+			<div class="modal-footer">
+				<div class="row">
+					<div class="col-md-12 form-group" >
+						<input type="submit" title="Add Report Name" value="Add"  ng-click="addReportName()" class="btn btn-success pull-right">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

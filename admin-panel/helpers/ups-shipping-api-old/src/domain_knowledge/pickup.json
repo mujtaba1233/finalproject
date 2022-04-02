@@ -1,0 +1,23 @@
+{
+    "payment_methods": {
+        "00": "No payment needed",
+        "01": "Pay by shipper account",
+        "03": "Pay by charge card",
+        "04": "Pay by tracking number",
+        "05": "Pay by check or money order"
+    },
+    "package_types": {
+        "01": "Package",
+        "02": "UPS Letter",
+        "03": "Pallet"
+    },
+    "codes": {
+        "daily_pickup": "01",
+        "customer_counter": "03",
+        "one_time_pickup": "06",
+        "on_call_air": "07",
+        "suggested_retail_rates": "11",
+        "letter_center": "19",
+        "air_service_center": "20"
+    }
+}

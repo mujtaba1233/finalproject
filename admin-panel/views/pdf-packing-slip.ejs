@@ -1,0 +1,317 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta content="text/html; charset=utf-8" http-equiv="Content-Type"> -->
+    <link href="https://fonts.googleapis.com/css?family=Sans+Serif" rel="stylesheet">
+    <title>
+        document.pdf
+    </title>
+    <style>
+        /* @font-face {
+    font-family: myFirstFont;
+    src: url(sansation_light.woff);
+} */
+
+        * {
+
+            font-size: 14;
+            font-family: sans-serif;
+        }
+
+        .mContainer {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 100%;
+        }
+
+        .small-font-desc * {
+            font-size: 10 !important;
+        }
+
+        .small-font-name {
+            font-size: 12 !important;
+            padding-bottom: 2px !important;
+        }
+
+        .item-font {
+            font-size: 12 !important;
+        }
+
+        .al-right {
+            text-align: right;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mPullLeft {
+            float: left;
+        }
+
+        .notes p {
+            line-height: 17px;
+        }
+
+        .mPullRight {
+            float: right;
+        }
+
+        .lower_table tr {
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .shipping-adrress strong {
+            font-size: 25;
+        }
+
+        .h2 * {
+            font-size: 140%;
+            margin: 0;
+        }
+
+        .mtb2 {
+            margin: 2px 0;
+        }
+
+        tr.border_top td {
+            border-top: 2px solid #000000;
+        }
+
+        .left-border {
+            border-left: 1px solid #e5e5e5;
+        }
+
+        .right-border {
+            border-right: 1px solid #e5e5e5;
+        }
+
+        tr.child-color td {
+            background-color: #e5e5e5;
+        }
+
+        td {
+            padding: 3px 3px 0px 3px;
+        }
+
+        tbody tr:nth-child(1) td {
+            border-top: 0px solid blue;
+        }
+
+        .shipping-adrress .ship-info {
+            line-height: 22px;
+            font-size: 17px;
+
+
+        }
+
+        .billing-address .bill-info {
+            line-height: 22px;
+            font-size: 17px;
+        }
+
+        hr.new5 {
+            border: 1.5px solid rgb(0, 0, 0);
+            border-radius: 5px;
+        }
+        .ship-bold{
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mContainer">
+        <div>
+            <table style="width:100%">
+                </hr>
+                <tr>
+                    <td>
+                        <img src="https://www.intrepidcs.com/wp-content/uploads/2019/06/IntrepidCS-Website.png"
+                            alt="ICS" width="60%" />
+                    </td>
+                    <td>
+                        <h1 style="font-size: 20px; margin-bottom: 2%;">PACKING SLIP</h1>
+                        <h1 style="font-weight: bolder; margin-top: 0%;  margin-bottom: 2%; font-size: 15px;">Date:
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Order#:</h1>
+                        <p style=" margin-top: 0%;"><%= quote[0].OrderDatePDF %> <span
+                                style="font-size: 20px; padding: 5px; font-weight: bolder;"><%= quote[0].OrderID %></span>
+                        </p>
+                    </td>
+                </tr>
+                </hr>
+            </table>
+        </div>
+
+        <% if(quote[0].OrderNotFound){ %>
+        <% if (quote[0].orderId) { %>
+        <h2> Invalid Request: <span style="color:#C0392B">Order does not exist.<span></h2>
+        <% }else{ %>
+        <h2> Invalid Request: <span style="color:#C0392B">Quote does not exist.<span></h2>
+        <% } %>
+        <% }else{ %>
+        <div style="width:100%">
+            
+            <div class="mPullLeft billing-address" style=' width:50% ;margin-top:5px;line-height: 16px;'>
+                <h2>Bill To: <span>(Customer ID # <%= quote[0].CustomerID %>)</span></h2>
+                <hr class="new5">
+                <% if (quote[0].IsCustomerNameShow) { %>
+                <h8 class="bill-info"><strong><%= quote[0].CustomerFName + " " + quote[0].CustomerLName %></strong></h8>
+                <% } %>
+                <div class="bill-info">
+                    <%= quote[0].CustomerCompany %>
+                </div>
+                <div class="bill-info">
+                    <%= quote[0].BillingStreetAddress1 %>
+                </div>
+                <div class="bill-info">
+                    <%= quote[0].BillingStreetAddress2 %>
+                </div>
+                <div class="bill-info">
+                    <%= quote[0].BillingCity1 %>, <%= quote[0].BillingState %> <%= quote[0].BillingPostalCode %>
+                </div>
+                <div class="bill-info">
+                    <%= quote[0].BillingPhoneNumber %>
+                </div>
+                <div class="bill-info">
+                    <%= quote[0].BillingCountry1 %>
+                </div>
+            </div>
+            <div class="mPullRight billing-address" style='width:50% ;margin-top:5px;line-height: 16px'>
+                <div class="" style="text-align: left;">
+                    <h2>Ship To:</h2>
+                <hr  class="new5">
+
+                    <% if (quote[0].IsCustomerNameShow) { %>
+                    <h8 class="bill-info"><strong><%= quote[0].ShipFirstName + " " + quote[0].ShipLastName %></strong></h8>
+                    <% } %>
+                    <div class="bill-info">
+                        <%= quote[0].ShipCompanyName %>
+                    </div>
+                    <div class="bill-info">
+                        <%= quote[0].ShipAddress1 %>
+                    </div>
+                    <div class="bill-info">
+                        <%= quote[0].ShipAddress2 %>
+                    </div>
+                    <div class="bill-info">
+                        <%= quote[0].ShipCity %>, <%= quote[0].ShipState %>
+                            <%= quote[0].ShipPostalCode %>
+                    </div>
+                    <div class="bill-info">
+                        Phone: <%= quote[0].ShipPhoneNumber %>
+                    </div>
+                    <div class="bill-info">
+                        <%= quote[0].ShipCountry %>
+                    </div>
+                </div>
+               
+            </div>
+            
+        </div>
+        <div class="mPullLeft" style="width:100%;line-height: 10px;">
+        </div>
+        <div class="mPullLeft" style="width:100%;">
+            <hr />
+            <table style="width:100%;" cellspacing="0" cellpadding="0">
+                <thead>
+                    <% for(var i=0; i < quote.length; i++) { if (quote[i].Discount >= 1){ var discountExists = true } } %>
+                    <tr>
+                        <td style="width:25%;" class="text-left">
+                            <strong>Part#</strong>
+                        </td>
+                        <td style="width:70%" class="text-left">
+                            <strong> Description</strong>
+                        </td>
+                        <td style="width:5%" class="text-center">
+                            <strong> Qty</strong>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% 
+                    if (quote[0].ProductCode){
+                        for(var i=0; i < quote.length; i++) {
+                            if(parseInt(quote[i].QtyOnPackingSlip) > 0)
+                            if (quote[i].isChild == 0){ %>
+                    <tr>
+                        <td colspan="5"> &nbsp;</td>
+                    </tr>
+                    <tr class="border_top">
+                        <td valign="top" class="text-left item-font">
+                            <strong><%= quote[i].ProductCode %></strong>
+                        </td>
+                        <td valign="top" class="">
+                            <div valign="top" class="text-left item-font">
+                                <%= quote[i].ProductName %>
+                            </div>
+                        </td>
+                        <td valign="top" class="text-center item-font">
+                            <%= quote[i].QtyOnPackingSlip %>
+                        </td>
+                    </tr>
+                    <% } else { %>
+                    <tr>
+                        <td valign="top"style="padding-left: 10px;" class="text-left item-font">
+                            <div class="small-font-desc"> &#x2022; <%= quote[i].ProductCode %> </div>
+                        </td>
+                        <td valign="top" class="">
+                            <div class="small-font-desc">
+                                <%= quote[i].ProductName %>
+                            </div>
+                        </td>
+                        <td valign="top" class="text-center item-font">
+                            <%= quote[i].QtyOnPackingSlip %>
+                        </td>
+                    </tr>
+                    <%    }%>
+                    <%
+                  }
+
+              } else{ %>
+                    <tr>
+                        <td class="text-center" colspan="7">No Product Found in this Order</td>
+                    </tr>
+                    <%    } %>
+                </tbody>
+            </table>
+            <hr />
+        </div>
+        <div style="width:100%">
+            <% if (quote[0].notes) { %>
+                <h1 style="font-size: 15px; font-style: bolder;">Order Comments: </h1>
+                <hr class="new5">
+                <p style="white-space: pre-wrap;"><%- quote[0].notes %></p>
+                <% } %>
+        </div>
+
+    </div>
+    <!-- </br>
+     <div style='page-break-before: always;'></div>
+
+        <p></br></br><strong>Bank Information:</strong></br>
+        JP Morgan Chase Bank</br>
+        13999 Lakeside Circle, Sterling Heights, MI 48313<br>
+        Ph. (586)247-4900<br>
+        Account #: 175002047140</br>
+        SWIFT: CHASUS33</br>
+        Routing #: 072000326</p>
+
+        <p><strong>Payment Terms:</strong></br>
+        Standard Net 30 terms or VISA, AmEx or MasterCard. Terms negotiable upon customer request. All first-time customers are subject to credit approval before a line of credit will be considered.
+        To ensure payment is correctly processed, please refer to invoice # and PO # when remitting payment. Purchases of $25,000 USD or greater must be remitted by check or wire transfer.
+        </p>
+        <p><strong>Delivery Terms:</strong></br>
+        FOB Troy., MI with buyer`s UPS, DHL, or FedEx shipping account or CIF buyer`s port chargeback. FedEx is acceptable for domestic shipments only. Buyer is responsible for all VAT, duties and taxes incurred.
+      </p>
+        <p><strong>Attention all United States, non-Michigan and non-California customers:</strong></br>
+        Please be advised that at this time our company does not have nexus for sales and use tax purposes in your state. Please consult with your tax advisor on the taxability of this purchase for use tax purposes, as you may be required to self-assess, report and remit use tax on this transaction.
+        </p>
+        <p><strong>General Terms:</strong></br>
+        This offer is based upon the project specific information available to Intrepid and our current interpretation and understanding of that information. If additional requirements are added, existing requirements modified or if program deliverable dates shift, Intrepid reserves the right to modify any and/or all parts of this offer.
+        </p> -->
+    <% } %>
+</body>
+
+</html>

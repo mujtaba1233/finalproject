@@ -1,0 +1,63 @@
+{
+    "dimensional_weight_values" : {
+        "imperial": 139,
+        "metric": 5000
+    },
+    "customer_classifications": {
+        "customer_specific" : "00",
+        "wholesale": "01",
+        "occasional": "03",
+        "retail": "04"
+    },
+    "tax_id_types": {
+        "EIN": "EIN",
+        "DNS": "DNS",
+        "FGN": "FGN"
+    },
+    "tracking_status_codes": {
+        "I": "In Transit",
+        "D": "Delivered",
+        "X": "Exception",
+        "P": "Pickup",
+        "M": "Manifest Pickup"
+    },
+    "eu_country_codes": [
+        "GB",
+        "AT",
+        "BE",
+        "BG",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE"
+    ],
+    "us_territories_treated_as_countries": [
+        "AS",
+        "FM",
+        "GU",
+        "MH",
+        "MP",
+        "PW",
+        "PR",
+        "VI"
+    ]
+}

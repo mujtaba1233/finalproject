@@ -1,0 +1,175 @@
+<%- include header.ejs %>
+<div ng-controller="DashboardController">
+	<!-- <div class="row">
+	<div class="col-md-12">
+	<h2>Advance Search</h2>
+</div>
+<div class="col-md-3 form-group" >
+<label> ID <span class="explanation">order's or quote's</span></label>
+<input type="number" ng-model="searchObj.id" class="form-control">
+</div>
+<div class="col-md-3 form-group" >
+<label> Serial # <span class="explanation">order's</span></label>
+<input type="text" ng-model="searchObj.serials" class="form-control">
+</div>
+<div class="col-md-3 form-group" >
+<label> Created By <span class="explanation">order's or quote's</span></label>
+<input type="text" ng-model="searchObj.serials" class="form-control">
+</div>
+<div class="col-md-3 form-group" >
+<label> Date <span class="explanation">order's or quote's created date</span></label>
+<input type="date" ng-model="searchObj.serials" class="form-control">
+</div>
+<div class="col-md-3 form-group" >
+<label> First Name <span class="explanation">customer's</span></label>
+<input type="text" ng-model="customer.LastName" class="form-control">
+</div>
+<div class="col-md-3 form-group" >
+<label> Last Name <span class="explanation">customer's</span></label>
+<input type="text" ng-model="customer.LastName" class="form-control">
+</div>
+<div class="col-md-3 form-group" >
+<label> Email <span class="explanation">customer's</span></label>
+<input type="email" ng-model="customer.EmailAddress" class="form-control">
+</div>
+<div class="col-md-3 form-group" >
+<label> Company <span class="explanation">customer's</span></label>
+<input type="text" ng-model="customer.CompanyName" class="form-control">
+</div>
+<div class="col-md-3 form-group" >
+<label>City <span class="explanation">customer's</span></label>
+<input type="text" ng-model="customer.BillingAddress1" class="form-control">
+</div>
+</div>
+
+	<div class="row">
+<div class="col-md-12" style="text-align:center">
+<hr>
+<h4>-OR-</h4>
+<hr>
+</div>
+</div> -->
+
+	<div class="row">
+		<div class="col-md-12" style="text-align:center;padding-bottom: 50px;">
+			<h1><strong class="txt-blue"> BLUE SKY</strong></h1>
+			<h4 class="slogon">Quotes, Orders and RMAs Search</h4>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<div class="row search-box">
+			<input placeholder="type for search in quotes, orders and RMAs..." ng-change="getResults()"
+				class='custom-input form-control col-lg-12' type="text" ng-model="query">
+		</div>
+	</div>
+	<div class="col-md-12">
+		<div class="row" style="padding-top: 50px;">
+			<table st-table="displayedCollection" st-safe-src="searchResult" class="table table-striped">
+				<thead>
+					<tr>
+						<th style="width:10%"> Type <p class="explanation">Order, Quote or RMA</p>
+						</th>
+						<th style="width:10%" st-sort="columnName"> Column Name <p class="explanation">result came from
+							</p>
+						</th>
+						<th style="width:52%" st-sort="result"> Result <p class="explanation">Matched results with
+								search
+								query</p>
+						</th>
+						<th style="width:8%" st-sort="createdOn"> Created On <p class="explanation">Date of creation
+							</p>
+						</th>
+						<th style="width:20%" class=""> Action<p class="explanation">view / update / clone / etc</p>
+						</th>
+					</tr>
+					<tr>
+						<th colspan="2">
+							<input st-search="columnName" placeholder="search column name"
+								class="custom-input input-sm form-control" type="search" />
+						</th>
+						<th colspan="3">
+							<input st-search="result" placeholder="search result"
+								class="custom-input input-sm form-control" type="search" />
+						</th>
+					</tr>
+					<tr>
+						<!-- <th colspan="5"><input st-search="" class="form-control" placeholder="global search ..." type="text"/></th> -->
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="row in displayedCollection">
+						<td class="capitalize">{{row.type}}</td>
+						<td class="capitalize">{{row.columnName}}</td>
+						<td style="word-break: break-all;" ng-bind-html="row.result | highlight:query"></td>
+						<td>{{row.createdOn | date:'MM-dd-yyyy'}}</td>
+						<td ng-if="row.type == 'quote'" class="">
+							<a title="View Quote" target="_blank" class="btn btn-sm btn-default"
+								href="/view-quote/000000_{{row.OrderID}}.pdf">
+								<i class="fa fa-eye"> </i>
+							</a>
+							<a title="Clone Quote" ng-click="cloneQuote(row.OrderID)" target="_blank"
+								class="btn btn-sm btn-success">
+								<i class="fa fa-copy">
+								</i>
+							</a>
+							<a title="Edit Quote" target="_blank" ng-href="/edit?quote={{row.OrderID}}}"
+								class="btn btn-sm btn-primary">
+								<i class="fa fa-pencil">
+								</i>
+							</a>
+							<a title="{{q.isOrdered == 1? 'Order already Placed':'Place Order'}}"
+								ng-href="/order-new?quote={{row.OrderID}}" target="_blank"
+								class="btn btn-sm btn-warning">
+								<i class="fa fa-shopping-cart">
+								</i>
+							</a>
+							<button ng-if="loggedInUser.usertype == 'admin'" title="Remove Quote"
+								ng-click="removeQuote($index, row.OrderID)" class="btn btn-sm btn-danger">
+								<i class="fa fa-trash">
+								</i>
+							</button>
+						</td>
+						<td ng-if="row.type == 'order'" class="">
+							<a title="View Order" target="_blank" class="btn btn-sm btn-default"
+								href="/view-order/000000_{{row.OrderID}}.pdf">
+								<i class="fa fa-eye"> </i>
+							</a>
+							<a ng-if="row.OrderID > 8399" title="Clone Order" target="_blank"
+								class="btn btn-sm btn-success" href="/order-new?clone={{row.OrderID}}">
+								<i class="fa fa-copy"> </i>
+							</a>
+							<a ng-if="row.OrderID > 8399" title="Edit Order" target="_blank"
+								class="btn btn-sm btn-primary" href="/order-new?update={{row.OrderID}}">
+								<i class="fa fa-pencil"> </i>
+							</a>
+							<a title="View PI/CI" target="_blank" class="btn btn-sm btn-secondary"
+								href="/view-order-docs/000000_{{row.OrderID}}.docx">
+								<!-- <i class="fa fa-file"></i> -->
+								<img src="https://img.icons8.com/metro/26/ffffff/passport.png"
+									style="height:25px;padding: 3%;" />
+								<!-- <i class="far fa-file-search"></i> -->
+							</a>
+						</td>
+						<td ng-if="row.type == 'RMA'" class="">
+							<a href="/rma-view?id={{row.OrderID}}" title="View RMA" target="_blank"
+								class="btn btn-sm btn-default">
+								<i class="fa fa-eye"> </i>
+							</a>
+						</td>
+					</tr>
+					<tr ng-if="searchResult.length == 0">
+						<td colspan="5">Empty search result set</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="5" class="text-center">
+							<div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</div>
+</div>
+<%- include footer.ejs %>

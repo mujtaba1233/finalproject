@@ -1,0 +1,269 @@
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+</div>
+<script>
+var getCurrentUserRecordURL = '/api/user/get-current-user-record'; 
+var postCurrentUserRecord = '/api/user/current-user-record';
+var cloneQuoteUrl = '/api/quote/clone-quote';
+var removeQuoteUrl = '/api/quote/remove-quote';
+var getProductsURL = '/api/product/list';
+var getCategories = '/api/product/categories'
+var getProductsCompleteURL = '/api/product/list-comp';
+var getModalCustomersURL = '/api/customer/modal-list';
+var getCustomersURL = '/api/customer/list';
+var getEndUserURL  = '/api/end-user/list';
+var updateCustomerUrl = '/api/customer/update';
+var updateTokenCustomerUrl = '/api/customer/update-token';
+var updatePasswordCustomerUrl = '/api/customer/update-password';
+var updateEndUserUrl =  '/api/end-user/update';
+var syncProductUrl = '/api/product/sync';
+var syncOrderUrl = '/api/order/sync';
+var searchOrderUrl = '/api/order/list';
+var searchOrderByOrderStatusUrl = '/api/order/listByStatus';
+var getOpenOrdersUrl = '/api/order/list/open/';
+var updateParentOnlyUrl = '/api/order/update-parent-only';
+var getOrderUrl = '/api/order/get';
+var searchOrderByOpenStatusUrl = '/api/order/lists';
+var getOrderBySerialUrl = '/api/order/get-by-serial';
+var syncCustomerUrl = '/api/customer/sync';
+var getCustomersRecordURL = '/api/customer/getRecord';
+var getEndUserRecordURL = '/api/end-user/getRecord';
+var saveQuoteUrl = '/api/quote/save';
+var postUserUrl = '/api/user/save';
+var postCustomerUrl = '/api/customer/save';
+var postEndUserUrl = '/api/end-user/save';
+var getCompaniesURL = '/api/lookup/get-companies'
+var searchQuoteUrl = '/api/quote/list';
+var searchByDateQuoteUrl = '/api/quote/list-filter';
+var searchExternalQuoteUrl = '/api/quote/listExternal';
+var getQuote = '/api/quote/get';
+var updateQuoteUrl = '/api/quote/update';
+var searchUserUrl = '/api/user/list';
+var forgotPasswordUrl = '/api/user/forgot-password';
+var setPassUrl = '/api/user/set-pass';
+var productUploadUrl = '/api/product/upload';
+var saveUploadedProductsUrl = '/api/product/save-xml-product';
+var saveProductUrl = '/api/product/save';
+var removeProductUrl = '/api/product/remove';
+var removeOptionUrl = '/api/option/remove';
+var simpleUpdateProductUrl = '/api/product/simple-update';
+var saveProductEmptyUrl = '/api/product/save-partial';
+var saveProductImageUrl = '/api/product/images';
+var saveProductPDFsUrl = '/api/product/save-pdfs';
+var placeOrderVolusionUrl = '/api/order/order-on-volusion';
+var placeOrderBlueSkyUrl = '/api/order/order-on-blue-sky'
+var getOrderPackagesUrl = '/api/order/order-packages'
+var getOrderTrackUrl = '/api/order/order-track'
+var getOrderColumnUrl = '/api/query-builder/order-columns'
+var getReportForQueryBuilder ='/api/query-builder/get-report'
+var getReportsForQueries = '/api/query-builder/list-reports'
+var postQueryForReport = '/api/query-builder/query'
+var executeQueryForReport = '/api/query-builder/execute-query'
+var getQuoteColumnUrl = '/api/query-builder/quote-columns'
+var deleteOrderTrackUrl = '/api/order/delete-order-track'
+var reportUrl = '/api/report/'
+var productSalesReportUrl = '/api/report/product-sales/'
+var RMAUploadUrl = '/api/rma/upload';
+var saveUploadedRMAUrl = '/api/rma/save';
+var getRMAListURL = '/api/rma/list';
+var getRMAURL = '/api/rma/get/';
+var profileURL = '/api/profile'; // REST API URL
+
+var shippingMethodsListURL = "/api/lookup/shipping-method"
+var orderStatusListURL = "/api/lookup/order-status"
+var locationsListURL = "/api/lookup/stock-location"
+var productListURL = "/api/lookup/product"
+var categoryListURL = "/api/lookup/category"
+var serialListURL = "/api/lookup/serials"
+var ShippingMethodById = "/api/lookup/ShippingMethodById"
+var GetAllUsersForReport = "/api/lookup/getUsersForRecord"
+var customerLookUpURL = "/api/lookup/customers"
+var taxRateURL = "/api/lookup/get-tax-rate"
+var shippingRatesURL = "/api/lookup/get-shipping-rates"
+var countryList = "/api/lookup/country-list"
+
+var shippingAvailabilityStatusListURL = "/api/lookup/shipping-availability-status"
+var inventoryListURL = "/api/inventory/list"
+var inventoryUpdateURL = "/api/inventory/update"
+var imageRestURL = "/api/image"
+var fileRestURL = "/api/file"
+var CategoryRestURL = "/api/category"
+var GetOptionCategoryUrl = "/api/option-category"
+var GetOptionsUrl = "/api/option"
+
+var PackagingBoxRestURL = "/api/package-box"
+
+var FileURL = "/api/file/file"
+var DescFileURL = "/api/file/desc-file"
+var TaxExemptionRestURL = "/api/tax-exemption"
+var settingsURL = "/api/settings"
+var PaymentRestURL = "/api/payment"
+var PackagingRestURL = "/api/packaging"
+
+// var inventoryAddURL = "/api/inventory/"
+
+var inventoryDetailListURL = "/api/inventory-detail/list"
+var inventorySerialDetailListURL = "/api/inventory-detail/detail-list"
+var inventoryDetailSaveURL = "/api/inventory-detail/save"
+var orderInventoryAllocatedSaveURL = "/api/inventory-detail/order/inventory-save"
+var orderInventoryAllocatedGetURL = "/api/inventory-detail/order/allocated-list"
+var getAllOrderSerialUrl = "/api/inventory-detail/order/allSerialsOfOrder"
+var inventoryDetailDeleteURL = "/api/inventory-detail/delete"
+inventoryOrderDetailUnAllocatedURL = "/api/inventory-detail/order/unAllocated"
+</script>
+
+
+
+<!-- bower components start-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.2.1/moment.min.js" integrity="sha512-OmCXUvilBhA1ZlyhmlKnAC/tBOtgkVtvGT5MN7w3Vj8JUIbDeM+VlX3I0bTCWaiQHyWSw8jpNBsR8JFrCe0exg==" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/bower/angular/angular.min.js"></script>
+<script type="text/javascript" src="/bower/select.js"></script>
+<script type="text/javascript" src="/bower/angular-sanitize/angular-sanitize.min.js"></script>
+<script type="text/javascript" src="/angular/lib/smart-table/dist/smart-table.js"></script>
+<script src="//cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+<script type="text/javascript" src="/bower/angular-modal-service/dst/angular-modal-service.min.js"></script>
+<script type="text/javascript" src="/bower/angular-route/angular-route.min.js"></script>
+<script type="text/javascript" src="/bower/alertify/alertify.js"></script>
+<script type="text/javascript" src="/bower/angular-cookies/angular-cookies.js"></script>
+<script type="text/javascript" src="/bower/tinymce/tinymce.js"></script>
+<script type="text/javascript" src="/bower/angular-ui-tinymce/src/tinymce.js"></script>
+<script type="text/javascript" src="/bower/highcharts/highcharts.js"></script>
+<script type="text/javascript" src="/bower/ng-file-upload/ng-file-upload.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+    <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.js"></script>
+<script type="text/javascript" src="/bower/chosen/chosen.jquery.js"></script>
+<script type="text/javascript" src="/bower/angular-chosen-localytics/dist/angular-chosen.min.js"></script>
+<script type="text/javascript" src="/bower/ng-csv/lib/ng-csv.js"></script>
+<script type="text/javascript" src="/bower/angular-ui-mask/dist/mask.js"></script>
+<script type="text/javascript" src="/bower/angular-ckeditor/angular-ckeditor.js"></script>
+<!-- <script type="text/javascript" src="/bower/payform/dist/payform.min.js"></script> -->
+<!-- <script type="text/javascript" src="/bower/ngMask/dist/ngMask.js"></script> -->
+<script lang="javascript" src="/bower/js-xlsx/dist/xlsx.full.min.js"></script>
+<script lang="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="https://cdn.rawgit.com/zenorocha/clipboard.js/master/dist/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ngclipboard/2.0.0/ngclipboard.min.js"></script>
+
+<script type="text/javascript"
+    src="https://js.authorize.net/v1/Accept.js"
+    charset="utf-8">
+</script>
+<!-- <script lang="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-mask/1.8.7/mask.js"></script> -->
+<!-- bower components end -->
+
+<!-- core files start-->
+<script type="text/javascript" src="/angular/app.js"></script>
+<!-- core files end-->
+
+<!-- directives start-->
+<script type="text/javascript" src="/angular/directive/st-pagination-pageSelect.js"></script>
+<script type="text/javascript" src="/angular/directive/auto-complete.js"></script>
+<script type="text/javascript" src="/angular/directive/refresh-select.js"></script>
+<script type="text/javascript" src="/angular/directive/refresh-select2.js"></script>
+<script type="text/javascript" src="/angular/directive/typeahead.js"></script>
+<script type="text/javascript" src="/angular/directive/common-directive.js"></script>
+<script type="text/javascript" src="/angular/directive/tabs-scrollable.js"></script>
+<!-- directives end-->
+
+<!-- filters start -->
+<script type="text/javascript" src="/angular/filters/common-filters.js"></script>
+<!-- filters ends -->
+
+<!-- lib start -->
+<script type="text/javascript" src="/angular/lib/payform/payform.min.js"></script>
+<script type="text/javascript" src="/angular/lib/ngMask.js"></script>
+<!-- lib ends -->
+
+<!-- app Services start-->
+<script type="text/javascript" src="/angular/services/activity-log.js"></script>
+<script type="text/javascript" src="/angular/services/sync-service.js"></script>
+<script type="text/javascript" src="/angular/services/common-service.js"></script>
+<script type="text/javascript" src="/angular/services/order-service.js"></script>
+<script type="text/javascript" src="/angular/services/order-service.js"></script>
+<script type="text/javascript" src="/angular/services/option-service.js"></script>
+<script type="text/javascript" src="/angular/services/user-service.js"></script>
+<script type="text/javascript" src="/angular/services/customer-modal-service.js"></script>
+<script type="text/javascript" src="/angular/services/customers-service.js"></script>
+<script type="text/javascript" src="/angular/services/endUser-service.js"></script>
+<script type="text/javascript" src="/angular/services/product-service.js"></script>
+<script type="text/javascript" src="/angular/services/RMA-service.js"></script>
+<script type="text/javascript" src="/angular/services/profile-service.js"></script>
+<script type="text/javascript" src="/angular/services/lookup-service.js"></script>
+<script type="text/javascript" src="/angular/services/inventory-service.js"></script>
+<script type="text/javascript" src="/angular/services/inventory-detail-service.js"></script>
+<script type="text/javascript" src="/angular/services/image-service.js"></script>
+<script type="text/javascript" src="/angular/services/file-service.js"></script>
+<script type="text/javascript" src="/angular/services/category-service.js"></script>
+<script type="text/javascript" src="/angular/services/packaging-box-service.js"></script>
+<script type="text/javascript" src="/angular/services/tax-exemption-service.js"></script>
+<script type="text/javascript" src="/angular/services/settings-service.js"></script>
+<script type="text/javascript" src="/angular/services/payment-service.js"></script>
+<script type="text/javascript" src="/angular/services/packaging-service.js"></script>
+<script type="text/javascript" src="/angular/services/option-category-service.js"></script>
+<script type="text/javascript" src="/angular/common.js"></script>
+<!-- app Service end -->
+
+<!-- app controllers start-->
+<script type="text/javascript" src="/angular/controllers/activity-log-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/forgot-password-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/option-category-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/create-quote-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/search-quote-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/search-external-quote-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/search-order-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/edit-quote-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/product-modal-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/create-order-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/confirmation-modal-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/list-reports-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/query-builder-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/report-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/user-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/customer-modal-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/addressInfo-modal-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/customer-reset-password-modal.js"></script>
+<script type="text/javascript" src="/angular/controllers/customers-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/customers-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/end-user-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/dashboard-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/RMA-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/login-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/profile-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/product-sales-report-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/product-inventory-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/product-featured-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/new-inventory-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/query-modal-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/order-inventory-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/product-serial-view-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/product-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/category-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/options-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/excel-handler-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/description-file-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/excel-view-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/tax-exemption-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/settings-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/payment-ctrl.js"></script>
+<script type="text/javascript" src="/angular/controllers/create-quote-price-modal-ctrl.js"></script>
+
+<!-- app controllers end -->
+
+<!-- quote sorting start -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ng-sortable/1.3.6/ng-sortable.min.js"></script>
+<!-- Quote sorting ending -->
+<script>
+    tinymce.init({
+        plugins: 'paste',
+        paste_as_text: true
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+@import "./assets/styles/variables.scss";
+@import "./assets/fonts/stylesheet.css";
+
+font-face {
+  font-family: "airbnb_cereal_appblack";
+  src: url("./assets/fonts/airbnbcerealblack-webfont.woff2") format("woff2"),
+    url("./assets/fonts/airbnbcerealblack-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "airbnb_cereal_appbold";
+  src: url("./assets/fonts/airbnbcerealbold-webfont.woff2") format("woff2"),
+    url("./assets/fonts/airbnbcerealbold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "airbnb_cereal_appbook";
+  src: url("./assets/fonts/airbnbcerealbook-webfont.woff2") format("woff2"),
+    url("./assets/fonts/airbnbcerealbook-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "airbnb_cereal_applight";
+  src: url("./assets/fonts/airbnbcereallight-webfont.woff2") format("woff2"),
+    url("./assets/fonts/airbnbcereallight-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "airbnb_cereal_appmedium";
+  src: url("./assets/fonts/airbnbcerealmedium-webfont.woff2") format("woff2"),
+    url("./assets/fonts/airbnbcerealmedium-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "arlonsemibold";
+  src: url("./assets/fonts/arlonsemibold-demo-webfont.woff2") format("woff2"),
+    url("./assets/fonts/arlonsemibold-demo-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "font_awesome_5_freesolid";
+  src: url("./assets/fonts/fontawesome5free-solid-900-webfont.woff2")
+      format("woff2"),
+    url("./assets/fonts/fontawesome5free-solid-900-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Avenir-next-bold";
+  src: url("./assets/fonts/AvenirNextLTPro-Bold.woff2") format("woff2"),
+    url("./assets/fonts/AvenirNextLTPro-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Avenir-next-regular";
+  src: url("./assets/fonts/AvenirNextLTPro-Regular.woff2") format("woff2"),
+    url("./assets/fonts/AvenirNextLTPro-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+html {
+  height: 100vh;
+  overflow: auto;
+  background-color: $grey;
+}
+body {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-size: 16px;
+  line-height: 20px;
+  min-width: 320px;
+  line-height: 20px;
+  background-color: $white;
+  font-family: "Avenir-next-regular";
+}
+.form-control {
+  height: calc(1.3em + 0.75rem + 2px);
+  font-size: 0.6rem;
+}
+:root {
+  font-size: calc(1vw + 1vh + 0.5vmin);
+}
+//Rem Base: 24.4375

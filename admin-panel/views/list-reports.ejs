@@ -1,0 +1,69 @@
+<%- include header.ejs %>
+<div ng-controller="ListReportsController" ng- id="exportthis">
+    <div class="row">
+        <div class="col-md-12 page-header">
+            <h1>Saved Reports</h1>
+        </div>
+        <div class="col-md-12">
+            <table st-filtered-collection st-table="reports" st-safe-src="allReports" class="table table-striped table-hover table-scroll" id="table-scroll" >
+                <tr>
+                    <th class="text-center" st-sort="id">Report No</th>
+                    <th class="text-center" st-sort="reportName">Report Name</th>
+                    <th class="text-center" st-sort="createdOn">Created On</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+                <tr>
+                    <th colspan="11">
+                        <input autocomplete="off" st-search="" class="custom-input form-control"
+                            placeholder="Global search" type="text" />
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="1">
+                        <input autocomplete="off" st-search="id" class="custom-input form-control"
+                            placeholder="Report no search" type="text" />
+                    </th>
+                    <th colspan="1">
+                        <input autocomplete="off" st-search="reportName" class="custom-input form-control"
+                            placeholder="Report name search" type="text" />
+                    </th>
+                    <th colspan="2">
+                        <input autocomplete="off" st-search="createdOn" class="custom-input form-control"
+                            placeholder="Created on search" type="text" />
+                    </th>
+
+                </tr>
+                <tr ng-repeat="report in reports">
+
+                    <td class="text-center">{{report.id}}</td>
+                    <td class="text-center">{{report.reportName}}</td>
+                    <td class="text-center">{{report.createdOn| date:'MM/dd/yyyy'}}</td>
+                    <td class="text-center">
+                        <a title="View Report" target="_blank" class="btn btn-sm btn-success"
+                            href="/query-builder/?reportId={{report.id}}">
+                            <i class="fa fa-pencil fa-2x "> </i>
+                        </a>
+                        <a title="Execute Report" target="_blank" class="btn btn-sm btn-warning"
+                            href="/query-builder/?reportId={{report.id}}?execute=true">
+                            <i class="fa fa-play fa-2x"> </i>
+                        </a>
+                    </td>
+                </tr>
+                <tfoot class="text-center d-flex justify-content-center tfoot-toggle">
+                    <tr>
+                        <td colspan="10" class="text-center">
+                            <div class="paging">
+                                <div st-pagination="" st-template="template/st-pagination.html"
+                                    st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
+<%- include footer.ejs %>

@@ -1,0 +1,528 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta content="text/html; charset=utf-8" http-equiv="Content-Type"> -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> -->
+    <title>
+        document.pdf
+    </title>
+    <style>
+        /* @font-face {
+    font-family: 'Roboto';
+    src: url(sansation_light.woff);
+} */
+
+        * {
+
+            font-size: 18;
+            font-family: sans-serif;
+        }
+
+        .mContainer {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 100%;
+        }
+
+        .small-font-desc {
+            font-size: 12px !important;
+        }
+
+        .small-font-name {
+            font-size: 12px !important;
+            padding-bottom: 2px !important;
+        }
+        .item-font {
+            font-size: 12px !important;
+        }
+
+        .al-right {
+            text-align: right;
+
+        }
+        .text-left{
+            font-size: 12px !important;
+        }
+        .text-center {
+            text-align: center;
+            font-size: 12px !important;
+        }
+
+        .mPullLeft {
+            float: left;
+        }
+
+        .notes p {
+            line-height: 17px;
+        }
+
+        .mPullRight {
+            float: right;
+        }
+        /* td strong{
+            font-size: 12px;
+        } */
+        .lower_table tr {
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .th-products{
+            font-size: 12px !important;
+        }
+        .shipping-adrress strong {
+            font-size: 25;
+        }
+
+        .h2 * {
+            font-size: 140%;
+            margin: 0;
+        }
+
+        .mtb2 {
+            margin: 2px 0;
+        }
+
+        tr.border_top td {
+            border-top: 2px solid #000000;
+        }
+        /* td strong {
+            font-size: 12px !important;
+        } */
+        .left-border {
+            border-left: 1px solid #e5e5e5;
+        }
+
+        .right-border {
+            border-right: 1px solid #e5e5e5;
+        }
+
+        tr.child-color td {
+            background-color: #e5e5e5;
+        }
+
+        td {
+            padding: 3px 3px 0px 3px;
+        }
+
+        tbody tr:nth-child(1) td {
+            border-top: 0px solid blue;
+        }
+
+        .shipping-adrress .ship-info {
+            line-height: 22px;
+            font-size: 12px !important;
+
+
+        }
+
+        .billing-address .bill-info {
+            line-height: 22px;
+            font-size: 12px !important;
+        }
+
+        hr.new5 {
+            border: 1.5px solid rgb(0, 0, 0);
+            border-radius: 5px;
+        }
+
+        .ship-bold {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mContainer">
+        <div>
+            <table style="width:100%">
+                </hr>
+                <tr>
+                    <td>
+                        <img src="https://www.intrepidcs.com/wp-content/uploads/2019/06/IntrepidCS-Website.png"
+                            alt="ICS" width="60%" />
+
+                    </td>
+                    <td>
+                        <h1 style="font-size: 20px; text-align: center!important;   ">QUOTATION</h1>
+                        <div class="mPullLeft">
+                            <h1 style="font-weight: bolder; font-size: 20px;">Date: </h1>
+                            <p style="font-size: 17px; "><%= quote[0].IssueDatePDF %></p>
+                            <h1 style="font-weight: bolder; font-size: 15px;">Valid Till:</h1>
+                        </div>
+                        <div class="mPullRight">
+                            <h1 style="font-weight: bolder;  text-align: center!important;   font-size: 20px;">Quote #: </h1>
+                            <p style="font-size: 17px; text-align: center!important; font-weight: bolder;" ><%= quote[0].QuoteNo %></p>
+                            <h1 style="font-weight: bolder;  text-align: center!important; font-size: 15px; "> <%= quote[0].ValidTillPDF %></h1>
+                        </div>
+                    </td>
+                </tr>
+                </hr>
+            </table>
+        </div>
+        <div style="width:100%">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <strong><p>Please note Quote # <%= quote[0].QuoteNo %> when placing your order!</p></strong>
+            <strong> <p>To Place An Order:</p></strong>
+            <ul>
+                <li>Email to icsorders@intrepidcs.com, or</li>
+                <li>Fax to +1 586-731-2274, or</li>
+                <li>Call us at +1 586-731-7950 ext. 2</li>
+                <li>If paying by credit card, you can also place your order at https://store.intrepidcs.com.</li>
+            </ul> 
+                
+            <strong>  <p>Wire Transfer Information:</p></strong>
+            <ul>
+                <li>JP Morgan Chase Bank</li>
+                <li>13999 Lakeside Circle, Sterling Heights, MI 48313</li>
+                <li>Ph. (586)247-4900</li>
+                <li>Account #: 175002047140</li>
+                <li> SWIFT: CHASUS33</li>
+                <li> Routing #: 072000326</li>
+            </ul>
+            <p style="text-align: justify;"><strong> Attention all California Residents:</strong> Please be advised that the tax rate quoted herein is subject to change based on your exemption status, and the tax rate applicable to the shipping address at the time of billing.</p>
+            <p style="text-align: justify;"><strong>Covid-19 and the silicon shortage has disrupted supply chains throughout the world. 
+                 Intrepid is  confirming accurate dates yet lead times are subject to change based on outside partner delays and  developments 
+                 in the silicon industry.</strong></p>    
+                <p>More terms and conditions are listed on the last page of this quotation.</p> 
+        </div>
+
+
+        <div style='page-break-before: always;'></div>
+
+        <div>
+            <table style="width:100%">
+                </hr>
+                <tr>
+                    <td>
+                        <img src="https://www.intrepidcs.com/wp-content/uploads/2019/06/IntrepidCS-Website.png"
+                            alt="ICS" width="60%" />
+
+                    </td>
+                    <td>
+                        <h1 style="font-size: 20px; text-align: center!important;">QUOTATION</h1>
+                        <div class="mPullLeft">
+                            <h1 style="font-weight: bolder; font-size: 20px;">Date: </h1>
+                            <p style="font-size: 17px; "><%= quote[0].IssueDatePDF %></p>
+                            <h1 style="font-weight: bolder; font-size: 15px;">Valid Till:</h1>
+                        </div>
+                        <div class="mPullRight">
+                            <h1 style="font-weight: bolder;  text-align: center!important;   font-size: 20px;">Quote #: </h1>
+                            <p style="font-size: 17px; text-align: center!important; font-weight: bolder;" ><%= quote[0].QuoteNo %></p>
+                            <h1 style="font-weight: bolder;  text-align: center!important; font-size: 15px; "> <%= quote[0].ValidTillPDF %></h1>
+                        </div>
+                     
+                    </td>
+                </tr>
+                </hr>
+            </table>
+        </div>
+
+        <% if(quote[0].OrderNotFound){ %>
+        <% if (quote[0].orderId) { %>
+        <h2> Invalid Request: <span style="color:#C0392B">Quote does not exist.<span></h2>
+        <% }else{ %>
+        <h2> Invalid Request: <span style="color:#C0392B">Quote does not exist.<span></h2>
+        <% } %>
+        <% }else{ %>
+        <div style="width:100%">
+           
+            <div class="mPullLeft billing-address" style=' width:50% ;margin-top:5px;line-height: 16px;'>
+
+                <h2 style="font-size: 12px !important;">Bill To: <span style="font-size: 12px !important;">(Customer ID # <%= quote[0].CustomerID %>)</span></h2>
+                <hr class="new5">
+                <% if (quote[0].IsCustomerNameShow) { %>
+                <h8 class="bill-info"><strong style="font-size: 12px !important;"><%= quote[0].CustomerFName + " " + quote[0].CustomerLName %></strong></h8>
+                <% } %>
+                <div class="bill-info">
+                    <%= quote[0].BillingCompany %>
+                </div>
+                <div class="bill-info">
+                    <%= quote[0].BillingStreetAddress1 %>
+                </div>
+                <div class="bill-info">
+                    <%= quote[0].BillingStreetAddress2 %>
+                </div>
+                <div class="bill-info">
+                    <%= quote[0].BillingCity1 %>, <%= quote[0].BillingState %> <%= quote[0].BillingPostalCode %>
+                </div>
+                <div class="bill-info">
+                    Phone: <%= quote[0].BillingPhoneNumber %>
+                </div>
+                <div class="bill-info">
+                    <%= quote[0].BillingCountry1 %>
+                </div>
+            </div>
+            <div class="mPullRight billing-address" style='width:50% ;margin-top:5px;line-height: 16px'>
+                <div class="" style="text-align: left;">
+                    <h2 style="font-size: 12px !important;">Ship To:</h2>
+                    <hr class="new5">
+                    <% if (quote[0].ShipFirstName !== 'undefined' && quote[0].ShipFirstName !== null && quote[0].ShipFirstName) { %>
+                        <h8 style="font-size: 12px !important;" class="bill-info"><strong style="font-size: 12px !important;"><%= quote[0].ShipFirstName + " " + quote[0].ShipLastName %></strong></h8>
+                    <% }  else { %>
+                        <% if (quote[0].IsCustomerNameShow) %>
+                    <h8 style="font-size: 12px !important;" class="bill-info"><strong style="font-size: 12px !important;"><%= quote[0].CustomerFName + " " + quote[0].CustomerLName %></strong></h8>
+                    <% }%>
+                    <div class="bill-info">
+                        <%= quote[0].ShippingCompany %>
+                    </div>
+                    <div class="bill-info">
+                        <%= quote[0].ShippingAddress1 %>
+                    </div>
+                    <div class="bill-info">
+                        <%= quote[0].ShippingAddress2 %>
+                    </div>
+                    <div class="bill-info">
+                        <%= quote[0].ShippingCity %>, <%= quote[0].ShippingState %>
+                        <%= quote[0].ShippingPostalCode %>
+                    </div>
+                    <div class="bill-info">
+                        Phone: <%= quote[0].ShippingPhoneNumber %>
+                    </div>
+                    <div class="bill-info">
+                        <%= quote[0].ShippingCountry %>
+                        </divr>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="mPullLeft" style="width:100%;line-height: 10px;">
+        </div> -->
+            <div class="mPullLeft" style="width:100%;">
+                <hr />
+                <table style="width:100%" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <% var childProductChk = false; for(var i=0; i < quote.length; i++) { if (quote[i].Discount >= 1){ var discountExists = true } } %>
+                        <tr >
+                            <td style="width:20%;" class="text-left">
+                                <strong class="th-products">Part#</strong>
+                            </td>
+                            <% if (discountExists) { %>
+                            <td style="width:48%" class="text-left">
+                                <% } else { %>
+                            <td style="width:56%" class="text-left">
+                                <% } %>
+                                <strong class="th-products"> Description</strong>
+                            </td>
+                            <td style="width:4%" class="text-center">
+                                <strong class="th-products"> Qty</strong>
+                            </td>
+                            <td style="width:8%" class="text-center">
+                                <strong class="th-products"> Price</strong>
+                            </td>
+                            <% if (discountExists) { %>
+                            <td style="width:8%" class="text-center">
+                                <strong class="th-products">Disc. Price</strong>
+                            </td>
+                            <td style="width:8%" class="text-center">
+                                <strong class="th-products">Disc.</strong>
+                            </td>
+                            <% }  %>
+                            <td style="width:12%" class="al-right">
+                                <strong class="th-products">Total</strong>
+                            </td>
+                        </tr>
+                    </thead >
+                    <tbody>
+                        <% var stotal = 0;
+                  if (quote[0].ProductCode){ %>
+                        <% var stotal = 0;
+                  for(var i=0; i < quote.length; i++) {
+					  if(quote[i].Qty > 0)
+					  if (quote[i].isChild == 0){ %>
+                        <tr>
+                            <td colspan="5"> &nbsp;</td>
+                        </tr>
+                        <tr class="border_top" style="font-size: 12px !important;">
+                            <td valign="top" class="text-left item-font">
+                                <strong style="font-size: 12px !important;"> <%= quote[i].ProductCode %></strong>
+
+                            </td>
+                            <td valign="top" class="">
+                                <div valign="top" class="text-left item-font"> <%= quote[i].ProductName %>: </div>
+                                <div class="small-font-desc"> <span class="th-products"> <%- quote[i].description %> </span></div>
+                            </td>
+                            <td valign="top" class="text-center item-font">
+                                <%= quote[i].Qty %>
+                            </td>
+                            <td valign="top" class="text-center item-font">
+                                <%= currency %><%= quote[i].Price.toFixed(2) %>
+                            </td>
+                            <% if (quote[i].Discount > 0 || discountExists) { %>
+                            <td valign="top" class="al-right item-font ">
+                                <%= currency %><%= parseFloat(1 * (quote[i].Price - ((( quote[i].Discount ? quote[i].Discount : 0) / 100) * quote[i].Price))).toFixed(2);  %>
+                            </td>
+                            <td valign="top" class="text-center item-font">
+                                <%= quote[i].Discount?quote[i].Discount.toFixed(2):0 %>%
+                            </td>
+
+                            <% } %>
+                            <td valign="top" class="al-right item-font ">
+                                <%= currency %><%=  parseFloat(quote[i].Qty * (quote[i].Price - ((( quote[i].Discount ? quote[i].Discount : 0) / 100) * quote[i].Price)).toFixed(2)).toFixed(2); %>
+                            </td>
+                        </tr>
+                        <% } else {  childProductChk = true; %>
+                        <tr class="border_top">
+                            <td valign="top" style="padding-left: 10px;" class="text-left item-font">
+                                <div class="small-font-desc"> &#x2022; <%= quote[i].ProductCode %> </div>
+                            </td>
+                            <td valign="top" class="">
+                                <div class="small-font-desc"> <%= quote[i].ProductName %>: </div>
+                                <div class="small-font-desc"> <span class="th-products"><%- quote[i].description %></span> </div>
+                            </td>
+                            <td valign="top" class="text-center item-font">
+                                <%= quote[i].Qty %>
+                            </td>
+                            <td valign="top" class="text-center item-font">
+
+                            </td>
+                            <% if (quote[i].Discount > 1 || discountExists) { %>
+                            <td valign="top" class="text-center item-font">
+                                <!-- <%= quote[i].Discount.toFixed(2) %>% -->
+                            </td>
+                            <% } %>
+                            <td valign="top" class="al-right item-font">
+
+                            </td>
+                            <td valign="top" class="al-right item-font">
+
+                            </td>
+                        </tr>
+                        <%    }%>
+                        <%
+                      
+                      stotal +=  (quote[i].Qty * (quote[i].Price - ((quote[i].Discount / 100) * quote[i].Price)).toFixed(2));
+                  }
+
+              } else{ %>
+                        <tr>
+                            <td class="text-center" colspan="7">No Product Found in this Order</td>
+                        </tr>
+                        <%    }%>
+                    </tbody>
+                </table>
+                <hr />
+            </div>
+            <% if (quote[0].notes) { %> <h1 style="font-size: 15px; font-style: bolder;">Quote Notes: </h1>
+            <hr class="new5">
+            <p style="white-space: pre-wrap;"><%- quote[0].notes %></p>
+            <% } %>
+            <div>
+                <div>&nbsp;</div>
+                <div style="float:right;">
+                    <table style="width:100%;margin-top:50px" class="lower_table">
+                        <!-- <tr>
+                        <td style="width:40%"></td>
+                        <td style="width:35%"></td>
+                        <td style="width:15%">
+                            <strong>CUST Disc:</strong>
+                        </td>
+                        <td class='al-right'  style="width:10%">
+                            <%= currency %><%= ((quote[0].SelectedCustomerDiscount / 100) * stotal).toFixed(2) %>
+                        </td>
+                    </tr> -->
+                        <tr>
+                            <td style="width:40%"></td>
+                            <td style="width:35%"></td>
+                            <td style="width:15%">
+                                <strong>Subtotal:</strong>
+                            </td>
+                            <td class='al-right' style="width:10%">
+                                <%= currency %><%= (stotal).toFixed(2) %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <strong>Shipping:</strong>
+                            </td>
+                            <td class='al-right'>
+                                <%= currency %><%=(quote[0].Freight? quote[0].Freight.toFixed(2): 0) %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <strong>Tax Rate:</strong>
+                            </td>
+                            <td class='al-right'>
+                                <%=(quote[0].TaxShipping?quote[0].TaxShipping.toFixed(4):0.00) %>%
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <strong>Tax:</strong>
+                            </td>
+                            <td class='al-right'>
+                                <%= currency %><%= (taxAbleTotal *(quote[0].TaxShipping? quote[0].TaxShipping:0.00 )/100).toFixed(2) %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <strong>Total in USD:</strong>
+                            </td>
+                            <td class='al-right'>
+                                <%= currency %><%= ((stotal +  quote[0].Freight + ((quote[0].TaxShipping /100) * taxAbleTotal))).toFixed(2) %>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        </br>
+        <div style='page-break-before: always;'></div>
+
+        <p></br></br><strong>To Place An Order:</strong></br>
+            Phone: +1 586-731-7950 ext. 2</br>
+            Email: icsorders@intrepidcs.com<br>
+            Fax: +1 586-731-2274<br>
+            Webstore: https://store.intrepidcs.com</p>
+
+        <p><strong>Bank Information:</strong></br>
+            JP Morgan Chase Bank</br>
+            13999 Lakeside Circle, Sterling Heights, MI 48313<br>
+            Ph. (586)247-4900<br>
+            Account #: 175002047140</br>
+            SWIFT: CHASUS33</br>
+            Routing #: 072000326</p>
+
+        <p><strong>Payment Terms:</strong></br>
+            Standard Net 30 terms or VISA, AmEx or MasterCard. Terms negotiable upon customer request. All first-time
+            customers are subject to credit approval before a line of credit will be considered.
+            To ensure payment is correctly processed, please refer to invoice # and PO # when remitting payment.
+            Purchases of $25,000 USD or greater must be remitted by check or wire transfer.
+        </p>
+        <p><strong>Delivery Terms:</strong></br>
+            FOB Troy., MI with buyer`s UPS, DHL, or FedEx shipping account or CIF buyer`s port chargeback. FedEx is
+            acceptable for domestic shipments only. Buyer is responsible for all VAT, duties and taxes incurred.
+        </p>
+        <p><strong>Attention all United States, non-Michigan and non-California customers:</strong></br>
+            Please be advised that at this time our company does not have nexus for sales and use tax purposes in your
+            state. Please consult with your tax advisor on the taxability of this purchase for use tax purposes, as you
+            may be required to self-assess, report and remit use tax on this transaction.
+        </p>
+        <p><strong>General Terms:</strong></br>
+            This offer is based upon the project specific information available to Intrepid and our current
+            interpretation and understanding of that information. If additional requirements are added, existing
+            requirements modified or if program deliverable dates shift, Intrepid reserves the right to modify any
+            and/or all parts of this offer.
+        </p>
+        <% } %>
+</body>
+
+</html>

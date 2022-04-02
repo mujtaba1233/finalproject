@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!-- <link rel="icon" href="https://getbootstrap.com/favicon.ico"> -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon.ico"
+    />
+
+    <title>Intrepid Control Systems</title>
+
+    <!-- Bootstrap core CSS -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link href="/bower/highcharts/css/highcharts.css" rel="stylesheet" />
+    <link href="/bower/autocomplete/jquery.autocomplete.css" rel="stylesheet" />
+    <link href="/bower/chosen/chosen.css" rel="stylesheet" type="text/css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.css"
+    />
+    <link href="/bower/select.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/css/alertify.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/css/themes/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
+    />
+
+    <!-- Custom styles for this template -->
+    <link href="/css/bluesky.css" rel="stylesheet" />
+  </head>
+
+  <body ng-app="vulusionApp" class="container-fluid">
+    <div class="overlay">
+      <div class="overlay__inner">
+        <div class="overlay__content"><span class="spinner"></span></div>
+      </div>
+    </div>
+    <nav
+      style="z-index: 3"
+      class="navbar navbar-expand-lg fixed-top navbar-dark"
+    >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarTogglerDemo01"
+        aria-controls="navbarTogglerDemo01"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="collapse navbar-collapse justify-content-between"
+        id="navbarTogglerDemo01"
+      >
+        <a class="navbar-brand" href="/home">
+          <span class="txt-blue text-uppercase">
+            <strong>blue sky</strong>
+          </span>
+        </a>
+        <div class="navbar-nav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/home">Home</a>
+            </li>
+            <li
+              class="nav-item no-animate"
+              ng-class="{ animate: loggedInUser.usertype == 'admin' }"
+              ng-if="loggedInUser.usertype == 'admin'"
+            >
+              <a class="nav-link" href="/settings">Settings</a>
+            </li>
+            <li
+              class="nav-item no-animate"
+              ng-class="{ animate: loggedInUser.usertype == 'admin' }"
+              ng-if="loggedInUser.usertype == 'admin'"
+            >
+              <a class="nav-link" href="/user-management">Users</a>
+            </li>
+            <!-- <li   class="nav-item">
+						<a class="nav-link" href="/customer-management">
+							Customers
+						</a>
+					</li> -->
+            <li
+              class="nav-item dropdown"
+            >
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="customerReporting"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >Customers</a
+              >
+              <div
+                class="dropdown-menu mt-2"
+                aria-labelledby="advance-reporting"
+              >
+                <a class="dropdown-item" href="/customer-management"
+                  >Create Customer</a
+                >
+                <a ng-if="loggedInUser.usertype == 'admin'" class="dropdown-item" href="/end-user-management">
+                  End User</a
+                >
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/rma-search">RMA</a>
+            </li>
+            <!-- <li class="nav-item">
+						<a class="nav-link" ng-click="syncWithVolusion()" href="javascript:void(0)">Sync</a>
+					</li> -->
+            <li class="nav-item">
+              <a class="nav-link" href="/description-files">Files</a>
+            </li>
+            <li
+              class="nav-item no-animate"
+              ng-class="{ animate: loggedInUser.usertype == 'admin' }"
+              ng-if="loggedInUser.usertype == 'admin'"
+            >
+              <a class="nav-link" href="/tax-exemption">Tax Exemption</a>
+            </li>
+            <!-- <li class="nav-item dropdown">
+							<a
+								class="nav-link dropdown-toggle"
+								href="#"
+								id="Option"
+								data-toggle="dropdown"
+								aria-haspopup="true"
+								aria-expanded="false"
+								>Option</a
+							>
+							<div class="dropdown-menu mt-2" aria-labelledby="Option">
+							    <a class="dropdown-item" href="/options">Options</a> 
+								<a class="dropdown-item" href="/option-categories"
+									>Categories</a
+								>
+							</div>
+						</li> -->
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="/option-categories">Categories</a>
+            </li> -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="ProductDropdown"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >Product</a
+              >
+              <div class="dropdown-menu mt-2" aria-labelledby="ProductDropdown">
+                <a class="dropdown-item" href="/product">Product Add</a>
+                <a class="dropdown-item" href="/product-search"
+                  >Product Search</a
+                >
+                <a class="dropdown-item" href="/category-management"
+                  >Product Categories</a
+                >
+                <a class="dropdown-item" href="/product-sales">Product Sales</a>
+                <a class="dropdown-item" href="/product-inventory"
+                  >Product Inventory</a
+                >
+                <a class="dropdown-item" href="/product-featured"
+                  >Product Featured</a
+                >
+              </div>
+            </li>
+            <li
+              class="nav-item dropdown"
+              ng-class="{ animate: loggedInUser.usertype == 'admin' }"
+              ng-if="loggedInUser.usertype == 'admin'"
+            >
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="advance-reporting"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >Advance Report</a
+              >
+              <div
+                class="dropdown-menu mt-2"
+                aria-labelledby="advance-reporting"
+              >
+                <a class="dropdown-item" href="/query-builder">Create</a>
+                <a class="dropdown-item" href="/list-reports">Search</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="ProductDropdown"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >Quotes</a
+              >
+              <div class="dropdown-menu mt-2" aria-labelledby="ProductDropdown">
+                <a class="dropdown-item" href="/quote-new">Create Quotes</a>
+                <a class="dropdown-item" href="/quote-search">Search Quotes</a>
+                <a class="dropdown-item" href="/external-quote-search"
+                  >Search External Quotes</a
+                >
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="ProductDropdown"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >Orders</a
+              >
+              <div class="dropdown-menu mt-2" aria-labelledby="ProductDropdown">
+                <a class="dropdown-item" href="/order-new">Create Orders</a>
+                <a class="dropdown-item" href="/order-search">Search Orders</a>
+                <a class="dropdown-item" href="/report">Order Intake</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="ProductDropdown"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >Upload</a
+              >
+              <div class="dropdown-menu mt-2" aria-labelledby="ProductDropdown">
+                <a
+                  class="dropdown-item"
+                  ng-click="uploadProducts()"
+                  href="javascript:void(0)"
+                  >Product XML</a
+                >
+                <!-- <a class="dropdown-item" ng-click="uploadRMA()" href="javascript:void(0)">RMA Database</a> -->
+              </div>
+            </li>
+            <li class="nav-item dropdown position-relative">
+              <a
+                class="nav-link dropdown-toggle"
+                id="ProfileDropdown"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >Profile</a
+              >
+              <div
+                class="dropdown-menu mt-2 dropdown-menu-right"
+                aria-labelledby="ProfileDropdown"
+              >
+                <a class="dropdown-item disabled" ng-disabled="true">
+                  <span>
+                    <i class="fa fa-user"></i> {{ loggedInUser.firstname }}
+                    {{ loggedInUser.lastname }} ({{ loggedInUser.usertype }})
+                  </span>
+                </a>
+                <!-- <a class="dropdown-item" href="/profile"
+									><i class="fa fa-lock"></i> Change Password</a
+								> -->
+                <a
+                  class="dropdown-item"
+                  ng-click="logout()"
+                  href="javascript:void(0)"
+                >
+                  <i class="fa fa-sign-out"></i> Logout</a
+                >
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div style="padding-top: 50px"></div>
+    <div class="hidden angular-content">

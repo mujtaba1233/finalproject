@@ -1,0 +1,6 @@
+{
+    "hosts" : {
+        "sandbox": "wwwcie.ups.com/json",
+        "live": "onlinetools.ups.com/json"
+    }
+}

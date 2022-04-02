@@ -1,0 +1,99 @@
+<%- include header.ejs %>
+<div ng-controller="DescriptionFileController">
+    <div class="row">
+        <div class="col-md-8 col-xs-12 mx-auto">
+            <h3>File Management </h3>
+        </div>
+
+        <div class="col-md-8 col-xs-12 mx-auto">
+            <p class="explanation" style="margin-bottom:10px;">You can upload files(images and pdf) here and use them in
+                product description / specification / product manual as URLs.</p>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <form id="userform" class="w-100 mb-4" ng-submit="saveFiles()">
+            <div class="col-md-8 col-xs-12 mx-auto form-group">
+                <div ngf-multiple="true" ngf-drop ngf-select="" ng-model="files" class="dropzone cursorPointer"
+                    ngf-drag-over-class="'dragover'" ngf-allow-dir="true" accept=".pdf,image/*"
+                    ngf-pattern="'.pdf,image/*'">
+                    <div class="msg">Drag and drop files here or click to upload files</div>
+                </div>
+            </div>
+            <div class="col-md-8 col-xs-12 mx-auto text-center form-group">
+                <div ng-if="filesArray.length">
+                    <label>Enter Title</label>
+                    <p class="explanation"> file files titles</p>
+                    <div class="pdf-list row">
+                        <div style="margin-top: 15px;" class="col-lg-3 mx-auto" ng-repeat="f in filesArray">
+                            <div class="text-center">
+                                <i ng-if="f.FileExt === 'pdf'" class="fa fa-file-pdf-o fa-5x"></i>
+                                <i ng-if="f.FileExt !== 'pdf'" class="fa fa-image fa-5x"></i>
+                            </div>
+                            <label>Title</label>
+                            <input type="text" placeholder="Title" ng-model="f.FileName" class="form-control">
+                            <div ng-click="removeFile('local',$index)" class="topright">
+                                <i class="fa fa-times-circle fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-xs-12 mx-auto form-group">
+                <button type="submit" title="{{update? 'Update User': 'Save User'}}"
+                    class="btn {{update? 'btn-primary': 'btn-success'}} btn-lg pull-right">{{update? 'Update': 'Save'}}</button>
+                <button style="margin-right: 5px;" ng-if="update" title="Cancel" ng-click="cancelUpdate()"
+                    class="btn btn-warning btn-lg pull-right">Cancel</button>
+            </div>
+        </form>
+    </div>
+    <table st-table="savedFilesST" st-filtered-collection st-safe-src="savedFiles" class="table table-striped table-hover table-scroll" id="table-scroll">
+        <thead>
+            <tr>
+                <th style="width: 30%" st-sort="FileName">Title</th>
+                <th style="width: 20%" st-sort="lastname">Created By</th>
+                <th style="width: 15%; text-align:center;" st-sort="CreatedOn">Created On</th>
+                <th style="width: 15%; text-align:center;" st-sort="TableName">Type</th>
+                <th style="width: 20%; text-align:right;">Action</th>
+            </tr>
+            <tr>
+                <th colspan="5">
+                    <input st-search="" class="custom-input form-control" placeholder="global search ..." type="text" />
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="f in savedFilesST">
+                <td>{{f.FileName}}</td>
+                <td class="text-capitalize">{{f.lastname}}, {{f.firstname}}</td>
+                <td style="text-align: center;">{{parseDate(f.CreatedAt) | date:'MM-dd-yyyy'}}</td>
+                <td style="text-align: center;">{{f.TableName}}</td>
+                <td style="text-align: right;">
+                    <a title="Copy URL" href="javascript:void(0);" click-to-copy="{{f.FileURL}}"
+                        class="btn btn-sm btn-success"><i class="fa fa-files-o fa-2x" aria-hidden="true"></i></a>
+                    <a title="View File" target="_blank" href="{{f.FileURL}}" class="btn btn-sm btn-info"> <i
+                            class="fa fa-eye fa-2x"> </i></a>
+                    <button title="Remove" ng-click="deleteFile($index,f)" class="btn btn-sm btn-danger">
+                        <i class="fa fa-trash fa-2x">
+                        </i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot class="text-center d-flex justify-content-center tfoot-toggle">
+            <tr>
+                <td colspan="5" class="text-center">
+                    <div class="paging">
+                        <div st-pagination=""  st-template="template/st-pagination.html" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    <!-- Modal -->
+
+</div>
+
+
+<%- include footer.ejs %>
